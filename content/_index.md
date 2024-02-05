@@ -50,57 +50,57 @@ sections:
       username: admin
     design:
       columns: '1'
-- block: experience
-  content:
-    title: Experience
-    date_format: Jan 2006
-    items:
-      - title: Research Scientist
-        company: Computational Data Analytics Group, Oak Ridge National Laboratory
-        company_url: ''
-        company_logo: ''
-        location: Oak Ridge, TN
-        date_start: '2019-08-01'
-        date_end: ''
-        description: ''
+  - block: experience
+    content:
+      title: Experience
+      date_format: Jan 2006
+      items:
+        - title: Research Scientist
+          company: Computational Data Analytics Group, Oak Ridge National Laboratory
+          company_url: ''
+          company_logo: ''
+          location: Oak Ridge, TN
+          date_start: '2019-08-01'
+          date_end: ''
+          description: ''
 
-      - title: Postdoctoral Research Associate
-        company: Computer Science Research Group, Oak Ridge National Laboratory
-        company_url: ''
-        company_logo: ''
-        location: Oak Ridge, TN
-        date_start: '2018-08-01'
-        date_end: '2019-07-31'
-        description: ''
+        - title: Postdoctoral Research Associate
+          company: Computer Science Research Group, Oak Ridge National Laboratory
+          company_url: ''
+          company_logo: ''
+          location: Oak Ridge, TN
+          date_start: '2018-08-01'
+          date_end: '2019-07-31'
+          description: ''
 
-      - title: Graduate Research Assistant
-        company: Georgia Institute of Technology
-        company_url: ''
-        company_logo: ''
-        location: Atlanta, GA
-        date_start: '2011-01-01'
-        date_end: '2018-12-31'
-        description: ''
+        - title: Graduate Research Assistant
+          company: Georgia Institute of Technology
+          company_url: ''
+          company_logo: ''
+          location: Atlanta, GA
+          date_start: '2011-01-01'
+          date_end: '2018-12-31'
+          description: ''
 
-      - title: Summer Intern
-        company: Parallel Computing Lab, Intel Corporation
-        company_url: ''
-        company_logo: ''
-        location: Santa Clara, CA
-        date_start: '2014-05-01'
-        date_end: '2014-08-31'
-        description: ''
+        - title: Summer Intern
+          company: Parallel Computing Lab, Intel Corporation
+          company_url: ''
+          company_logo: ''
+          location: Santa Clara, CA
+          date_start: '2014-05-01'
+          date_end: '2014-08-31'
+          description: ''
 
-      - title: Summer Intern
-        company: Computational Research Division, Lawrence Berkeley National Laboratory
-        company_url: ''
-        company_logo: ''
-        location: Berkeley, CA
-        date_start: '2013-05-01'
-        date_end: '2013-08-31'
-        description: ''
-  design:
-    columns: '2'
+        - title: Summer Intern
+          company: Computational Research Division, Lawrence Berkeley National Laboratory
+          company_url: ''
+          company_logo: ''
+          location: Berkeley, CA
+          date_start: '2013-05-01'
+          date_end: '2013-08-31'
+          description: ''
+    design:
+      columns: '2'
   - block: accomplishments
     content:
       # Note: `&shy;` is used to add a 'soft' hyphen in a long heading.
@@ -114,15 +114,39 @@ sections:
       #   Leave other parameters empty if not required.
       #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
       items:
-        - certificate_url: https://www.coursera.org
+        - certificate_url: ''
           date_end: ''
-          date_start: '2021-01-25'
-          description: ''
-          icon: coursera
-          organization: Coursera
-          organization_url: https://www.coursera.org
-          title: Neural Networks and Deep Learning
+          date_start: '2022-01-01'
+          description: |
+            For outstanding research contributions in the Computer Science and Mathematics Division.
+          icon: ''
+          organization: ORNL
+          organization_url: ''
+          title: Special Performance Award
           url: ''
+
+        - certificate_url: 'https://www.hpcwire.com/2022/08/12/sc22-unveils-acm-gordon-bell-prize-finalists/'
+          date_end: ''
+          date_start: '2022-01-01'
+          description: |
+            Finalist for submission "Exaflops biomedical knowledge graph analytics".
+          icon: ''
+          organization: SC22
+          organization_url: ''
+          title: Gorden-Bell Finalist
+          url: ''
+
+        - certificate_url: 'https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-sc-best-paper-prize'
+          date_end: ''
+          date_start: '2022-01-01'
+          description: |
+            Winner of the SIAM Activity Group on Supercomputing Best Paper Prize.
+          icon: ''
+          organization: SIAM PP22
+          organization_url: ''
+          title: Best Paper Prize
+          url: ''
+          
         - certificate_url: https://www.edx.org
           date_end: ''
           date_start: '2021-01-01'
