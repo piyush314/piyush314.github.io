@@ -103,68 +103,149 @@ sections:
       columns: '2'
   - block: accomplishments
     content:
-      title: 'Professional & Academic Awards and Scholarships'
+      title: 'Accomplish&shy;ments'
       subtitle:
-      date_format: 'Jan 2006'
+      date_format: Jan 2006
       items:
-        - date_start: '01-01-2022'
-          organization: 'ORNL'
-          title: 'Special Performance Award'
-          description: 'For outstanding research contributions in the Computer Science and Mathematics Division.'
-        - date_start: '01-01-2022'
-          organization: 'SC22'
-          title: 'Gorden-Bell Finalist'
-          url: 'https://www.hpcwire.com/2022/08/12/sc22-unveils-acm-gordon-bell-prize-finalists/'
-          description: 'Finalist for submission "Exaflops biomedical knowledge graph analytics".'
-        - date_start: '01-01-2022'
-          organization: 'SIAM PP22'
-          title: 'Best Paper Prize'
-          url: 'https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-sc-best-paper-prize'
-          description: |2-
+        - certificate_url: ''
+          date_end: ''
+          date_start: '2022-01-01'
+          description: |
+            For outstanding research contributions in the Computer Science and Mathematics Division.
+          icon: ''
+          organization: ORNL
+          organization_url: ''
+          title: Special Performance Award
+          url: ''
+        - certificate_url: 'https://www.hpcwire.com/2022/08/12/sc22-unveils-acm-gordon-bell-prize-finalists/'
+          date_end: ''
+          date_start: '2022-01-01'
+          description: |
+            Finalist for submission "Exaflops biomedical knowledge graph analytics".
+          icon: ''
+          organization: SC22
+          organization_url: ''
+          title: Gorden-Bell Finalist
+          url: ''
+        - certificate_url: 'https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-sc-best-paper-prize'
+          date_end: ''
+          date_start: '2022-01-01'
+          description: |
             Winner of the SIAM Activity Group on Supercomputing Best Paper Prize.
-            - [SIAM News](https://sinews.siam.org/Details-Page/pp22-prize-spotlight)
-            - [ORNL News](https://www.ornl.gov/news/ornls-piyush-sao-receives-supercomputing-paper-prize)
-        - date_start: '01-01-2021'
-          organization: 'R&D 100 Award'
-          title: 'Finalist'
-          url: 'https://www.rdworldonline.com/finalists-for-2021-rd-100-awards-are-unveiled/'
+          icon: ''
+          organization: SIAM PP22
+          organization_url: ''
+          title: Best Paper Prize
+          url: ''
+        - certificate_url: 'https://www.rdworldonline.com/finalists-for-2021-rd-100-awards-are-unveiled/'
+          date_end: ''
+          date_start: '2021-01-01'
           description: ''
-        - date_start: '01-01-2020'
-          organization: 'SC20'
-          title: 'Gorden-Bell Finalist'
-          url: 'https://www.olcf.ornl.gov/2020/11/10/four-teams-using-ornls-summit-supercomputer-named-finalists-in-2020-gordon-bell-prize/'
-          description: 'Finalist for submission "Scalable Knowledge Graph Analytics at 136 PetaFlop/s".'
-        - date_start: '01-01-2019'
-          organization: 'ORNL'
-          title: 'Outstanding Postdoctoral Research Associate'
-          description: 'For outstanding research contributions in the Computer Science and Mathematics Division.'
-        - date_start: '01-01-2019'
-          organization: 'Graph500'
-          title: 'Team Member'
-          url: 'https://graph500.org/?page_id=781'
-          description: 'Member of the technical team that placed the Summit Supercomputer at ORNL 4th in the prestigious Graph500 List.'
-        - date_start: '01-01-2006'
-          organization: 'Indian National Mathematics Olympiad'
-          title: 'Awardee'
-          description: 'Selected as one of 35 awardees (100th percentile).'
-        - date_start: '01-01-2006'
-          organization: 'IIT-JEE'
-          title: 'All India Rank 651'
-          description: 'Top 0.2 percent of 300,000 applicants.'
-        - date_start: '01-01-2006'
-          organization: 'National Standard Examination in Physics'
-          title: 'Awardee'
-          url: 'https://www.iapt.org.in/exams/nse/nsep.html'
-          description: 'Awarded to top 1 percent (99th percentile).'
-        - date_start: '01-01-2009'
-          organization: 'DAAD-WISE'
-          title: 'Scholarship Recipient'
-          description: 'Recipient of German Academic Exchange Service-Working Internships in Science and Engineering Scholarship (awarded to approximately 300 undergraduate students in India).'
-        - date_start: '01-01-2010'
-          organization: 'CRUISE fellowship'
-          title: 'Awardee'
-          url: 'http://www.cse.gatech.edu/research/cruise'
-          description: 'Awardee of the CRUISE (Computing Research Undergraduate Intern Summer Experience) Program fellowship.'
+          icon: ''
+          organization: R&D 100
+          organization_url: ''
+          title: Award Finalist
+          url: ''
+        - certificate_url: 'https://www.olcf.ornl.gov/2020/11/10/four-teams-using-ornls-summit-supercomputer-named-finalists-in-2020-gordon-bell-prize/'
+          date_end: ''
+          date_start: '2020-01-01'
+          description: |
+            Finalist for submission "Scalable Knowledge Graph Analytics at 136 PetaFlop/s".
+          icon: ''
+          organization: SC20
+          organization_url: ''
+          title: Gorden-Bell Finalist
+          url: ''
+        - certificate_url: ''
+          date_end: ''
+          date_start: '2019-01-01'
+          description: |
+            For outstanding research contributions in the Computer Science and Mathematics Division.
+          icon: ''
+          organization: ORNL
+          organization_url: ''
+          title: Outstanding Postdoctoral Research Associate
+          url: ''
+        - certificate_url: 'https://graph500.org/?page_id=781'
+          date_end: ''
+          date_start: '2019-01-01'
+          description: |
+            Member of the technical team that placed the Summit Supercomputer at ORNL 4th in the prestigious Graph500 List.
+          icon: ''
+          organization: Graph500
+          organization_url: ''
+          title: ''
+          url: ''
+        - certificate_url: ''
+          date_end: ''
+          date_start: '2016-01-01'
+          description: |
+            Travel award recipient.
+          icon: ''
+          organization: HPDC
+          organization_url: ''
+          title: Conference Travel Award
+          url: ''
+        - certificate_url: ''
+          date_end: ''
+          date_start: '2014-01-01'
+          description: |
+            Travel award recipient.
+          icon: ''
+          organization: SIAM Parallel Processing
+          organization_url: ''
+          title: Conference Travel Award
+          url: ''
+        - certificate_url: ''
+          date_end: ''
+          date_start: '2014-01-01'
+          description: |
+            Travel award recipient.
+          icon: ''
+          organization: Copper-Mountain
+          organization_url: ''
+          title: Conference Travel Award
+          url: ''
+        - certificate_url: ''
+          date_end: ''
+          date_start: '2015-01-01'
+          description: |
+            Travel award recipient.
+          icon: ''
+          organization: IPDPS
+          organization_url: ''
+          title: Conference Travel Award
+          url: ''
+        - certificate_url: 'https://www.iapt.org.in/exams/nse/nsep.html'
+          date_end: ''
+          date_start: '2006-01-01'
+          description: |
+            Awarded to top 1 percent (99th percentile).
+          icon: ''
+          organization: National Standard Examination in Physics
+          organization_url: ''
+          title: ''
+          url: ''
+        - certificate_url: ''
+          date_end: ''
+          date_start: '2009-01-01'
+          description: |
+            Recipient of German Academic Exchange Service-Working Internships in Science and Engineering Scholarship (awarded to approximately 300 undergraduate students in India).
+          icon: ''
+          organization: DAAD-WISE
+          organization_url: ''
+          title: Undergraduate Scholarship
+          url: ''
+        - certificate_url: 'http://www.cse.gatech.edu/research/cruise'
+          date_end: ''
+          date_start: '2010-01-01'
+          description: |
+            Awardee of CRUISE (Computing Research Undergraduate Intern Summer Experience) Program fellowship.
+          icon: ''
+          organization: CRUISE fellowship
+          organization_url: 'http://www.cse.gatech.edu/research/cruise'
+          title: ''
+          url: ''
     design:
       columns: '2'
   - block: collection
