@@ -50,206 +50,99 @@ sections:
       username: admin
     design:
       columns: '1'
-  - block: experience
-    content:
-      title: Experience
-      date_format: Jan 2006
-      items:
-        - title: Research Scientist
-          company: Computational Data Analytics Group, Oak Ridge National Laboratory
-          company_url: ''
-          company_logo: ''
-          location: Oak Ridge, TN
-          date_start: '2019-08-01'
-          date_end: ''
-          description: ''
+- block: experience
+  content:
+    title: Experience
+    date_format: Jan 2006
+    items:
+      - title: Research Scientist
+        company: Computational Data Analytics Group, Oak Ridge National Laboratory
+        company_url: ''
+        company_logo: ''
+        location: Oak Ridge, TN
+        date_start: '2019-08-01'
+        date_end: ''
+        description: ''
 
-        - title: Postdoctoral Research Associate
-          company: Computer Science Research Group, Oak Ridge National Laboratory
-          company_url: ''
-          company_logo: ''
-          location: Oak Ridge, TN
-          date_start: '2018-08-01'
-          date_end: '2019-07-31'
-          description: ''
+      - title: Postdoctoral Research Associate
+        company: Computer Science Research Group, Oak Ridge National Laboratory
+        company_url: ''
+        company_logo: ''
+        location: Oak Ridge, TN
+        date_start: '2018-08-01'
+        date_end: '2019-07-31'
+        description: ''
 
-        - title: Graduate Research Assistant
-          company: Georgia Institute of Technology
-          company_url: ''
-          company_logo: ''
-          location: Atlanta, GA
-          date_start: '2011-01-01'
-          date_end: '2018-12-31'
-          description: ''
+      - title: Graduate Research Assistant
+        company: Georgia Institute of Technology
+        company_url: ''
+        company_logo: ''
+        location: Atlanta, GA
+        date_start: '2011-01-01'
+        date_end: '2018-12-31'
+        description: ''
 
-        - title: Summer Intern
-          company: Parallel Computing Lab, Intel Corporation
-          company_url: ''
-          company_logo: ''
-          location: Santa Clara, CA
-          date_start: '2014-05-01'
-          date_end: '2014-08-31'
-          description: ''
+      - title: Summer Intern
+        company: Parallel Computing Lab, Intel Corporation
+        company_url: ''
+        company_logo: ''
+        location: Santa Clara, CA
+        date_start: '2014-05-01'
+        date_end: '2014-08-31'
+        description: ''
 
-        - title: Summer Intern
-          company: Computational Research Division, Lawrence Berkeley National Laboratory
-          company_url: ''
-          company_logo: ''
-          location: Berkeley, CA
-          date_start: '2013-05-01'
-          date_end: '2013-08-31'
-          description: ''
-    design:
-      columns: '2'
-  {% raw %}
+      - title: Summer Intern
+        company: Computational Research Division, Lawrence Berkeley National Laboratory
+        company_url: ''
+        company_logo: ''
+        location: Berkeley, CA
+        date_start: '2013-05-01'
+        date_end: '2013-08-31'
+        description: ''
+  design:
+    columns: '2'
   - block: accomplishments
     content:
+      # Note: `&shy;` is used to add a 'soft' hyphen in a long heading.
       title: 'Accomplish&shy;ments'
       subtitle:
+      # Date format: https://docs.hugoblox.com/customization/#date-format
       date_format: Jan 2006
+      # Accomplishments.
+      #   Add/remove as many `item` blocks below as you like.
+      #   `title`, `organization`, and `date_start` are the required parameters.
+      #   Leave other parameters empty if not required.
+      #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
       items:
-        - certificate_url: ''
+        - certificate_url: https://www.coursera.org
           date_end: ''
-          date_start: '2022-01-01'
-          description: |
-            For outstanding research contributions in the Computer Science and Mathematics Division.
-          icon: ''
-          organization: ORNL
-          organization_url: ''
-          title: Special Performance Award
+          date_start: '2021-01-25'
+          description: ''
+          icon: coursera
+          organization: Coursera
+          organization_url: https://www.coursera.org
+          title: Neural Networks and Deep Learning
           url: ''
-        - certificate_url: 'https://www.hpcwire.com/2022/08/12/sc22-unveils-acm-gordon-bell-prize-finalists/'
-          date_end: ''
-          date_start: '2022-01-01'
-          description: |
-            Finalist for submission "Exaflops biomedical knowledge graph analytics".
-          icon: ''
-          organization: SC22
-          organization_url: ''
-          title: Gorden-Bell Finalist
-          url: ''
-        - certificate_url: 'https://www.siam.org/prizes-recognition/activity-group-prizes/detail/siag-sc-best-paper-prize'
-          date_end: ''
-          date_start: '2022-01-01'
-          description: |
-            Winner of the SIAM Activity Group on Supercomputing Best Paper Prize.
-          icon: ''
-          organization: SIAM PP22
-          organization_url: ''
-          title: Best Paper Prize
-          url: ''
-        - certificate_url: 'https://www.rdworldonline.com/finalists-for-2021-rd-100-awards-are-unveiled/'
+        - certificate_url: https://www.edx.org
           date_end: ''
           date_start: '2021-01-01'
+          description: Formulated informed blockchain models, hypotheses, and use cases.
+          icon: edx
+          organization: edX
+          organization_url: https://www.edx.org
+          title: Blockchain Fundamentals
+          url: https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals
+        - certificate_url: https://www.datacamp.com
+          date_end: '2020-12-21'
+          date_start: '2020-07-01'
           description: ''
-          icon: ''
-          organization: R&D 100
-          organization_url: ''
-          title: Award Finalist
-          url: ''
-        - certificate_url: 'https://www.olcf.ornl.gov/2020/11/10/four-teams-using-ornls-summit-supercomputer-named-finalists-in-2020-gordon-bell-prize/'
-          date_end: ''
-          date_start: '2020-01-01'
-          description: |
-            Finalist for submission "Scalable Knowledge Graph Analytics at 136 PetaFlop/s".
-          icon: ''
-          organization: SC20
-          organization_url: ''
-          title: Gorden-Bell Finalist
-          url: ''
-        - certificate_url: ''
-          date_end: ''
-          date_start: '2019-01-01'
-          description: |
-            For outstanding research contributions in the Computer Science and Mathematics Division.
-          icon: ''
-          organization: ORNL
-          organization_url: ''
-          title: Outstanding Postdoctoral Research Associate
-          url: ''
-        - certificate_url: 'https://graph500.org/?page_id=781'
-          date_end: ''
-          date_start: '2019-01-01'
-          description: |
-            Member of the technical team that placed the Summit Supercomputer at ORNL 4th in the prestigious Graph500 List.
-          icon: ''
-          organization: Graph500
-          organization_url: ''
-          title: ''
-          url: ''
-        - certificate_url: ''
-          date_end: ''
-          date_start: '2016-01-01'
-          description: |
-            Travel award recipient.
-          icon: ''
-          organization: HPDC
-          organization_url: ''
-          title: Conference Travel Award
-          url: ''
-        - certificate_url: ''
-          date_end: ''
-          date_start: '2014-01-01'
-          description: |
-            Travel award recipient.
-          icon: ''
-          organization: SIAM Parallel Processing
-          organization_url: ''
-          title: Conference Travel Award
-          url: ''
-        - certificate_url: ''
-          date_end: ''
-          date_start: '2014-01-01'
-          description: |
-            Travel award recipient.
-          icon: ''
-          organization: Copper-Mountain
-          organization_url: ''
-          title: Conference Travel Award
-          url: ''
-        - certificate_url: ''
-          date_end: ''
-          date_start: '2015-01-01'
-          description: |
-            Travel award recipient.
-          icon: ''
-          organization: IPDPS
-          organization_url: ''
-          title: Conference Travel Award
-          url: ''
-        - certificate_url: 'https://www.iapt.org.in/exams/nse/nsep.html'
-          date_end: ''
-          date_start: '2006-01-01'
-          description: |
-            Awarded to top 1 percent (99th percentile).
-          icon: ''
-          organization: National Standard Examination in Physics
-          organization_url: ''
-          title: ''
-          url: ''
-        - certificate_url: ''
-          date_end: ''
-          date_start: '2009-01-01'
-          description: |
-            Recipient of German Academic Exchange Service-Working Internships in Science and Engineering Scholarship (awarded to approximately 300 undergraduate students in India).
-          icon: ''
-          organization: DAAD-WISE
-          organization_url: ''
-          title: Undergraduate Scholarship
-          url: ''
-        - certificate_url: 'http://www.cse.gatech.edu/research/cruise'
-          date_end: ''
-          date_start: '2010-01-01'
-          description: |
-            Awardee of CRUISE (Computing Research Undergraduate Intern Summer Experience) Program fellowship.
-          icon: ''
-          organization: CRUISE fellowship
-          organization_url: 'http://www.cse.gatech.edu/research/cruise'
-          title: ''
+          icon: datacamp
+          organization: DataCamp
+          organization_url: https://www.datacamp.com
+          title: 'Object-Oriented Programming in R'
           url: ''
     design:
       columns: '2'
-  {% endraw %}
   - block: collection
     id: posts
     content:
