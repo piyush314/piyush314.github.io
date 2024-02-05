@@ -41,7 +41,7 @@ education:
     year: 2018
     thesis: "Scalable and Resilient Sparse Linear Solvers"
     advisor: "Dr. Richard Vuduc"
-  - course: "M.Sc. in Computational Science and Engineering"
+  - course: "M.S. in Computational Science and Engineering"
     institution: "Georgia Institute of Technology, Atlanta, GA, USA"
     year: 2016
     gpa: "4.0/4"
@@ -200,7 +200,7 @@ social:
   # and uncomment the lines below.
   - icon: cv
     icon_pack: ai
-    link: uploads/resume.pdf
+    link: uploads/cv.pdf
 
 # Highlight the author in author lists? (true/false)
 highlight_name: true
