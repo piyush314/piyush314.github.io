@@ -101,6 +101,7 @@ sections:
           description: ''
     design:
       columns: '2'
+  {% raw %}
   - block: accomplishments
     content:
       title: 'Accomplish&shy;ments'
@@ -248,6 +249,7 @@ sections:
           url: ''
     design:
       columns: '2'
+  {% endraw %}
   - block: collection
     id: posts
     content:
