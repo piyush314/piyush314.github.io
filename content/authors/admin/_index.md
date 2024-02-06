@@ -57,7 +57,7 @@ skills:
     items:
       - name: C
         description: ''
-        percent: 75
+        # percent: 75
         icon: code
         icon_pack: fas
       - name: Python
@@ -134,6 +134,7 @@ skills:
         percent: 65
         icon: paint-brush
         icon_pack: fas
+    design: true
 
   - name: General Purpose Tools
     items:
@@ -206,5 +207,9 @@ social:
 highlight_name: true
 ---
 
-Chien Shiung Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Hello! I'm Piyush Sao, a research scientist in the Computer Science and Mathematics Division at Oak Ridge National Laboratory (ORNL). My work centers on enhancing scientific computing and machine learning algorithms through high-performance computing platforms like the Frontier Supercomputer at ORNL. I earned my PhD from Georgia Tech and completed my undergraduate studies at IIT Madras in India. 
+
+My expertise lies in numerical algorithms, including linear solvers, and graph algorithms such as traversal, shortest path, and clustering. My work, grounded in numerical linear algebra, graph algorithms, and machine learning, strives to extend the capabilities of current supercomputer technology.  Some of the algorithm, I've developed are implemented in library such as SuperLU_DIST and ArborX. 
+
+At the heart of my research are critical questions that test the limits of modern computing: How can we create algorithms that efficiently scale on the world's most powerful supercomputers? What is the least amount of resources needed to solve complex problems accurately and reliably? These questions guide my focus on developing communication-avoiding algorithms, enhancing fault tolerance, and optimizing scientific applications for parallel and distributed computing environments. 
 {style="text-align: justify;"}
