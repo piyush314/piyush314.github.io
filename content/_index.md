@@ -10,7 +10,7 @@ sections:
     content:
       title: Hugo Academic Theme
       image:
-        filename: hero-academic.png
+        filename: hero-academic.png 
       cta:
         label: '**Get Started**'
         url: https://hugoblox.com/templates/
@@ -146,7 +146,7 @@ sections:
           organization_url: ''
           title: Best Paper Prize
           url: ''
-          
+
         - certificate_url: https://www.edx.org
           date_end: ''
           date_start: '2021-01-01'

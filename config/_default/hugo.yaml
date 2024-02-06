@@ -62,3 +62,4 @@ sitemap:
   _merge: deep
 minify:
   _merge: deep
+color_theme: "1950s"
