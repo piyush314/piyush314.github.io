@@ -78,11 +78,22 @@ jobs:
           valueFile: "_config.yml"
           propertyPath: "giscus.repo"
           value: ${{ github.repository }}
-      - name: Install Jupyter and Build Site 🔧
+      - name: Install Jupyter 🔧
+        run: pip3 install --upgrade jupyter
+      - name: Debug Ruby Environment
         run: |
-          pip3 install --upgrade jupyter
+          ruby -v
+          gem -v
+          bundle -v
+          which ruby
+          which bundle
+      - name: Install Bundler
+        run: gem install bundler
+      - name: Install Bundler Dependencies
+        run: bundle install --jobs 4 --retry 3 --verbose
+      - name: Build Jekyll Site
+        run: |
           export JEKYLL_ENV=production
-          bundle install --jobs 4 --retry 3
           bundle exec jekyll build --lsi
       - name: Purge unused CSS 🧹
         run: |
