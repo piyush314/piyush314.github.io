@@ -9,89 +9,205 @@
       value: English, German
 
 - title: Education
-  type: time_table
-  contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
-      description:
-        - Description 1.
-        - Description 2.
+  type: education
+  items:
+    - degree: Doctor of Philosophy
+      institution: Georgia Institute of Technology, Atlanta, GA, USA
+      year: 2018
+      details:
+        - Computational Science and Engineering
+        - Thesis: Scalable and Resilient Sparse Linear Solvers
+        - Advisor: Dr. Richard Vuduc
+
+    - degree: Master of Science
+      institution: Georgia Institute of Technology, Atlanta, GA, USA
+      year: 2016
+      details:
+        - Computational Science and Engineering
+        - GPA: 4.0/4
+
+    - degree: Master of Technology
+      institution: Indian Institute of Technology, Madras, India
+      year: 2011
+      details:
+        - Electrical Engineering, Specialization: Microelectronics and VLSI design
+        - GPA: 8.5/10
+
+    - degree: Bachelor of Technology
+      institution: Indian Institute of Technology, Madras, India
+      year: 2011
+      details:
+        - Electrical Engineering, Minor: Theoretical Computer Science
+        - GPA: 8.5/10
 
 - title: Experience
-  type: time_table
-  contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
-      description:
-        - Description 1.
-        - Description 2.
+  type: experience
+  items:
+    - role: Research Scientist
+      time: August 2019–Present
+      company: Computational Data Analytics Group, Oak Ridge National Laboratory
+      location: Oak Ridge, TN
 
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
+    - role: Postdoctoral Research Associate
+      time: August 2018–July 2019
+      company: Computer Science Research Group, Oak Ridge National Laboratory
+      location: Oak Ridge, TN
 
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
-      description:
+    - role: Graduate Research Assistant
+      time: 2011–2018
+      company: Georgia Institute of Technology
+      location: Atlanta, GA
 
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
+    - role: Summer Intern
+      time: May–August 2014
+      company: Parallel Computing Lab, Intel Corporation
+      location: Santa Clara, CA
 
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+    - role: Summer Intern
+      time: May–August 2013
+      company: Computational Research Division, Lawrence Berkeley National Laboratory
+      location: Berkeley, CA
 
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 1921
+- title: Awards & Honors
+  type: awards
+  items:
+    - title: Professional Awards
       items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
-      items:
-        - Max Planck Medal
+        - ORNL Special Performance Award, For outstanding research contributions in the Computer Science and Mathematics Division, 2022
+        - SC22 Gordon Bell Finalist, (Media), Finalist for submission "Exaflops biomedical knowledge graph analytics", 2022
+        - SIAM PP22 Best Paper Prize, (Link), Winner of the SIAM Activity Group on Supercomputing Best Paper Prize; (SIAM News), (ORNL News), 2022
+        - R&D 100 Award Finalist, (Link), 2021
+        - SC20 Gordon Bell Finalist, (Link), Finalist for submission "Scalable Knowledge Graph Analytics at 136 PetaFlop/s", 2020
+        - ORNL Outstanding Postdoctoral Research Associate, For outstanding research contributions in the Computer Science and Mathematics Division, 2019
+        - Graph500, (Link), Member of the technical team that placed the Summit Supercomputer at ORNL 4th in the prestigious Graph500 List, 2019
 
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Topic 1.
+    - title: Conference Travel Awards
       items:
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
-      items:
-        - Description 1.
-        - Description 2.
+        - HPDC, Travel award recipient, 2016
+        - SIAM Parallel Processing, Travel award recipient, 2014
+        - Copper Mountain, Travel award recipient, 2014
+        - IPDPS, Travel award recipient, 2015
 
-- title: Other Interests
-  type: list
-  contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+    - title: Academic Awards
+      items:
+        - Indian National Mathematics Olympiad, Selected as one of 35 awardees (100th percentile), 2006
+        - All India Rank 651 in IIT-JEE, Top 0.2 percent of 300,000 applicants, 2006
+        - National Standard Examination in Physics, (Link), Awarded to top 1 percent (99th percentile), 2006
+
+    - title: Undergraduate Scholarship
+      items:
+        - DAAD-WISE, Recipient of German Academic Exchange Service-Working Internships in Science and Engineering Scholarship (awarded to approximately 300 undergraduate students in India), 2009
+        - CRUISE fellowship, Awardee of CRUISE (Computing Research Undergraduate Computing Research Undergraduate Intern Summer Experience-CRUISE Program) fellowship, Site: http://www.cse.gatech.edu/research/cruise, 2010
+
+
+- title: Patents and Inventions Disclosure
+  type: patents
+  items:
+    - title: Knowledge graph analytics kernels in high performance computing
+      authors:
+        - Kannan, R.
+        - Sao, P. K.
+        - Lu, H.
+        - Herrmannova, D.
+        - Thakkar, V.
+        - Patton, R. M.
+        - Vuduc, R. W.
+        - Potok, T. E.
+      details:
+        - US Patent App. 17/389,862, Feb 3, 2022
+        - Google Patents: https://patents.google.com/patent/US20220035832A1/en
+        - Application filed by UT Battelle LLC: Jul 30, 2021
+        - Status: Pending
+
+    - title: U.S. Copyright Registration Certificate
+      registration:
+        - title: DSNAPSHOT
+          registration_number: TXu 2-314-193
+          effective_date: 2022-05-05
+          organization: ORNL
+      authors:
+        - Drahomira Herrmannova
+        - Ramakrishnan Kannan
+        - Hao Lu
+        - Robert M Patton
+        - Thomas E Potok
+        - Piyush K Sao
+
+- title: Research Grants and Funding
+  type: funding
+  items:
+    - role: Principal Investigator
+      project: Next generation sparse solvers STRUMPACK/SUPERLU
+      funder: Exascale Computing Project, Department of Energy
+      amount: $480,000 USD
+      duration: 2020–2023
+
+    - role: Co-Principal Investigator
+      project: Sparsitute - Mathematical Multifaceted Integrated Capability Center (MMICC)
+      funder: Office of Advanced Scientific Computing Research, Department of Energy
+      amount: $2.5 million USD
+      duration: 2022–2027
+      details:
+        - https://sparsitute.lbl.gov/people
+
+    - role: Co-Principal Investigator
+      project: ASCENDS-II (Advances in Machine Learning to Improve Scientific Discovery at Exascale and Beyond)
+      funder: Department of Energy
+      amount: $1,200,000
+      duration: 2020–2024
+      details:
+        - Contributing to the development of advanced machine learning techniques to enable scientific discovery on exascale computing systems.
+
+- title: Professional Activities
+  type: activities
+  items:
+    - title: Reviewer for
+      items:
+        - International Journal of High Performance Computing Applications (IJHPCA)
+        - ACM Transactions on Parallel Computing
+        - SIAM Journal on Scientific Computing (SISC)
+        - Parallel Computing Journal (ParCO)
+        - ACM Transactions on Mathematical Software (ACM TOMS)
+        - Journal of Computational Science (JoCS)
+
+    - title: Program Committee Member
+      items:
+        - Supercomputing - SC20, SC22
+        - International Parallel and Distributed Processing Symposium - IPDPS 2021, IPDPS 2022, IPDPS 2023
+        - International Conference on Parallel Processing - ICPP 2022
+        - ACM International Conference on Supercomputing (ICS) - ICS 2022, ICS 2023
+        - International Conference on Supercomputing - ISC 2022 - Posters
+        - Smokey Mountain Conference - SMC 2021, SMC 2022, SMC 2022
+        - High-Level Parallel Programming Models and Supportive Environments - HIPS 2022
+
+    - title: Professional Society Memberships
+      items:
+        - Society for Industrial and Applied Mathematics (SIAM)
+        - Association for Computing Machinery (ACM)
+        - Institute of Electrical and Electronics Engineers (IEEE)
+
+- title: Computer Skills
+  type: skills
+  items:
+    - Language - Proficient in C and Python, C++
+    - Parallel Programming - MPI, OpenMP, CUDA
+    - Scientific Packages - Matlab, NumPy (python), Pandas, LAPACK
+    - Visualization - Matlab, Matplotlib, d3.js, GraphViz, Inkscape
+    - General Purpose - SQL, Latex, Git
+
+- title: References
+  type: references
+  items:
+    - name: Dr. Richard Vuduc
+      details:
+        - Associate Professor
+        - Georgia Institute of Technology
+        - 266 Ferst Drive, Atlanta, GA 30332
+        - Email - richie@cc.gatech.edu
+        - Tel - 404-385-3355
+        - Web - vuduc.org
+
+    - name: Dr. Xiaoye Sherry Li
+      details:
+        - Senior Scientist
+        - Lawrence Berkeley National Laboratory

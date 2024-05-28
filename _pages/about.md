@@ -2,24 +2,31 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: Staff Scientist <a href='ornl.gov'>ORNL</a>. 1 Bethel Valley Rd, Oak Ridge, TN 37830
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: avatar.jpeg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>1 Bethel Valley Rd</p>
+    <p>Oak Ridge, TN 37830</p>
+    
 
 news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+Hello! I'm Piyush Sao, a research scientist at [Oak Ridge National Laboratory (ORNL)](http://ornl.gov) in the [Computer Science and Mathematics Division](http://csmd.ornl.gov). My research focuses on improving scientific computing and machine learning algorithms by leveraging high-performance computing platforms like the [Frontier Supercomputer at ORNL](https://www.olcf.ornl.gov/frontier/).
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+<!-- % Moved education details to the end to focus on current work first -->
+I develop efficient numerical algorithms, including linear solvers and graph algorithms for traversal, shortest path, and clustering. Some of my algorithms have been implemented in widely-used libraries such as [SuperLU_DIST](https://portal.nersc.gov/project/sparse/superlu/) and [ArborX](https://github.com/arborx/ArborX). My work addresses fundamental questions that push the boundaries of modern computing: 
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+1. How can we create algorithms that efficiently scale on the world's most powerful supercomputers? 
+2. What is the minimum amount of resources required to accurately and reliably solve complex problems? 
+
+By tackling these challenges, I strive to develop communication-avoiding algorithms, improve fault tolerance, and optimize scientific applications for parallel and distributed computing environments.
+
+<!-- % Moved education to the end and condensed -->
+I completed my undergraduate studies at [IIT Madras](https://www.iitm.ac.in/) in India and earned my PhD from [Georgia Tech](https://cse.gatech.edu/). At Georgia Tech, I was part of [HPC Garage](hpcgarage.org), a research group led by [Prof. Richard Vuduc](https://vuduc.org/). 
