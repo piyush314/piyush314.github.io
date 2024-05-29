@@ -123,8 +123,8 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: al-folio # blog_name will be displayed in your blog page
-blog_description: a simple whitespace theme for academics
+blog_name: Supercomputing Sorcery, Spells, and Shenanigans # blog_name will be displayed in your blog page
+blog_description: Musings on Supercomputing and Parallel Algorithms, Problems, Puzzles, and Conjectures
 permalink: /blog/:year/:title/
 
 # Pagination
