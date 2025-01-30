@@ -1,200 +1,385 @@
 {
   "basics": {
-    "name": "Albert Einstein",
-    "label": "Scientist",
+    "name": "Piyush Sao",
+    "label": "Research Scientist",
     "image": "",
-    "email": "albert@einstein.de",
-    "phone": "(912) 123-4567",
-    "url": "https://alshedivat.github.io/al-folio/",
-    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
+    "email": "saopk@ornl.gov",
+    "phone": "+1(404) 405 9940",
+    "url": "",
+    "summary": "Research scientist at Oak Ridge National Laboratory (ORNL), focusing on improving scientific computing and machine learning algorithms using high-performance computing platforms.",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
+      "address": "",
+      "postalCode": "",
+      "city": "Oak Ridge",
       "countryCode": "US",
-      "region": "California"
+      "region": "TN"
     },
-    "profiles": [
-      {
-        "network": "Twitter",
-        "username": "AlbertEinstein",
-        "url": "https://twitter.com/AlbertEinstein"
-      }
-    ]
+    "profiles": []
   },
   "work": [
     {
-      "name": "Institute for Advanced Study, Princeton University",
-      "position": "Professor of Theoretical Physics",
-      "url": "https://example.com",
-      "startDate": "1933-01-01",
-      "endDate": "1955-01-01",
-      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
-      "highlights": ["Relativity"]
-    }
-  ],
-  "volunteer": [
+      "name": "Oak Ridge National Laboratory",
+      "position": "Research Scientist",
+      "url": "",
+      "startDate": "2019-08-01",
+      "endDate": "",
+      "summary": "Research scientist in the Computational Data Analytics Group, focusing on enhancing scientific computing and machine learning algorithms through high-performance computing platforms.",
+      "highlights": []
+    },
     {
-      "organization": "People's Climate March",
-      "location": "Zurich, Switzerland",
-      "position": "Lead Organizer",
-      "url": "https://example.com",
-      "startDate": "2014-04-01",
-      "endDate": "2015-07-01",
-      "summary": "Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.",
-      "highlights": ["Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march.", "Men of the year 2014 by Time magazine"]
+      "name": "Oak Ridge National Laboratory",
+      "position": "Postdoctoral Research Associate",
+      "url": "",
+      "startDate": "2018-08-01",
+      "endDate": "2019-07-31",
+      "summary": "Postdoctoral research associate in the Computer Science Research Group.",
+      "highlights": []
+    },
+    {
+      "name": "Georgia Institute of Technology",
+      "position": "Graduate Research Assistant",
+      "url": "",
+      "startDate": "2011-01-01",
+      "endDate": "2018-01-01",
+      "summary": "Graduate research assistant at Georgia Institute of Technology.",
+      "highlights": []
+    },
+    {
+      "name": "Intel Corporation",
+      "position": "Summer Intern",
+      "url": "",
+      "startDate": "2014-05-01",
+      "endDate": "2014-08-31",
+      "summary": "Summer intern at the Parallel Computing Lab.",
+      "highlights": []
+    },
+    {
+      "name": "Lawrence Berkeley National Laboratory",
+      "position": "Summer Intern",
+      "url": "",
+      "startDate": "2013-05-01",
+      "endDate": "2013-08-31",
+      "summary": "Summer intern at the Computational Research Division.",
+      "highlights": []
     }
   ],
+  "volunteer": [],
   "education": [
     {
-      "institution": "University of Zurich, Zurich, Switzerland",
-      "location": "Zurich, Switzerland",
-      "url": "https://www.uzh.ch/",
-      "area": "Software Development",
+      "institution": "Georgia Institute of Technology",
+      "location": "Atlanta, GA, USA",
+      "url": "",
+      "area": "Computational Science and Engineering",
       "studyType": "PhD",
-      "startDate": "1905-01-01",
-      "endDate": "1905-01-01",
-      "score": "10",
-      "courses": ["Theory of Relativity"]
+      "startDate": "2018-01-01",
+      "endDate": "2018-01-01",
+      "score": "",
+      "courses": [],
+      "details": [
+        "Thesis: Scalable and Resilient Sparse Linear Solvers",
+        "Advisor: Dr. Richard Vuduc"
+      ]
+    },
+    {
+      "institution": "Georgia Institute of Technology",
+      "location": "Atlanta, GA, USA",
+      "url": "",
+      "area": "Computational Science and Engineering",
+      "studyType": "Master of Science",
+      "startDate": "2016-01-01",
+      "endDate": "2016-01-01",
+      "score": "GPA-4.0/4",
+      "courses": [],
+      "details": []
+    },
+    {
+      "institution": "Indian Institute of Technology",
+      "location": "Madras, India",
+      "url": "",
+      "area": "Electrical Engineering, Specialization: Microelectronics and VLSI design",
+      "studyType": "Master of Technology",
+      "startDate": "2011-01-01",
+      "endDate": "2011-01-01",
+      "score": "GPA-8.5/10",
+      "courses": [],
+      "details": []
+    },
+    {
+      "institution": "Indian Institute of Technology",
+      "location": "Madras, India",
+      "url": "",
+      "area": "Electrical Engineering, Minor: Theoretical Computer Science",
+      "studyType": "Bachelor of Technology",
+      "startDate": "2011-01-01",
+      "endDate": "2011-01-01",
+      "score": "GPA-8.5/10",
+      "courses": [],
+      "details": []
     }
   ],
   "awards": [
     {
-      "title": "Nobel Prize in Physics",
-      "date": "1921-11-01",
-      "awarder": "Royal Swedish Academy of Sciences",
-      "url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
-      "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
+      "title": "ORNL Special Performance Award",
+      "date": "2022-01-01",
+      "awarder": "",
+      "summary": "For outstanding research contributions in the Computer Science and Mathematics Division"
+    },
+    {
+      "title": "SC22 Gordon Bell Finalist",
+      "date": "2022-01-01",
+      "awarder": "",
+      "summary": "(Media), Finalist for submission \"Exaflops biomedical knowledge graph analytics\""
+    },
+    {
+      "title": "SIAM PP22 Best Paper Prize",
+      "date": "2022-01-01",
+      "awarder": "",
+      "summary": "(Link), Winner of the SIAM Activity Group on Supercomputing Best Paper Prize; (SIAM News), (ORNL News)"
+    },
+    {
+      "title": "R&D 100 Award Finalist",
+      "date": "2021-01-01",
+      "awarder": "",
+      "summary": "(Link)"
+    },
+    {
+      "title": "SC20 Gordon Bell Finalist",
+      "date": "2020-01-01",
+      "awarder": "",
+      "summary": "(Link), Finalist for submission \"Scalable Knowledge Graph Analytics at 136 PetaFlop/s\""
+    },
+    {
+      "title": "ORNL Outstanding Postdoctoral Research Associate",
+      "date": "2019-01-01",
+      "awarder": "",
+      "summary": "For outstanding research contributions in the Computer Science and Mathematics Division"
+    },
+    {
+      "title": "Graph500",
+      "date": "2019-01-01",
+      "awarder": "",
+      "summary": "(Link), Member of the technical team that placed the Summit Supercomputer at ORNL 4th in the prestigious Graph500 List"
     }
   ],
-  "certificates": [
-    {
-      "name": "Machine Learning",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-location-dot"
-    },
-    {
-      "name": "Quantum Computing",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-tag"
-    },
-    {
-      "name": "Quantum Information",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-envelope"
-    },
-    {
-      "name": "Quantum Cryptography",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-hashtag"
-    },
-    {
-      "name": "Quantum Communication",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-calendar"
-    },
-    {
-      "name": "Quantum Teleportation",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-clipboard-check"
-    }
-  ],
+  "certificates": [],
   "publications": [
     {
-      "name": "Zur Elektrody/namik bewegter Körper",
-      "publisher": "Annalen der Physik",
-      "releaseDate": "1905-06-30",
-      "url": "https://en.wikisource.org/wiki/Translation:On_the_Electrodynamics_of_Moving_Bodies",
-      "summary": "It concerned an interpretation of the Michelson–Morley experiment and the properties of light and time. Special relativity incorporates the principle that the speed of light is the same for all inertial observers regardless of the state of motion of the source."
+      "name": "A single-tree algorithm to compute the Euclidean minimum spanning tree on GPUs",
+      "publisher": "Proceedings of the 51st International Conference on Parallel Processing",
+      "releaseDate": "2022-01-01",
+      "authors": "Prokopenko, Andrey; Sao, Piyush; Lebrun-Grandie, Damien",
+      "pages": "1-10"
     },
     {
-      "name": "Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt",
-      "publisher": "Annalen der Physik",
-      "releaseDate": "1905-03-18",
-      "url": "https://de.wikisource.org/wiki/Über_einen_die_Erzeugung_und_Verwandlung_des_Lichtes_betreffenden_heuristischen_Gesichtspunkt",
-      "summary": "In the second paper, he applied the quantum theory to light to explain the photoelectric effect. In particular, he used the idea of light quanta (photons) to explain experimental results, but stressed the importance of the experimental results. The importance of his work on the photoelectric effect earned him the Nobel Prize in Physics in 1921."
+      "name": "Exaflops biomedical knowledge graph analytics",
+      "publisher": "2022 SC22: International Conference for High Performance Computing, Networking, Storage and Analysis (SC) IEEE Computer Society",
+      "releaseDate": "2022-01-01",
+      "authors": "Kannan, Ramakrishnan; Sao, Piyush; Lu, Hao; Kurzak, Jakub; Schenk, Gundolf; Shi, Yongmei; Lim, Seung-Hwan; Israni, Sharat; Thakkar, Vijay; Cong, Guojing u. a.",
+      "pages": "61-71"
     },
     {
-      "name": "Die Grundlage der allgemeinen Relativitätstheorie",
-      "publisher": "Annalen der Physik",
-      "releaseDate": "1916-03-20",
-      "url": "https://de.wikisource.org/wiki/Die_Grundlage_der_allgemeinen_Relativitätstheorie",
-      "summary": "The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914)."
+      "name": "Scalable All-pairs Shortest Paths for Huge Graphs on Multi-GPU Clusters",
+      "publisher": "Proceedings of the 30th International Symposium on High-Performance Parallel and Distributed Computing",
+      "releaseDate": "2020-01-01",
+      "authors": "Sao, Piyush; Lu, Hao; Kannan, Ramakrishnan; Thakkar, Vijay; Vuduc, Richard; Potok, Thomas",
+      "pages": "121-131"
+    },
+    {
+      "name": "Sparse Binary Matrix-Vector Multiplication on Neuromorphic Computers",
+      "publisher": "2021 IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW) IEEE",
+      "releaseDate": "2021-01-01",
+      "authors": "Schuman, Catherine D.; Kay, Bill; Date, Prasanna; Kannan, Ramakrishnan; Sao, Piyush; Potok, Thomas E.",
+      "pages": "308-311"
+    },
+    {
+      "name": "Scalable knowledge graph analytics at 136 petaflop/s",
+      "publisher": "SC20: International Conference for High Performance Computing, Networking, Storage and Analysis IEEE",
+      "releaseDate": "2020-01-01",
+      "authors": "Kannan, Ramakrishnan; Sao, Piyush; Lu, Hao; Herrmannova, Drahomira; Thakkar, Vijay; Patton, Robert; Vuduc, Richard; Potok, Thomas",
+      "pages": "1-13"
+    },
+    {
+      "name": "A supernodal all-pairs shortest path algorithm",
+      "publisher": "Proceedings of the 25th ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming",
+      "releaseDate": "2020-01-01",
+      "authors": "Sao, Piyush; Kannan, Ramakrishnan; Gera, Prasun; Vuduc, Richard",
+      "pages": "250-261"
+    },
+    {
+      "name": "Multifrontal Non-negative Matrix Factorization",
+      "publisher": "International Conference on Parallel Processing and Applied Mathematics Springer",
+      "releaseDate": "2019-01-01",
+      "authors": "Sao, Piyush; Kannan, Ramakrishnan",
+      "pages": "543-554"
+    },
+    {
+      "name": "Self-stabilizing Connected Components",
+      "publisher": "2019 IEEE/ACM 9th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS) IEEE",
+      "releaseDate": "2019-01-01",
+      "authors": "Sao, Piyush; Engelmann, Christian; Eswar, Srinivas; Green, Oded; Vuduc, Richard",
+      "pages": "50-59"
+    },
+    {
+      "name": "A Communication-Avoiding 3D Sparse Triangular Solve Algorithm",
+      "publisher": "International Conference on Supercomputing",
+      "releaseDate": "2019-06-26",
+      "authors": "Sao, Piyush; Kannan, Ramakrishnan; Li, Xiaoye; Vuduc, Richard",
+      "pages": ""
+    },
+    {
+      "name": "A communication-avoiding 3D LU factorization algorithm for sparse matrices",
+      "publisher": "Proceedings of the IEEE International Parallel and Distributed Processing Symposium (IPDPS)",
+      "releaseDate": "2018-05-01",
+      "authors": "Sao, Piyush; Li, Xiaoye S.; Vuduc, Richard",
+      "pages": ""
+    },
+    {
+      "name": "A Sparse Direct Solver for Distributed Memory Xeon Phi-accelerated Systems",
+      "publisher": "Parallel and Distributed Processing Symposium (IPDPS), 2015 IEEE International IEEE",
+      "releaseDate": "2015-01-01",
+      "authors": "Sao, Piyush; Liu, Xing; Vuduc, Richard; Li, Xiaoye",
+      "pages": "71-81"
+    },
+    {
+      "name": "A distributed CPU-GPU sparse direct solver",
+      "publisher": "European Conference on Parallel Processing Springer",
+      "releaseDate": "2014-01-01",
+      "authors": "Sao, Piyush; Vuduc, Richard; Li, Xiaoye S.",
+      "pages": "487-498"
     }
   ],
   "skills": [
     {
-      "name": "Physics",
-      "level": "Master",
-      "icon": "fa-solid fa-hashtag",
-      "keywords": [
-        "Quantum Mechanics",
-        "Quantum Computing",
-        "Quantum Information",
-        "Quantum Cryptography",
-        "Quantum Communication",
-        "Quantum Teleportation"
-      ]
-    }
-  ],
-  "languages": [
-    {
-      "language": "German",
-      "fluency": "Native speaker",
-      "icon": ""
+      "name": "C",
+      "level": "Proficient",
+      "keywords": []
     },
     {
-      "language": "English",
-      "fluency": "Fluent",
-      "icon": ""
-    }
-  ],
-  "interests": [
+      "name": "Python",
+      "level": "Proficient",
+      "keywords": []
+    },
     {
-      "name": "Physics",
-      "icon": "fa-solid fa-tag",
+      "name": "C++",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "MPI",
+      "level": "",
       "keywords": [
-        "Quantum Mechanics",
-        "Quantum Computing",
-        "Quantum Information",
-        "Quantum Cryptography",
-        "Quantum Communication",
-        "Quantum Teleportation"
+        "Parallel Programming"
+      ]
+    },
+    {
+      "name": "OpenMP",
+      "level": "",
+      "keywords": [
+        "Parallel Programming"
+      ]
+    },
+    {
+      "name": "CUDA",
+      "level": "",
+      "keywords": [
+        "Parallel Programming"
+      ]
+    },
+    {
+      "name": "Matlab",
+      "level": "",
+      "keywords": [
+        "Scientific Packages",
+        "Visualization"
+      ]
+    },
+    {
+      "name": "NumPy",
+      "level": "",
+      "keywords": [
+        "Scientific Packages"
+      ]
+    },
+    {
+      "name": "Pandas",
+      "level": "",
+      "keywords": [
+        "Scientific Packages"
+      ]
+    },
+    {
+      "name": "LAPACK",
+      "level": "",
+      "keywords": [
+        "Scientific Packages"
+      ]
+    },
+    {
+      "name": "Matplotlib",
+      "level": "",
+      "keywords": [
+        "Visualization"
+      ]
+    },
+    {
+      "name": "d3.js",
+      "level": "",
+      "keywords": [
+        "Visualization"
+      ]
+    },
+    {
+      "name": "GraphViz",
+      "level": "",
+      "keywords": [
+        "Visualization"
+      ]
+    },
+    {
+      "name": "Inkscape",
+      "level": "",
+      "keywords": [
+        "Visualization"
+      ]
+    },
+    {
+      "name": "SQL",
+      "level": "",
+      "keywords": [
+        "General Purpose"
+      ]
+    },
+    {
+      "name": "Latex",
+      "level": "",
+      "keywords": [
+        "General Purpose"
+      ]
+    },
+    {
+      "name": "Git",
+      "level": "",
+      "keywords": [
+        "General Purpose"
       ]
     }
   ],
+  "languages": [],
+  "interests": [],
   "references": [
     {
-      "name": "Professor John Doe",
-      "icon": "fa-solid fa-laptop",
-      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
+      "name": "Dr. Richard Vuduc",
+      "reference": "Associate Professor, Georgia Institute of Technology, 266 Ferst Drive, Atlanta, GA 30332, Email: richie@cc.gatech.edu, Tel: 404-385-3355, Web: vuduc.org"
     },
     {
-      "name": "Professor John Doe",
-      "icon": "fa-solid fa-thumbtack",
-      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
+      "name": "Dr. Xiaoye Sherry Li",
+      "reference": "Senior Scientist, Lawrence Berkeley National Laboratory, One Cyclotron Rd, Berkeley, CA 94720, Email: xsli@lbl.gov, Tel: 510-486-6684, Fax: 510-486-5812, Web: crd-legacy.lbl.gov/∼xiaoye"
     }
   ],
-  "projects": [
-    {
-      "name": "Quantum Computing",
-      "summary": "Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.",
-      "highlights": ["Quantum Teleportation", "Quantum Cryptography"],
-      "startDate": "2018-01-01",
-      "endDate": "2018-01-01",
-      "url": "https://example.com"
-    }
-  ]
+  "projects": [],
+  "meta": {
+    "canonical": "https://raw.githubusercontent.com/alshedivat/al-folio/master/assets/json/resume.json",
+    "version": "v1.0.5",
+    "lastModified": "2023-06-04T20:44:00Z"
+  }
 }
