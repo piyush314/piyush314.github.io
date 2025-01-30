@@ -18,7 +18,7 @@ jobs:
     - name: Install ruby-build dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev
+        sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev imagemagick
 
     - name: Install ruby-build
       run: |
