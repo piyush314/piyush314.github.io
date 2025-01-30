@@ -1,0 +1,56 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    env:
+      RUBY_VERSION: 3.1.4
+      
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install ruby-build dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev
+
+    - name: Install ruby-build
+      run: |
+        git clone https://github.com/rbenv/ruby-build.git
+        cd ruby-build
+        sudo ./install.sh
+
+    - name: Set up Ruby
+      run: |
+        RUBY_BUILD_DIR="/opt/hostedtoolcache/Ruby/${RUBY_VERSION}/x64"
+        if [ ! -f "${RUBY_BUILD_DIR}.complete" ]; then
+          sudo mkdir -p "$RUBY_BUILD_DIR"
+          sudo ruby-build "$RUBY_VERSION" "$RUBY_BUILD_DIR"
+          sudo touch "${RUBY_BUILD_DIR}.complete"
+        fi
+        echo "$RUBY_BUILD_DIR/bin" >> $GITHUB_PATH
+
+    - name: Install bundler
+      run: |
+        gem install bundler
+
+    - name: Install dependencies
+      run: |
+        bundle install
+
+    - name: Build site
+      run: |
+        bundle exec jekyll build
+
+    - name: Deploy
+      if: github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_site 
