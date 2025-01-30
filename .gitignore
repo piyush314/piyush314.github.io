@@ -9,3 +9,13 @@ node_modules/
 go.sum
 .hugo_build.lock
 venv
+
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.tweet-cache/
+Gemfile.lock
+vendor/
+.bundle/
