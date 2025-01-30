@@ -36,39 +36,42 @@
 
 
 <!-- Bootstrap & MDB -->
-<link rel="stylesheet" href="/al-folio/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04">
-<!-- <link rel="stylesheet" href="/al-folio/assets/css/mdb.min.css?62a43d1430ddb46fc4886f9d0e3b49b8"> -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04">
+<link rel="stylesheet" href="" integrity="" crossorigin="anonymous">
 
-<!-- Bootstrap Table -->
 
 
 <!-- Fonts & Icons -->
-<link defer rel="stylesheet" href="/al-folio/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5">
-<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+<link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5">
+<link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772">
+<link defer rel="stylesheet" type="text/css" href="">
 
 <!-- Code Syntax Highlighting -->
-<link defer rel="stylesheet" href="/al-folio/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light">
+<link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light">
 
 
 
 <!-- Styles -->
 
+
+
+
   <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
 
-<link rel="stylesheet" href="/al-folio/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e">
-<link rel="canonical" href="http://localhost:4000/al-folio/publications/">
+<link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e">
+<link rel="canonical" href="http://localhost:4001/publications/">
 
 <!-- Dark Mode -->
+<script src="/assets/js/theme.js?0afe9f0ae161375728f7bcc5eb5b4ab4"></script>
 
-  <link defer rel="stylesheet" href="/al-folio/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark">
-  <script src="/al-folio/assets/js/theme.js?0afe9f0ae161375728f7bcc5eb5b4ab4"></script>
+  <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark">
+  <script>
+    initTheme();
+  </script>
 
 
-<!-- GeoJSON support via Leaflet -->
 
 
-<!-- diff2html -->
 
 
 
@@ -85,7 +88,7 @@
   <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
     <div class="container">
       
-        <a class="navbar-brand title font-weight-lighter" href="/al-folio/">
+        <a class="navbar-brand title font-weight-lighter" href="/">
           
             
               <span class="font-weight-bold">Piyush</span>
@@ -109,7 +112,7 @@
 
           <!-- About -->
           <li class="nav-item ">
-            <a class="nav-link" href="/al-folio/">about
+            <a class="nav-link" href="/">about
               
             </a>
           </li>
@@ -144,12 +147,10 @@
             
           
             
-          
-            
               
+                
                 <li class="nav-item ">
-                  
-                  <a class="nav-link" href="/al-folio/blog/">blog
+                  <a class="nav-link" href="/blog/">blog
                     
                   </a>
                 </li>
@@ -158,9 +159,9 @@
           
             
               
+                
                 <li class="nav-item active">
-                  
-                  <a class="nav-link" href="/al-folio/publications/">publications
+                  <a class="nav-link" href="/publications/">publications
                     
                       <span class="sr-only">(current)</span>
                     
@@ -171,9 +172,9 @@
           
             
               
+                
                 <li class="nav-item ">
-                  
-                  <a class="nav-link" href="/al-folio/projects/">projects
+                  <a class="nav-link" href="/projects/">projects
                     
                   </a>
                 </li>
@@ -182,9 +183,31 @@
           
             
               
+                
                 <li class="nav-item ">
-                  
-                  <a class="nav-link" href="/al-folio/cv/">cv
+                  <a class="nav-link" href="/repositories/">repositories
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/cv/">cv
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/teaching/">teaching
                     
                   </a>
                 </li>
@@ -204,7 +227,7 @@
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     
                       
-                        <a class="dropdown-item active" href="/al-folio/publications/">publications</a>
+                        <a class="dropdown-item active" href="/publications/">publications</a>
                       
                     
                       
@@ -212,7 +235,7 @@
                       
                     
                       
-                        <a class="dropdown-item " href="/al-folio/projects/">projects</a>
+                        <a class="dropdown-item " href="/projects/">projects</a>
                       
                     
                       
@@ -220,7 +243,7 @@
                       
                     
                       
-                        <a class="dropdown-item " href="/al-folio/blog/">blog</a>
+                        <a class="dropdown-item " href="/blog/">blog</a>
                       
                     
                   </div>
@@ -229,11 +252,13 @@
             
           
           
+          
             <!-- Toogle theme mode -->
             <li class="toggle-container">
               <button id="light-toggle" title="Change theme">
-                <i class="fa-solid fa-moon"></i>
-                <i class="fa-solid fa-sun"></i>
+                <i class="ti ti-sun-moon" id="light-toggle-system"></i>
+                <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
+                <i class="ti ti-sun-filled" id="light-toggle-light"></i>
               </button>
             </li>
           
@@ -255,7 +280,9 @@
     <!-- Content -->
     <div class="container mt-5" role="main">
       
-        <div class="post">
+        
+
+<div class="post">
   <header class="post-header">
     <h1 class="post-title">publications</h1>
     <p class="post-description">publications by categories in reversed chronological order. generated by jekyll-scholar.</p>
@@ -263,13 +290,16 @@
 
   <article>
     <!-- _pages/publications.md -->
+
+<!-- Bibsearch Feature -->
+
 <div class="publications">
 
 <h2 class="bibliography">2024</h2>
 <ol class="bibliography"><li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -283,16 +313,17 @@
       
 
       
-      Piyush
-            Sao
-          , Andrey
-            Prokopenko
-          , and Damien
+      <em>Piyush
+            Sao</em>, Andrey
+            Prokopenko, and Damien
             Lebrun-Grandié
-          
+      
     </div>
 
     <!-- Journal/Book title and date -->
+    
+    
+    
     
     
     
@@ -321,12 +352,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -342,7 +385,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -357,24 +400,22 @@
 
       
       Jeffrey A
-            Graves
-          , Thomas F
-            Blum
-          , Piyush
-            Sao
-          , and
+            Graves, Thomas F
+            Blum, <em>Piyush
+            Sao</em>, and
         <span class="more-authors" title="click to view 2 more authors" onclick="
               var element = $(this);
               element.attr('title', '');
               var more_authors_text = element.text() == '2 more authors' ? 'Miaofang Chi, Ramakrishnan Kannan' : '2 more authors';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.text(more_authors_text.substring(0, cursorPosition + 1));
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
             }, '10');
           ">2 more authors</span>
+      
       
     </div>
 
@@ -386,8 +427,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>In Knowledge-Guided Machine Learning</em> ,  2023
+      <em>In Knowledge-Guided Machine Learning</em>,  2023
     </div>
     <div class="periodical">
       
@@ -407,12 +451,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -426,7 +482,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -440,25 +496,23 @@
       
 
       
-      Piyush
-            Sao
-          , Yang
-            Liu
-          , Nan
-            Ding
-          , and
+      <em>Piyush
+            Sao</em>, Yang
+            Liu, Nan
+            Ding, and
         <span class="more-authors" title="click to view 2 more authors" onclick="
               var element = $(this);
               element.attr('title', '');
               var more_authors_text = element.text() == '2 more authors' ? 'Samuel Williams, Xiaoye Sherry Li' : '2 more authors';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.text(more_authors_text.substring(0, cursorPosition + 1));
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
             }, '10');
           ">2 more authors</span>
+      
       
     </div>
 
@@ -470,8 +524,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>In Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis</em> ,  2023
+      <em>In Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis</em>,  2023
     </div>
     <div class="periodical">
       
@@ -491,12 +548,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -510,7 +579,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -525,24 +594,22 @@
 
       
       Hao
-            Lu
-          , Piyush
-            Sao
-          , Michael
-            Matheson
-          , and
+            Lu, <em>Piyush
+            Sao</em>, Michael
+            Matheson, and
         <span class="more-authors" title="click to view 3 more authors" onclick="
               var element = $(this);
               element.attr('title', '');
               var more_authors_text = element.text() == '3 more authors' ? 'Ramakrishnan Kannan, Feiyi Wang, Thomas Potok' : '3 more authors';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.text(more_authors_text.substring(0, cursorPosition + 1));
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
             }, '10');
           ">3 more authors</span>
+      
       
     </div>
 
@@ -554,8 +621,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>In Proceedings of the 30th European MPI Users’ Group Meeting</em> ,  2023
+      <em>In Proceedings of the 30th European MPI Users’ Group Meeting</em>,  2023
     </div>
     <div class="periodical">
       
@@ -575,12 +645,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -594,7 +676,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -608,11 +690,10 @@
       
 
       
-      Piyush
-            Sao
-          , and Xiaoye Sherry
+      <em>Piyush
+            Sao</em>, and Xiaoye Sherry
             Li
-          
+      
     </div>
 
     <!-- Journal/Book title and date -->
@@ -623,8 +704,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>In Proceedings of the 35th ACM Symposium on Parallelism in Algorithms and Architectures</em> ,  2023
+      <em>In Proceedings of the 35th ACM Symposium on Parallelism in Algorithms and Architectures</em>,  2023
     </div>
     <div class="periodical">
       
@@ -644,12 +728,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -666,7 +762,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -681,12 +777,10 @@
 
       
       Andrey
-            Prokopenko
-          , Piyush
-            Sao
-          , and Damien
+            Prokopenko, <em>Piyush
+            Sao</em>, and Damien
             Lebrun-Grandie
-          
+      
     </div>
 
     <!-- Journal/Book title and date -->
@@ -697,8 +791,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>In Proceedings of the 51st International Conference on Parallel Processing</em> ,  2022
+      <em>In Proceedings of the 51st International Conference on Parallel Processing</em>,  2022
     </div>
     <div class="periodical">
       
@@ -718,12 +815,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -737,7 +846,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -752,24 +861,22 @@
 
       
       Ramakrishnan
-            Kannan
-          , Piyush
-            Sao
-          , Hao
-            Lu
-          , and
+            Kannan, <em>Piyush
+            Sao</em>, Hao
+            Lu, and
         <span class="more-authors" title="click to view 8 more authors" onclick="
               var element = $(this);
               element.attr('title', '');
               var more_authors_text = element.text() == '8 more authors' ? 'Jakub Kurzak, Gundolf Schenk, Yongmei Shi, Seung-Hwan Lim, Sharat Israni, Vijay Thakkar, Guojing Cong,  others' : '8 more authors';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.text(more_authors_text.substring(0, cursorPosition + 1));
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
             }, '10');
           ">8 more authors</span>
+      
       
     </div>
 
@@ -781,8 +888,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>In 2022 SC22: International Conference for High Performance Computing, Networking, Storage and Analysis (SC)</em> ,  2022
+      <em>In 2022 SC22: International Conference for High Performance Computing, Networking, Storage and Analysis (SC)</em>,  2022
     </div>
     <div class="periodical">
       
@@ -802,12 +912,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -821,7 +943,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -836,28 +958,29 @@
 
       
       Xiaoye S
-            Li
-          , Paul
-            Lin
-          , Yang
-            Liu
-          , and
+            Li, Paul
+            Lin, Yang
+            Liu, and
         <span class="more-authors" title="click to view 1 more author" onclick="
               var element = $(this);
               element.attr('title', '');
               var more_authors_text = element.text() == '1 more author' ? 'Piyush Sao' : '1 more author';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.text(more_authors_text.substring(0, cursorPosition + 1));
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
             }, '10');
           ">1 more author</span>
       
+      
     </div>
 
     <!-- Journal/Book title and date -->
+    
+    
+    
     
     
     
@@ -881,6 +1004,12 @@
       
       
       
+        
+          <a href="/assets/pdf/superlu-v7-toms.pdf" class="btn btn-sm z-depth-0" role="button">PDF</a>
+        
+      
+      
+      
       
       
       
@@ -890,8 +1019,18 @@
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -905,7 +1044,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -920,28 +1059,29 @@
 
       
       Christian
-            Engelmann
-          , Rizwan
-            Ashraf
-          , Saurabh
-            Hukerikar
-          , and
+            Engelmann, Rizwan
+            Ashraf, Saurabh
+            Hukerikar, and
         <span class="more-authors" title="click to view 2 more authors" onclick="
               var element = $(this);
               element.attr('title', '');
               var more_authors_text = element.text() == '2 more authors' ? 'Mohit Kumar, Piyush Sao' : '2 more authors';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.text(more_authors_text.substring(0, cursorPosition + 1));
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
             }, '10');
           ">2 more authors</span>
       
+      
     </div>
 
     <!-- Journal/Book title and date -->
+    
+    
+    
     
     
     
@@ -970,12 +1110,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -991,7 +1143,7 @@
 <ol class="bibliography"><li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -1006,24 +1158,22 @@
 
       
       Catherine D
-            Schuman
-          , Bill
-            Kay
-          , Prasanna
-            Date
-          , and
+            Schuman, Bill
+            Kay, Prasanna
+            Date, and
         <span class="more-authors" title="click to view 3 more authors" onclick="
               var element = $(this);
               element.attr('title', '');
               var more_authors_text = element.text() == '3 more authors' ? 'Ramakrishnan Kannan, Piyush Sao, Thomas E Potok' : '3 more authors';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.text(more_authors_text.substring(0, cursorPosition + 1));
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
             }, '10');
           ">3 more authors</span>
+      
       
     </div>
 
@@ -1035,8 +1185,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>In 2021 IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW)</em> ,  2021
+      <em>In 2021 IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW)</em>,  2021
     </div>
     <div class="periodical">
       
@@ -1056,12 +1209,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -1077,7 +1242,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -1091,25 +1256,23 @@
       
 
       
-      Piyush
-            Sao
-          , Hao
-            Lu
-          , Ramakrishnan
-            Kannan
-          , and
+      <em>Piyush
+            Sao</em>, Hao
+            Lu, Ramakrishnan
+            Kannan, and
         <span class="more-authors" title="click to view 3 more authors" onclick="
               var element = $(this);
               element.attr('title', '');
               var more_authors_text = element.text() == '3 more authors' ? 'Vijay Thakkar, Richard Vuduc, Thomas Potok' : '3 more authors';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.text(more_authors_text.substring(0, cursorPosition + 1));
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
             }, '10');
           ">3 more authors</span>
+      
       
     </div>
 
@@ -1121,8 +1284,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>In Proceedings of the 30th International Symposium on High-Performance Parallel and Distributed Computing</em> ,  2020
+      <em>In Proceedings of the 30th International Symposium on High-Performance Parallel and Distributed Computing</em>,  2020
     </div>
     <div class="periodical">
       
@@ -1142,12 +1308,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -1161,7 +1339,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -1176,24 +1354,22 @@
 
       
       Ramakrishnan
-            Kannan
-          , Piyush
-            Sao
-          , Hao
-            Lu
-          , and
+            Kannan, <em>Piyush
+            Sao</em>, Hao
+            Lu, and
         <span class="more-authors" title="click to view 5 more authors" onclick="
               var element = $(this);
               element.attr('title', '');
               var more_authors_text = element.text() == '5 more authors' ? 'Drahomira Herrmannova, Vijay Thakkar, Robert Patton, Richard Vuduc, Thomas Potok' : '5 more authors';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.text(more_authors_text.substring(0, cursorPosition + 1));
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
             }, '10');
           ">5 more authors</span>
+      
       
     </div>
 
@@ -1205,8 +1381,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>In SC20: International Conference for High Performance Computing, Networking, Storage and Analysis</em> ,  2020
+      <em>In SC20: International Conference for High Performance Computing, Networking, Storage and Analysis</em>,  2020
     </div>
     <div class="periodical">
       
@@ -1226,12 +1405,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -1245,7 +1436,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -1259,25 +1450,23 @@
       
 
       
-      Piyush
-            Sao
-          , Ramakrishnan
-            Kannan
-          , Prasun
-            Gera
-          , and
+      <em>Piyush
+            Sao</em>, Ramakrishnan
+            Kannan, Prasun
+            Gera, and
         <span class="more-authors" title="click to view 1 more author" onclick="
               var element = $(this);
               element.attr('title', '');
               var more_authors_text = element.text() == '1 more author' ? 'Richard Vuduc' : '1 more author';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.text(more_authors_text.substring(0, cursorPosition + 1));
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
             }, '10');
           ">1 more author</span>
+      
       
     </div>
 
@@ -1289,8 +1478,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>In Proceedings of the 25th ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming</em> ,  2020
+      <em>In Proceedings of the 25th ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming</em>,  2020
     </div>
     <div class="periodical">
       
@@ -1310,12 +1502,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -1329,7 +1533,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -1344,28 +1548,29 @@
 
       
       Prasun
-            Gera
-          , Hyojong
-            Kim
-          , Piyush
-            Sao
-          , and
+            Gera, Hyojong
+            Kim, <em>Piyush
+            Sao</em>, and
         <span class="more-authors" title="click to view 2 more authors" onclick="
               var element = $(this);
               element.attr('title', '');
               var more_authors_text = element.text() == '2 more authors' ? 'Hyesoon Kim, David Bader' : '2 more authors';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.text(more_authors_text.substring(0, cursorPosition + 1));
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
             }, '10');
           ">2 more authors</span>
       
+      
     </div>
 
     <!-- Journal/Book title and date -->
+    
+    
+    
     
     
     
@@ -1394,12 +1599,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -1416,7 +1633,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -1430,11 +1647,10 @@
       
 
       
-      Piyush
-            Sao
-          , and Ramakrishnan
+      <em>Piyush
+            Sao</em>, and Ramakrishnan
             Kannan
-          
+      
     </div>
 
     <!-- Journal/Book title and date -->
@@ -1445,8 +1661,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>In International Conference on Parallel Processing and Applied Mathematics</em> ,  2019
+      <em>In International Conference on Parallel Processing and Applied Mathematics</em>,  2019
     </div>
     <div class="periodical">
       
@@ -1466,12 +1685,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -1485,7 +1716,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -1499,25 +1730,23 @@
       
 
       
-      Piyush
-            Sao
-          , Christian
-            Engelmann
-          , Srinivas
-            Eswar
-          , and
+      <em>Piyush
+            Sao</em>, Christian
+            Engelmann, Srinivas
+            Eswar, and
         <span class="more-authors" title="click to view 2 more authors" onclick="
               var element = $(this);
               element.attr('title', '');
               var more_authors_text = element.text() == '2 more authors' ? 'Oded Green, Richard Vuduc' : '2 more authors';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.text(more_authors_text.substring(0, cursorPosition + 1));
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
             }, '10');
           ">2 more authors</span>
+      
       
     </div>
 
@@ -1529,8 +1758,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>In 2019 IEEE/ACM 9th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)</em> ,  2019
+      <em>In 2019 IEEE/ACM 9th Workshop on Fault Tolerance for HPC at eXtreme Scale (FTXS)</em>,  2019
     </div>
     <div class="periodical">
       
@@ -1550,12 +1782,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -1569,7 +1813,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -1583,25 +1827,23 @@
       
 
       
-      Piyush
-            Sao
-          , Ramakrishnan
-            Kannan
-          , Xiaoye
-            Li
-          , and
+      <em>Piyush
+            Sao</em>, Ramakrishnan
+            Kannan, Xiaoye
+            Li, and
         <span class="more-authors" title="click to view 1 more author" onclick="
               var element = $(this);
               element.attr('title', '');
               var more_authors_text = element.text() == '1 more author' ? 'Richard Vuduc' : '1 more author';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.text(more_authors_text.substring(0, cursorPosition + 1));
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
             }, '10');
           ">1 more author</span>
+      
       
     </div>
 
@@ -1613,8 +1855,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>In International Conference on Supercomputing</em> ,  Jun 2019
+      <em>In International Conference on Supercomputing</em>,  Jun 2019
     </div>
     <div class="periodical">
       
@@ -1634,12 +1879,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -1653,7 +1910,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -1667,16 +1924,17 @@
       
 
       
-      Piyush
-            Sao
-          , Xiaoye S
-            Li
-          , and Richard
+      <em>Piyush
+            Sao</em>, Xiaoye S
+            Li, and Richard
             Vuduc
-          
+      
     </div>
 
     <!-- Journal/Book title and date -->
+    
+    
+    
     
     
     
@@ -1705,12 +1963,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -1727,7 +1997,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -1741,13 +2011,11 @@
       
 
       
-      Piyush
-            Sao
-          , Xiaoye S.
-            Li
-          , and Richard
+      <em>Piyush
+            Sao</em>, Xiaoye S.
+            Li, and Richard
             Vuduc
-          
+      
     </div>
 
     <!-- Journal/Book title and date -->
@@ -1758,8 +2026,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>In Proceedings of the IEEE International Parallel and Distributed Processing Symposium (IPDPS)</em> ,  May 2018
+      <em>In Proceedings of the IEEE International Parallel and Distributed Processing Symposium (IPDPS)</em>,  May 2018
     </div>
     <div class="periodical">
       
@@ -1779,12 +2050,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -1798,7 +2081,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -1812,9 +2095,9 @@
       
 
       
-      Piyush
-            Sao
-          
+      <em>Piyush
+            Sao</em>
+      
     </div>
 
     <!-- Journal/Book title and date -->
@@ -1825,8 +2108,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>Georgia Institute of Technology</em> ,  Aug 2018
+      <em>Georgia Institute of Technology</em>,  Aug 2018
     </div>
     <div class="periodical">
       
@@ -1846,12 +2132,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -1868,7 +2166,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -1882,25 +2180,23 @@
       
 
       
-      Piyush
-            Sao
-          , Oded
-            Green
-          , Chirag
-            Jain
-          , and
+      <em>Piyush
+            Sao</em>, Oded
+            Green, Chirag
+            Jain, and
         <span class="more-authors" title="click to view 1 more author" onclick="
               var element = $(this);
               element.attr('title', '');
               var more_authors_text = element.text() == '1 more author' ? 'Richard Vuduc' : '1 more author';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.text(more_authors_text.substring(0, cursorPosition + 1));
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
             }, '10');
           ">1 more author</span>
+      
       
     </div>
 
@@ -1912,8 +2208,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>In Proceedings of the ACM Workshop on Fault-Tolerance for HPC at Extreme Scale</em> ,  Aug 2016
+      <em>In Proceedings of the ACM Workshop on Fault-Tolerance for HPC at Extreme Scale</em>,  Aug 2016
     </div>
     <div class="periodical">
       
@@ -1933,12 +2232,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -1952,7 +2263,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -1967,28 +2278,29 @@
 
       
       Xiaoye S
-            Li
-          , James W
-            Demmel
-          , John R
-            Gilbert
-          , and
+            Li, James W
+            Demmel, John R
+            Gilbert, and
         <span class="more-authors" title="click to view 4 more authors" onclick="
               var element = $(this);
               element.attr('title', '');
               var more_authors_text = element.text() == '4 more authors' ? 'Laura Grigori, Piyush Sao, Meiyue Shao, Ichitaro Yamazaki' : '4 more authors';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.text(more_authors_text.substring(0, cursorPosition + 1));
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
             }, '10');
           ">4 more authors</span>
       
+      
     </div>
 
     <!-- Journal/Book title and date -->
+    
+    
+    
     
     
     
@@ -2017,12 +2329,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -2038,7 +2362,7 @@
 <ol class="bibliography"><li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -2052,25 +2376,23 @@
       
 
       
-      Piyush
-            Sao
-          , Xing
-            Liu
-          , Richard
-            Vuduc
-          , and
+      <em>Piyush
+            Sao</em>, Xing
+            Liu, Richard
+            Vuduc, and
         <span class="more-authors" title="click to view 1 more author" onclick="
               var element = $(this);
               element.attr('title', '');
               var more_authors_text = element.text() == '1 more author' ? 'Xiaoye Li' : '1 more author';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.text(more_authors_text.substring(0, cursorPosition + 1));
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
             }, '10');
           ">1 more author</span>
+      
       
     </div>
 
@@ -2082,8 +2404,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>In Parallel and Distributed Processing Symposium (IPDPS), 2015 IEEE International</em> ,  Aug 2015
+      <em>In Parallel and Distributed Processing Symposium (IPDPS), 2015 IEEE International</em>,  Aug 2015
     </div>
     <div class="periodical">
       
@@ -2103,12 +2428,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -2124,7 +2461,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -2138,13 +2475,11 @@
       
 
       
-      Piyush
-            Sao
-          , Richard
-            Vuduc
-          , and Xiaoye Sherry
+      <em>Piyush
+            Sao</em>, Richard
+            Vuduc, and Xiaoye Sherry
             Li
-          
+      
     </div>
 
     <!-- Journal/Book title and date -->
@@ -2155,8 +2490,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>In European Conference on Parallel Processing</em> ,  Aug 2014
+      <em>In European Conference on Parallel Processing</em>,  Aug 2014
     </div>
     <div class="periodical">
       
@@ -2176,12 +2514,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -2195,7 +2545,7 @@
 <li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -2210,28 +2560,29 @@
 
       
       Dongryeol
-            Lee
-          , Piyush
-            Sao
-          , Richard
-            Vuduc
-          , and
+            Lee, <em>Piyush
+            Sao</em>, Richard
+            Vuduc, and
         <span class="more-authors" title="click to view 1 more author" onclick="
               var element = $(this);
               element.attr('title', '');
               var more_authors_text = element.text() == '1 more author' ? 'Alexander G Gray' : '1 more author';
               var cursorPosition = 0;
               var textAdder = setInterval(function(){
-                element.text(more_authors_text.substring(0, cursorPosition + 1));
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
                 if (++cursorPosition == more_authors_text.length){
                   clearInterval(textAdder);
                 }
             }, '10');
           ">1 more author</span>
       
+      
     </div>
 
     <!-- Journal/Book title and date -->
+    
+    
+    
     
     
     
@@ -2260,12 +2611,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -2281,7 +2644,7 @@
 <ol class="bibliography"><li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -2295,11 +2658,10 @@
       
 
       
-      Piyush
-            Sao
-          , and Richard
+      <em>Piyush
+            Sao</em>, and Richard
             Vuduc
-          
+      
     </div>
 
     <!-- Journal/Book title and date -->
@@ -2310,8 +2672,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>In Proceedings of the Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems</em> ,  Aug 2013
+      <em>In Proceedings of the Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems</em>,  Aug 2013
     </div>
     <div class="periodical">
       
@@ -2331,12 +2696,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -2351,7 +2728,7 @@
 <ol class="bibliography"><li>
 <div class="row">
   
-    <div class="col-sm-2 abbr">
+    <div class="col col-sm-2 abbr">
       
     </div>
   
@@ -2365,9 +2742,9 @@
       
 
       
-      Piyush
-            Sao
-          
+      <em>Piyush
+            Sao</em>
+      
     </div>
 
     <!-- Journal/Book title and date -->
@@ -2378,8 +2755,11 @@
     
     
     
+    
+    
+    
     <div class="periodical">
-      <em>IIT Madras</em> ,  May 2011
+      <em>IIT Madras</em>,  May 2011
     </div>
     <div class="periodical">
       
@@ -2399,12 +2779,24 @@
       
       
       
+      
+      
     </div>
     
       
       
+
       
       
+
+      
+      
+
+      
+      
+      
+    
+
     
 
     
@@ -2432,10 +2824,10 @@
     
   <footer class="fixed-bottom" role="contentinfo">
     <div class="container mt-0">
-      © Copyright 2024
+      © Copyright 2025
       Piyush
       K.
-      Sao. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>.
+      Sao. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
 
       
       
@@ -2446,158 +2838,92 @@
 
     <!-- JavaScripts -->
     <!-- jQuery -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="" integrity="" crossorigin="anonymous"></script>
 
-    <!-- Bootsrap & MDB scripts -->
-<script src="/al-folio/assets/js/bootstrap.bundle.min.js"></script>
-<!-- <script src="/al-folio/assets/js/mdb.min.js"></script> -->
-<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+<!-- Bootsrap & MDB scripts -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="" integrity="" crossorigin="anonymous"></script>
 
-    
+
   <!-- Masonry & imagesLoaded -->
-  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
-  <script defer src="/al-folio/assets/js/masonry.js" type="text/javascript"></script>
+  <script defer src="" integrity="" crossorigin="anonymous"></script>
+  <script defer src="" integrity="" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- Medium Zoom JS -->
-  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
-  <script defer src="/al-folio/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script>
+  <script defer src="" integrity="" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script>
 
 
 
-<!-- Bootstrap Table -->
+
 
 
 <!-- Load Common JS -->
-<script src="/al-folio/assets/js/no_defer.js?2930004b8d7fcd0a8e00fdcfc8fc9f24"></script>
-<script defer src="/al-folio/assets/js/common.js?da39b660470d1ba6e6b8bf5f37070b6e"></script>
-<script defer src="/al-folio/assets/js/copy_code.js?12775fdf7f95e901d7119054556e495f" type="text/javascript"></script>
+<script src="/assets/js/no_defer.js?2930004b8d7fcd0a8e00fdcfc8fc9f24"></script>
+<script defer src="/assets/js/common.js?da39b660470d1ba6e6b8bf5f37070b6e"></script>
+<script defer src="/assets/js/copy_code.js?12775fdf7f95e901d7119054556e495f" type="text/javascript"></script>
 
 <!-- Jupyter Open External Links New Tab -->
-<script defer src="/al-folio/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script>
+<script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script>
 
-    
+<!-- Badges -->
+
   <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
 
 
   <script async src="https://badge.dimensions.ai/badge.js"></script>
 
 
-    
+
   <!-- MathJax -->
-  <script type="text/javascript">
-    window.MathJax = {
-      tex: {
-        tags: 'ams',
-      },
-    };
-  </script>
-  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer type="text/javascript" id="MathJax-script" src="" integrity="" crossorigin="anonymous"></script>
+  
+    <script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script>
+    <script defer src="" crossorigin="anonymous"></script>
+  
 
 
-    
 
 
-    
+
+
+
+
+
   <!-- Scrolling Progress Bar -->
-  <script type="text/javascript">
-    /*
-     * This JavaScript code has been adapted from the article
-     * https://css-tricks.com/reading-position-indicator/ authored by Pankaj Parashar,
-     * published on the website https://css-tricks.com on the 7th of May, 2014.
-     * Couple of changes were made to the original code to make it compatible
-     * with the `al-foio` theme.
-     */
-    const progressBar = $('#progress');
-    /*
-     * We set up the bar after all elements are done loading.
-     * In some cases, if the images in the page are larger than the intended
-     * size they'll have on the page, they'll be resized via CSS to accomodate
-     * the desired size. This mistake, however, breaks the computations as the
-     * scroll size is computed as soon as the elements finish loading.
-     * To account for this, a minimal delay was introduced before computing the
-     * values.
-     */
-    window.onload = function () {
-      setTimeout(progressBarSetup, 50);
-    };
-    /*
-     * We set up the bar according to the browser.
-     * If the browser supports the progress element we use that.
-     * Otherwise, we resize the bar thru CSS styling
-     */
-    function progressBarSetup() {
-      if ('max' in document.createElement('progress')) {
-        initializeProgressElement();
-        $(document).on('scroll', function () {
-          progressBar.attr({ value: getCurrentScrollPosition() });
-        });
-        $(window).on('resize', initializeProgressElement);
-      } else {
-        resizeProgressBar();
-        $(document).on('scroll', resizeProgressBar);
-        $(window).on('resize', resizeProgressBar);
-      }
-    }
-    /*
-     * The vertical scroll position is the same as the number of pixels that
-     * are hidden from view above the scrollable area. Thus, a value > 0 is
-     * how much the user has scrolled from the top
-     */
-    function getCurrentScrollPosition() {
-      return $(window).scrollTop();
-    }
-
-    function initializeProgressElement() {
-      let navbarHeight = $('#navbar').outerHeight(true);
-      $('body').css({ 'padding-top': navbarHeight });
-      $('progress-container').css({ 'padding-top': navbarHeight });
-      progressBar.css({ top: navbarHeight });
-      progressBar.attr({
-        max: getDistanceToScroll(),
-        value: getCurrentScrollPosition(),
-      });
-    }
-    /*
-     * The offset between the html document height and the browser viewport
-     * height will be greater than zero if vertical scroll is possible.
-     * This is the distance the user can scroll
-     */
-    function getDistanceToScroll() {
-      return $(document).height() - $(window).height();
-    }
-
-    function resizeProgressBar() {
-      progressBar.css({ width: getWidthPercentage() + '%' });
-    }
-    // The scroll ratio equals the percentage to resize the bar
-    function getWidthPercentage() {
-      return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
-    }
-  </script>
+  <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script>
 
 
-    
 
-    
+
+
+
+
+
+
+
+
 
   </body>
 </html>

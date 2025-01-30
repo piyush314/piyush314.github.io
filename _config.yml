@@ -104,7 +104,7 @@ zotero_username: # your zotero username
 wechat_qr: # filename of your wechat qr-code saved as an image (e.g., wechat-qr.png if saved to assets/img/wechat-qr.png)
 
 contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
+  The best way to reach me is via email. 
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
@@ -123,8 +123,8 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: Supercomputing Sorcery, Spells, and Shenanigans # blog_name will be displayed in your blog page
-blog_description: Musings on Supercomputing and Parallel Algorithms, Problems, Puzzles, and Conjectures
+blog_name: Parallel Prisms # blog_name will be displayed in your blog page
+blog_description: A Blog on Sparse Algorithms, AI, and Supercomputing Synergy
 permalink: /blog/:year/:title/
 
 # Pagination
@@ -219,13 +219,13 @@ exclude:
   - lighthouse_results/
   - package.json
   - package-lock.json
-  - _pages/about_einstein.md
   - purgecss.config.js
   - README.md
   - readme_preview/
   - vendor
   - venv/
   - al-folio-cms/
+  - _posts/disabled/
 keep_files:
   - CNAME
   - .nojekyll
@@ -282,16 +282,16 @@ jekyll-archives:
     tag: "/blog/tag/:name/"
     category: "/blog/category/:name/"
 
-display_tags: ["formatting", "images", "links", "math", "code"] # these tags will be displayed on the front page of your blog
-display_categories: ["blockquotes"] # these categories will be displayed on the front page of your blog
+display_tags: ["hpc", "sparse-algorithms", "ai", "research", "parallel-computing"] # these tags will be displayed on the front page of your blog
+display_categories: ["technical", "research", "tutorials"] # these categories will be displayed on the front page of your blog
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar
 # -----------------------------------------------------------------------------
 
 scholar:
-  last_name: [Einstein]
-  first_name: [Albert, A.]
+  last_name: [Sao]
+  first_name: [Piyush, P.]
 
   style: apa
   locale: en
