@@ -26,7 +26,7 @@ question: *how many multiplications do you actually need to get
 $k$ terms?*
 
 The naive answer is $k - 1$ products — just keep multiplying. In
-my recent preprint, I show the real answer is significantly fewer,
+our recent preprint, we show the real answer is significantly fewer,
 and this reveals a clean structure underneath.
 
 ## Starting from scratch: the naive approach
@@ -151,7 +151,7 @@ you can evaluate cheaply enough to beat the lower-radix
 alternatives.** If you could find clever constructions — tricks
 that compute $T_m$ in fewer products than the naive $m - 2$ —
 you'd push the efficiency frontier. So where does that frontier
-lie? Before my work, only one such construction was known.
+lie? Before our work, only one such construction was known.
 
 ## The quinary kernel: prior state of the art
 
@@ -180,9 +180,9 @@ quinary kernel broke that pattern by evaluating $T_5$ in fewer
 products than the naive count. Could the same trick work at higher
 radices?
 
-## The radix-9 kernel: my first contribution
+## The radix-9 kernel: our first contribution
 
-This brings us to my paper's first result: a radix-9 exact kernel — the first such construction beyond radix 5.
+This brings us to our paper's first result: a radix-9 exact kernel — the first such construction beyond radix 5.
 
 The quinary kernel works because a single cleverly chosen product
 ($U(B + U)$) generates two terms at once. Can the same strategy
@@ -194,7 +194,7 @@ means solving a much harder algebraic puzzle: you need a single
 matrix product that simultaneously generates four high-degree
 terms ($B^5$ through $B^8$) with the right coefficients.
 
-I show it can be done. The construction uses only 3
+We show it can be done. The construction uses only 3
 matrix products and is the first explicit exact kernel beyond
 radix 5.
 
@@ -235,11 +235,11 @@ Can you keep climbing to even higher radices? For radix 15, the
 lower bound says you need at least 4 products for the kernel. If
 achievable, that would give efficiency $6/\log_2 15 \approx 1.54$.
 
-I find such a kernel through numerical optimization. But
+We find such a kernel through numerical optimization. But
 there's a catch: unlike the radix-5 and radix-9 kernels, which
 produce *exactly* $I + B + \cdots + B^{m-1}$ and nothing else, the
 radix-15 kernel produces the right terms through degree 14 but
-also generates small unwanted higher-degree terms — what I
+also generates small unwanted higher-degree terms — what we
 call *spillover*. With 28 free parameters across 4 chained
 products, you can nail the 15 target coefficients, but zeroing out
 all spillover simultaneously appears to be impossible.
@@ -294,7 +294,7 @@ with denominators in the hundreds and approximate constructions
 with nonzero spillover. Do the product-count savings actually
 survive floating-point arithmetic?
 
-I tested everything in Python/NumPy with IEEE 754 doubles —
+We tested everything in Python/NumPy with IEEE 754 doubles —
 a realistic setting, not a symbolic algebra sandbox. Product-count
 savings are real and match predictions: for $k = 729$, radix-9
 uses 15 matrix multiplications where binary uses 20. For $k =
