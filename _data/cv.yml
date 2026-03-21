@@ -2,11 +2,9 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
+      value: Piyush Sao
     - name: Languages
-      value: English, German
+      value: English, Hindi
 
 - title: Education
   type: education
