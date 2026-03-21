@@ -587,6 +587,40 @@ footer.sticky-bottom {
   }
 }
 
+.news {
+  .table {
+    margin-bottom: 0;
+
+    th,
+    td {
+      color: var(--global-text-color);
+      border-top: 0;
+      padding-top: 0.35rem;
+      padding-bottom: 0.35rem;
+      vertical-align: top;
+    }
+
+    th[scope="row"] {
+      color: var(--global-text-color-light);
+      font-weight: 700;
+      padding-right: 1.25rem;
+      white-space: nowrap;
+    }
+
+    td {
+      line-height: 1.45;
+    }
+
+    a.news-title {
+      color: var(--global-theme-color);
+
+      &:hover {
+        color: var(--global-hover-color);
+      }
+    }
+  }
+}
+
 .pagination {
   .page-item {
     .page-link {
