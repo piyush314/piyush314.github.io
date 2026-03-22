@@ -31,8 +31,7 @@ and this reveals a clean structure underneath.
 
 ## Starting from scratch: the naive approach
 
-Let's build intuition from the ground up. Suppose you want $S_8(A)
-= I + A + A^2 + \cdots + A^7$. The brute-force way computes each
+Let's build intuition from the ground up. Suppose you want $S_8(A) = I + A + A^2 + \cdots + A^7$. The brute-force way computes each
 power in sequence: multiply $A$ by itself to get $A^2$, multiply
 $A^2$ by $A$ to get $A^3$, and so on. That's 7 matrix
 multiplications for 8 terms. In general, $k - 1$ products for $k$
@@ -55,8 +54,7 @@ $S_4(A) = I + A + A^2 + A^3$. Can you get $S_8(A)$ cheaply?
 
 Factor it:
 
-$$S_8(A) = (I + A + A^2 + A^3) + A^4(I + A + A^2 + A^3) = S_4(A)
-\cdot (I + A^4)$$
+$$S_8(A) = (I + A + A^2 + A^3) + A^4(I + A + A^2 + A^3) = S_4(A) \cdot (I + A^4)$$
 
 This second step costs just two multiplications: one to compute
 $A^4$ (by squaring $A^2$, which you already have), and one for the
@@ -132,8 +130,7 @@ With this decomposition, we can write down a single efficiency
 metric that applies to any radix: the cost-per-step divided by the
 information-per-step, both measured in the same base:
 
-$$\text{efficiency} = \frac{\text{products per
-step}}{\log_2(\text{growth per step})}$$
+$$\text{efficiency} = \frac{\text{products per step}}{\log_2(\text{growth per step})}$$
 
 For binary, that's $2/\log_2 2 = 2.00$. For ternary, $3/\log_2 3
 \approx 1.89$. Ternary wins because tripling is worth more than
