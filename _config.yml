@@ -485,6 +485,14 @@ jsonresume:
 # Third-party libraries
 third_party_libraries:
   download: false  # Set to true to download libraries locally
+  mathjax:
+    url:
+      js: "https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"
+    integrity:
+      js: ""
+  polyfill:
+    url:
+      js: "https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"
   bootstrap:
     version: "4.6.2"
     url:
