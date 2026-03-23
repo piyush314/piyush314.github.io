@@ -5,6 +5,8 @@ description: Performance-Portable Spatial Search and Clustering
 importance: 3
 category: software
 related_publications: true
+mermaid:
+  enabled: true
 ---
 
 ## The Spatial Search Problem

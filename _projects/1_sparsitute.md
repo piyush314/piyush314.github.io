@@ -5,6 +5,8 @@ description: DOE Mathematical Institute for Sparse Computations (2022-2027)
 importance: 1
 category: research
 related_publications: true
+mermaid:
+  enabled: true
 ---
 
 ## The Sparsity Opportunity

@@ -5,6 +5,8 @@ description: Exascale Graph Algorithms for Biomedical Discovery
 importance: 6
 category: research
 related_publications: true
+mermaid:
+  enabled: true
 ---
 
 ## From Text to Discovery

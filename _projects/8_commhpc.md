@@ -5,6 +5,8 @@ description: Cross-Cutting Optimization for Distributed Computing
 importance: 8
 category: research
 related_publications: true
+mermaid:
+  enabled: true
 ---
 
 ## The Communication Bottleneck

@@ -5,6 +5,8 @@ description: Communication-Avoiding 3D Sparse Direct Solver
 importance: 2
 category: software
 related_publications: true
+mermaid:
+  enabled: true
 ---
 
 ## The Sparse Direct Solver Challenge

@@ -5,6 +5,8 @@ description: Self-Stabilizing Algorithms for Resilient HPC
 importance: 7
 category: research
 related_publications: true
+mermaid:
+  enabled: true
 ---
 
 ## The Exascale Reliability Problem
