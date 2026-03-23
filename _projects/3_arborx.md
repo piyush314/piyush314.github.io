@@ -21,22 +21,19 @@ At its core, ArborX uses a linear bounding volume hierarchy (BVH) for low constr
 
 ```mermaid
 graph TB
-    subgraph ArborX["ArborX Library"]
+    subgraph ArborX[ArborX Library]
         direction TB
+        BVH[Bounding Volume Hierarchy]
 
-        BVH["<b>Bounding Volume Hierarchy</b><br/>Linear BVH construction<br/>Morton-code sorting"]
-
-        subgraph Queries["Query Types"]
-            SQ["Spatial Queries<br/><i>radius-based search</i>"]
-            NQ["Nearest-Neighbor<br/><i>k-closest objects</i>"]
+        subgraph Queries[Query Types]
+            SQ[Spatial Queries]
+            NQ[Nearest-Neighbor]
         end
 
-        subgraph Algorithms["Algorithms Built on ArborX"]
-            DBSCAN["DBSCAN<br/>Clustering"]
-            EMST["Euclidean Minimum<br/>Spanning Tree"]
-            HDBSCAN["HDBSCAN*<br/>Clustering"]
-            PANDORA["PANDORA<br/>Dendrogram<br/>Construction"]
-            MLS["Moving Least<br/>Squares Interpolation"]
+        subgraph Algorithms[Built on ArborX]
+            DBSCAN[DBSCAN]
+            EMST[EMST]
+            PANDORA[PANDORA]
         end
     end
 
@@ -45,11 +42,11 @@ graph TB
     SQ --> Algorithms
     NQ --> Algorithms
 
-    subgraph Portability["Performance Portability via Kokkos"]
-        CPU["Multi-core CPUs<br/>(OpenMP)"]
-        NGPU["NVIDIA GPUs<br/>(CUDA)"]
-        AGPU["AMD GPUs<br/>(HIP)"]
-        IGPU["Intel GPUs<br/>(SYCL)"]
+    subgraph Portability[Kokkos Portability]
+        CPU[CPUs]
+        NGPU[NVIDIA]
+        AGPU[AMD]
+        IGPU[Intel]
     end
 
     ArborX --> Portability

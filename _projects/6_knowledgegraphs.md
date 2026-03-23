@@ -21,30 +21,28 @@ The core insight: the algebraic equivalence between Floyd-Warshall and Gaussian 
 
 ```mermaid
 graph TB
-    subgraph Evolution["APSP Algorithm Evolution"]
+    subgraph Evolution[APSP Algorithm Evolution]
         direction LR
-
-        S1["<b>SuperFW</b><br/>Supernodal APSP<br/><i>PPoPP 2020</i><br/>Shared memory"]
-        S2["<b>DSNAPSHOT</b><br/>Distributed Semiring<br/>APSP<br/><i>SC 2020</i><br/>136 PF/s on Summit"]
-        S3["<b>COAST</b><br/>Exascale Comm-<br/>Optimized APSP<br/><i>SC 2022</i><br/>1.004 EF/s on Frontier"]
-
-        S1 -->|"scale out<br/>+ GPU accel."| S2
-        S2 -->|"exascale<br/>optimization"| S3
+        S1[SuperFW - PPoPP 2020]
+        S2[DSNAPSHOT - SC 2020]
+        S3[COAST - SC 2022]
+        S1 -->|scale out| S2
+        S2 -->|exascale| S3
     end
 
-    subgraph Techniques["Techniques from Sparse Direct Solvers"]
-        T1["Fill-reducing<br/>Ordering"]
-        T2["Symbolic<br/>Analysis"]
-        T3["Supernodal<br/>Traversal"]
-        T4["Elimination Tree<br/>Parallelism"]
+    subgraph Techniques[Sparse Solver Techniques]
+        T1[Fill-reducing Ordering]
+        T2[Symbolic Analysis]
+        T3[Supernodal Traversal]
+        T4[Elimination Tree]
     end
 
     Techniques --> S1
 
-    subgraph Applications["Applications"]
-        KG["Knowledge Graph<br/>Analytics"]
-        BM["Biomedical Literature<br/>Mining (CORD-19)"]
-        DR["Drug Repurposing<br/>& Discovery"]
+    subgraph Applications
+        KG[Knowledge Graphs]
+        BM[Biomedical Mining]
+        DR[Drug Discovery]
     end
 
     S3 --> Applications

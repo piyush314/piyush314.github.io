@@ -22,15 +22,15 @@ stateDiagram-v2
     direction LR
 
     state "Valid State" as VS
-    state "Invalid State<br/>(fault-corrupted)" as IS
-    state "Self-Stabilizing<br/>Verification &<br/>Correction" as SS
-    state "Recovered<br/>Valid State" as RV
+    state "Invalid State" as IS
+    state "Self-Stabilizing" as SS
+    state "Recovered" as RV
 
-    [*] --> VS : Normal execution
-    VS --> IS : Soft fault<br/>(bit flip)
-    IS --> SS : Detect invalid state
-    SS --> RV : Correct labels
-    RV --> VS : Continue execution
+    [*] --> VS : Normal
+    VS --> IS : Soft fault
+    IS --> SS : Detect
+    SS --> RV : Correct
+    RV --> VS : Continue
     VS --> VS : No fault
 ```
 

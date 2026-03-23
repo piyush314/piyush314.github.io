@@ -21,26 +21,26 @@ My key contribution is the **communication-avoiding 3D factorization algorithm**
 
 ```mermaid
 graph LR
-    subgraph Input["Input"]
-        A["Sparse Matrix A"]
+    subgraph Input
+        A[Sparse Matrix A]
     end
 
-    subgraph Reorder["Phase 1: Ordering & Analysis"]
-        ORD["Fill-reducing<br/>Ordering<br/>(ParMETIS)"]
-        SYM["Symbolic<br/>Factorization"]
-        ETREE["Elimination<br/>Tree Construction"]
+    subgraph Reorder[Phase 1: Ordering]
+        ORD[Fill-reducing Ordering]
+        SYM[Symbolic Factorization]
+        ETREE[Elimination Tree]
     end
 
-    subgraph Factor["Phase 2: Numerical Factorization"]
+    subgraph Factor[Phase 2: Factorization]
         direction TB
-        P2D["Baseline 2D<br/>Block-Cyclic<br/>Distribution"]
-        P3D["<b>3D Communication-<br/>Avoiding Algorithm</b><br/>(Sao et al.)"]
-        GPU["Multi-GPU<br/>Offload<br/>(NVIDIA/AMD/Intel)"]
+        P2D[Baseline 2D]
+        P3D[3D Comm-Avoiding]
+        GPU[Multi-GPU Offload]
         P3D --- GPU
     end
 
-    subgraph Solve["Phase 3: Triangular Solve"]
-        TRI["Sparse Triangular<br/>Solve  L·U·X = B"]
+    subgraph Solve[Phase 3: Solve]
+        TRI[Triangular Solve]
     end
 
     A --> ORD --> SYM --> ETREE --> Factor --> TRI

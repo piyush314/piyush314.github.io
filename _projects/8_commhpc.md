@@ -17,26 +17,20 @@ This research thread develops cross-cutting techniques for reducing communicatio
 
 ```mermaid
 graph TB
-    subgraph Optimizations["Performance Optimization Contributions"]
+    subgraph Optimizations[Performance Optimizations]
         direction TB
-
-        CA["<b>Communication Avoidance</b><br/>3D process grids that<br/>trade memory for reduced<br/>per-process communication"]
-
-        HET["<b>Heterogeneous Acceleration</b><br/>HALO algorithm for<br/>CPU–GPU co-processing<br/>Multi-GPU support<br/>(NVIDIA, AMD, Intel)"]
-
-        TRI["<b>Sparse Triangular Solve</b><br/>Communication-avoiding 3D<br/>triangular solver using<br/>one-sided MPI & message-<br/>driven GPU parallelism"]
-
-        MXP["<b>Mixed Precision</b><br/>Single-precision factorization<br/>with double-precision<br/>iterative refinement"]
-
-        MPI["<b>MPI Communication</b><br/>Optimized 2D grid-based<br/>MPI patterns at exascale"]
-
-        SRI["<b>Semiring Kernels</b><br/>Dense semiring LA<br/>on CUDA hardware"]
+        CA[Comm Avoidance]
+        HET[Heterogeneous Accel]
+        TRI[Sparse Triangular]
+        MXP[Mixed Precision]
+        MPI[MPI Optimization]
+        SRI[Semiring Kernels]
     end
 
-    subgraph Impact["Impact Areas"]
-        SCI["Scientific<br/>Simulations"]
-        KGA["Knowledge Graph<br/>Analytics"]
-        ML["Machine Learning<br/>& Data Analytics"]
+    subgraph Impact[Impact Areas]
+        SCI[Scientific Simulations]
+        KGA[Knowledge Graphs]
+        ML[Machine Learning]
     end
 
     Optimizations --> Impact

@@ -21,22 +21,21 @@ The institute's research agenda is organized around three interconnected pillars
 
 ```mermaid
 graph TB
-    subgraph Sparsitute["Sparsitute — Sparse Computations in Science & Engineering"]
+    subgraph Sparsitute["Sparsitute Institute"]
         direction TB
-
-        SM["<b>Sparse Matrices</b><br/>Structural & data sparsity<br/>from PDEs, ML/AI, kernel<br/>& covariance matrices"]
-        ST["<b>Sparse Tensors</b><br/>Multi-way relationships<br/>decomposition, completion<br/>& tensor-structured solvers"]
-        SN["<b>Sparse Networks</b><br/>Graphs, hypergraphs &<br/>simplicial complexes<br/>topological data analysis"]
+        SM[Sparse Matrices]
+        ST[Sparse Tensors]
+        SN[Sparse Networks]
     end
 
-    SM --- XC["Cross-Cutting Themes"]
+    SM --- XC[Cross-Cutting Themes]
     ST --- XC
     SN --- XC
 
-    XC --> U1["Unified matrix basis<br/>representations & kernels"]
-    XC --> U2["Communication lower<br/>bound analysis"]
-    XC --> U3["Sparse LA for<br/>AI/ML training"]
-    XC --> U4["New algebraic solvers<br/>& preconditioners"]
+    XC --> U1[Unified Representations]
+    XC --> U2[Communication Bounds]
+    XC --> U3[Sparse LA for AI/ML]
+    XC --> U4[New Solvers]
 
     style Sparsitute fill:#e8f0fe,stroke:#1a73e8,stroke-width:2px
     style XC fill:#fce8e6,stroke:#d93025,stroke-width:2px
