@@ -2,10 +2,10 @@
 layout: page
 title: projects
 permalink: /projects/
-description: Research projects and software development in high-performance computing, scientific computing, and machine learning.
+description: Research projects in high-performance computing, numerical algorithms, graph analytics, and scientific software.
 nav: true
 nav_order: 3
-display_categories: [research, software]
+display_categories: [software, research]
 horizontal: false
 ---
 
