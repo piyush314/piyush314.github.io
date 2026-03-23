@@ -266,6 +266,12 @@ jekyll-minifier:
   exclude: ["robots.txt"]
   uglifier_args:
     harmony: true
+  compress_css: true
+  compress_javascript: true
+  preserve_line_breaks: true
+  remove_intertag_spaces: false
+  preserve_patterns:
+    - /\<pre[\s\S]*?\<\/pre\>/
 
 # -----------------------------------------------------------------------------
 # Jekyll Archives
