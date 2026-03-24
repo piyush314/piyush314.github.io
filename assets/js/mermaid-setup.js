@@ -16,7 +16,8 @@ document.addEventListener("readystatechange", () => {
       backup.after(mermaid);
     });
 
-    mermaid.initialize({ theme: mermaidTheme });
+    mermaid.initialize({ theme: mermaidTheme, startOnLoad: false });
+    mermaid.run();
 
     /* Zoomable mermaid diagrams */
     if (typeof d3 !== "undefined") {
