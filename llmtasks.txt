@@ -1,0 +1,113 @@
+Your Mission: You will be assisting in the automated organization and enhancement of a personal research website. You'll be given access to a directory containing a collection of research papers and related materials, along with the website's existing content. Your overall objective is to intelligently and efficiently integrate these resources, ultimately improving the completeness and structure of the website.
+
+This mission will be divided into three distinct phases:
+
+Phase 1: Information Gathering and Analysis
+
+Opening (Objective): Your primary goal in this phase is to thoroughly analyze the provided directory structure and website content to identify missing information and potential links between the two. You need to understand the existing organization of the research papers, identify publications, talks, and presentations that are missing or incompletely linked on the website, and locate associated files (PDFs, presentations, etc.).
+
+Challenge: The directory may contain a variety of file types, and the organization might not be perfectly consistent. The website's existing content might have incomplete or ambiguous information about publications (e.g., incorrect titles, missing years). Determining what is truly "missing" will require cross-referencing and intelligent deduction. The sheer volume of information may pose challenges.
+
+Context of Action:
+
+You will be provided with a tree structure representing the directory containing the research papers.
+
+You will be given access to the content on the existing research website.
+
+Analyze the directory structure and file names to extract key information (titles, authors, dates, etc.).
+
+Compare the information from the directory with the existing website content.
+
+Identify discrepancies and missing links – are there papers in the directory that are not on the website? Are there website entries that are incomplete or lack corresponding files?
+
+Generate a list of missing or incompletely linked publications, talks, and presentations. For each item, include as much information as possible (e.g., best guess for title, potential authors, year, keywords).
+
+Generate a list of potential source for the information: URLs of known databases and repositories, potential file names, etc.
+
+Resolution: After completing these actions, you will have a comprehensive list of missing or incomplete entries on the website, along with key information extracted from the provided directory. This will provide a clear picture of the gaps that need to be filled in the next phase. You will be able to provide a list of the possible sources of missing information, as well as the files that may be associated with each entry. This phase is considered successful when the lists have been generated, and each missing publication identified has at least one corresponding entry of information that can be used to find it.
+
+Abandon/Move On: This phase should not be abandoned until a list of missing information and their potential sources have been generated. If you are unable to identify any missing information after a thorough analysis, or if the directory structure is completely unusable, this will need to be flagged to your human supervisor for further instruction.
+
+Phase 2: Content Retrieval and Organization
+
+Opening (Objective): Your goal here is to use the list of missing information and their potential sources, generated in Phase 1 to retrieve the associated files (PDFs, presentations, etc.). You will search both online repositories and the provided local directory. Then, you will organize the retrieved files in a logical and consistent manner.
+
+Challenge: You'll need to navigate various online repositories (e.g., Google Scholar, DBLP, arXiv) potentially with incomplete or ambiguous search terms. Copyright restrictions may prevent direct downloading of some files. You'll also need to access and interact with a local file system securely. You need to use multiple search engines and cross-referencing results to handle incomplete titles, misspelled author names, or incorrect years. Employ fuzzy matching, semantic similarity comparisons, and web scraping techniques. Refine searches using existing website information (co-author names, publication venues).
+
+Context of Action:
+
+For each missing item identified in Phase 1, use the associated information (title, authors, year, keywords, potential source URLs) to search relevant online repositories.
+
+You will employ multiple search techniques (fuzzy matching, semantic similarity, etc.) to maximize the chances of finding the correct files.
+
+If a file is found online, and copyright allows, download it. If not, flag the item and provide the URL to your human supervisor.
+
+Simultaneously, search the provided local directory for files that might correspond to the missing items.
+
+Organize the retrieved files into a clear and consistent structure (e.g., by year, publication type, or topic).
+
+Implement a standardized file-naming convention for consistency.
+
+Extract metadata from each file.
+
+Store the metadata.
+
+Resolution: At the end of this phase, you will have retrieved a significant portion of the missing files and organized them in a structured manner, both physically (in the file system) and logically (with extracted metadata). This organized collection will be ready for integration into the website in the next phase. You will have a clear understanding of what is accessible to you and what isn't. You will be able to provide links to the files that can not be downloaded due to copy right issues.
+
+Abandon/Move On: If, after exhausting all search avenues, a significant number of files remain unretrieved, flag this to your human supervisor. Move on once all viable files have been retrieved and organized, or when further retrieval efforts are deemed unproductive.
+
+Phase 3: Website Integration Preparation
+
+Opening (Objective): In this phase, you will prepare the groundwork for updating the research website with the newly gathered information and files. This involves creating structured data that can be easily integrated into the website, regardless of its underlying technology (static HTML, WordPress, custom CMS).
+
+Challenge: Websites can have vastly different structures and content management systems. You need to generate output that is flexible enough to be used in various scenarios. You also need to avoid making any unauthorized changes to the website itself. Updating a CMS is often a complex task, and you need to produce text and code that adheres to the API's specifications.
+
+Context of Action:
+
+For each retrieved file, generate a structured data entry containing:
+
+Title
+
+Authors
+
+Year of publication/presentation
+
+Venue (conference, journal, etc.)
+
+Abstract (if available)
+
+Keywords
+
+File path (where the file is stored locally)
+
+Link to online resource (if available and copyright permits)
+
+Create a summary of any remaining missing items, along with any relevant information or URLs that could assist in a manual search.
+
+Create code that adheres to the relevant API specification.
+
+Resolution: You will deliver a well-organized set of structured data entries, ready to be used for updating the research website. This could involve providing your human supervisor with a database file, a series of HTML snippets, or instructions for interacting with the website's API. The key is that the information is presented in a way that minimizes the manual effort required for integration. Any missing information will be clearly documented. API code will be generated.
+
+Abandon/Move On: This phase is considered complete when all the retrieved files have been processed and corresponding structured data entries have been generated. If significant challenges arise in adapting to the website's specific structure, consult with your human supervisor on the best way to proceed.
+
+Evaluation:
+
+Your performance will be evaluated based on:
+
+Completeness: How many of the missing files were successfully identified and retrieved?
+
+Accuracy: How accurate is the extracted metadata and the matching of files to website entries?
+
+Organization: How well-structured and organized is the retrieved file collection and the generated website integration data?
+
+Efficiency: How quickly and effectively did you complete each phase, minimizing unnecessary steps and computations?
+
+Important Considerations:
+
+Security: You will be granted limited access to the local file system. Any interaction with the file system must be logged and auditable. You will only be allowed to write to a designated directory.
+
+Copyright: You must respect copyright laws. Do not download or distribute copyrighted material without authorization. Flag any potential copyright issues to your human supervisor.
+
+User Control: You will be operating under the guidance of a human supervisor. They will review your progress at each stage and provide feedback or instructions as needed.
+
+This detailed breakdown should provide you with a clear roadmap for completing your mission. Good luck, and remember to communicate effectively with your human supervisor throughout the process!

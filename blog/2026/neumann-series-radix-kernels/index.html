@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+How Many Matrix Multiplications Do You Actually Need? | Piyush K. Sao
+</title>
+<meta name="author" content="Piyush K. Sao">
+<meta name="description" content="Faster Neumann series evaluation through smarter radix kernels - achieving ~25% fewer matrix products at the same accuracy.">
+<meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+<link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5">
+<link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light">
+
+<link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+<link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e">
+<link rel="canonical" href="https://piyush314.github.io/blog/2026/neumann-series-radix-kernels/">
+
+<script src="/assets/js/theme.js?0afe9f0ae161375728f7bcc5eb5b4ab4"></script>
+<link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark">
+<script>initTheme();</script>
+</head>
+
+<body class="fixed-top-nav ">
+
+<header>
+
+<nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+<div class="container">
+<a class="navbar-brand title font-weight-lighter" href="/">
+<span class="font-weight-bold">Piyush</span>
+K.
+Sao
+</a>
+
+<button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar top-bar"></span>
+<span class="icon-bar middle-bar"></span>
+<span class="icon-bar bottom-bar"></span>
+</button>
+<div class="collapse navbar-collapse text-right" id="navbarNav">
+<ul class="navbar-nav ml-auto flex-nowrap">
+
+<li class="nav-item ">
+<a class="nav-link" href="/">about
+</a>
+</li>
+
+<li class="nav-item active">
+<a class="nav-link" href="/blog/">blog
+</a>
+</li>
+<li class="nav-item ">
+<a class="nav-link" href="/publications/">publications
+</a>
+</li>
+<li class="nav-item ">
+<a class="nav-link" href="/projects/">projects
+</a>
+</li>
+<li class="nav-item ">
+<a class="nav-link" href="/repositories/">repositories
+</a>
+</li>
+<li class="nav-item ">
+<a class="nav-link" href="/cv/">cv
+</a>
+</li>
+<li class="nav-item ">
+<a class="nav-link" href="/teaching/">teaching
+</a>
+</li>
+<li class="nav-item dropdown ">
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">submenus
+</a>
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+<a class="dropdown-item " href="/publications/">publications</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item " href="/projects/">projects</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item " href="/blog/">blog</a>
+</div>
+</li>
+
+<li class="toggle-container">
+<button id="light-toggle" title="Change theme">
+<i class="ti ti-sun-moon" id="light-toggle-system"></i>
+<i class="ti ti-moon-filled" id="light-toggle-dark"></i>
+<i class="ti ti-sun-filled" id="light-toggle-light"></i>
+</button>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+<progress id="progress" value="0">
+<div class="progress-container">
+<span class="progress-bar"></span>
+</div>
+</progress>
+</header>
+
+<div class="container mt-5" role="main">
+<div class="post">
+<header class="post-header">
+<h1 class="post-title">How Many Matrix Multiplications Do You Actually Need?</h1>
+<p class="post-meta">
+March 21, 2026
+</p>
+<p class="post-tags">
+<a href="/blog/2026"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>
+·
+<a href="/blog/tag/numerical-methods"> <i class="fa-solid fa-hashtag fa-sm"></i> numerical-methods</a>
+<a href="/blog/tag/linear-algebra"> <i class="fa-solid fa-hashtag fa-sm"></i> linear-algebra</a>
+<a href="/blog/tag/high-performance-computing"> <i class="fa-solid fa-hashtag fa-sm"></i> high-performance-computing</a>
+<a href="/blog/tag/matrix-computation"> <i class="fa-solid fa-hashtag fa-sm"></i> matrix-computation</a>
+<a href="/blog/tag/preconditioning"> <i class="fa-solid fa-hashtag fa-sm"></i> preconditioning</a>
+·
+<a href="/blog/category/research">
+<i class="fa-solid fa-tag fa-sm"></i> research</a>
+</p>
+</header>
+<article class="post-content">
+<div id="markdown-content">
+<h2 id="how-many-matrix-multiplications-do-you-actually-need">How Many Matrix Multiplications Do You Actually Need?</h2>
+<h3 id="faster-neumann-series-evaluation-through-smarter-radix-kernels">Faster Neumann series evaluation through smarter radix kernels</h3>
+<hr>
+<p>When you need an approximate matrix inverse — for preconditioning,
+log-determinant estimation, or MIMO signal detection — you often
+use the truncated Neumann series:</p>
+\[S_k(A) = I + A + A^2 + \cdots + A^{k-1}\]
+<p>When the spectral radius of $A$ is less than 1, this converges to
+$(I - A)^{-1}$. Simple enough in theory. Practically, the cost is
+dominated by matrix-matrix products (GEMMs), and this raises the
+question: <em>how many multiplications do you actually need to get
+$k$ terms?</em></p>
+<p>The naive answer is $k - 1$ products — just keep multiplying. In
+our recent preprint, we show the real answer is significantly fewer,
+and this reveals a clean structure underneath.</p>
+<h2 id="starting-from-scratch-the-naive-approach">Starting from scratch: the naive approach</h2>
+<p>Let’s build intuition from the ground up. Suppose you want $S_8(A) = I + A + A^2 + \cdots + A^7$. The brute-force way computes each
+power in sequence: multiply $A$ by itself to get $A^2$, multiply
+$A^2$ by $A$ to get $A^3$, and so on. That’s 7 matrix
+multiplications for 8 terms. In general, $k - 1$ products for $k$
+terms.</p>
+<p>When $k$ is in the thousands — common in preconditioning or MIMO —
+this is expensive. A polynomial preconditioner with $k = 10{,}000$
+terms would require 9,999 dense matrix multiplications. Each one
+is an $O(n^3)$ operation. Even on a GPU, this cost makes you
+reconsider whether you wanted an approximate inverse.</p>
+<p>So the question sharpens: can we get those $k$ terms with far
+fewer than $k - 1$ products? The answer is yes, and the first
+insight is one you’ve probably seen before in a different context.</p>
+<h2 id="the-binary-trick-doubling-your-money">The binary trick: doubling your money</h2>
+<p>Here’s the core observation. Suppose you’ve already computed
+$S_4(A) = I + A + A^2 + A^3$. Can you get $S_8(A)$ cheaply?</p>
+<p>Factor it:</p>
+\[S_8(A) = (I + A + A^2 + A^3) + A^4(I + A + A^2 + A^3) = S_4(A) \cdot (I + A^4)\]
+<p>This second step costs just two multiplications: one to compute
+$A^4$ (by squaring $A^2$, which you already have), and one for the
+final product $S_4 \cdot (I + A^4)$. You’ve doubled the length of
+your series with 2 products.</p>
+<p>Now apply this recursively. Start with $S_1 = I$ (free). Double to
+$S_2$ (2 products). Double to $S_4$ (2 more). Double to $S_8$ (2
+more). To reach $S_k$, you need $\lceil\log_2 k\rceil$ doubling
+steps, each costing 2 products. Total: $2\log_2 k$ products, a
+massive improvement over $k - 1$.</p>
+<p>For $k = 1024$, that’s about 20 products instead of 1023. The
+savings are enormous — but can we squeeze out more?</p>
+<h2 id="the-ternary-trick-tripling-instead-of-doubling">The ternary trick: tripling instead of doubling</h2>
+<p>The binary approach doubles the series each step. What if we
+<em>tripled</em> it?</p>
+<p>Suppose you have $S_3(A) = I + A + A^2$. You want to triple the
+series length to get $S_9(A)$. The same factoring idea works:</p>
+\[S_9(A) = S_3(A) \cdot (I + A^3 + A^6)\]
+<p>The second factor — call it $T_3(A^3) = I + A^3 + A^6$ — is itself
+a 3-term Neumann series in the variable $A^3$. To compute it, you
+need $A^3$ (1 product: $A^2 \cdot A$), then $A^6 = (A^3)^2$ (1
+product), then the sum $I + A^3 + A^6$ (free, just addition), and
+finally the outer product $S_3 \cdot T_3$ (1 product). That’s 3
+products to triple the series.</p>
+<p>Each ternary step grows the series by a factor of 3 using 3
+products. After $t$ steps, you’ve reached $k = 3^t$ terms. The
+total cost is $3\log_3 k$, which works out to about $1.89\log_2 k$
+products. That’s a roughly 5% improvement over binary’s $2\log_2
+k$.</p>
+<p>A 5% improvement isn’t earth-shattering on its own. But it reveals
+the real question hiding underneath: <strong>the cost per step and the
+growth factor per step are in tension.</strong> Doubling is cheap (2
+products) but only doubles. Tripling costs more (3 products) but
+triples. Which tradeoff wins? And what happens if you quadruple,
+or quintuple, or go even higher? The answer depends entirely on
+how cheaply you can build the kernel for each radix — and that’s
+where this story gets interesting.</p>
+<h2 id="seeing-the-pattern-radix-kernels">Seeing the pattern: radix kernels</h2>
+<p>We now have two data points — binary costs 2 products per step
+with factor-2 growth, ternary costs 3 products per step with
+factor-3 growth — and one burning question: what’s the optimal
+tradeoff? To compare radices fairly, we need a single metric that
+captures both the cost and the payoff of each step.</p>
+<p>Notice what binary and ternary splitting have in common. In both
+cases, we’re computing a <em>kernel</em> — a small Neumann series that,
+when composed with what we already have, extends the full series
+by a multiplicative factor.</p>
+<p>For binary, the kernel is $T_2(B) = I + B$. It costs 0 products to
+evaluate (it’s just a sum), and it doubles the series. But you
+also need to compute $B = A^n$ (1 product for squaring) and the
+outer product $S_n \cdot T_2$ (1 product). Total per step: 0 + 1 +
+1 = 2 products for a factor-of-2 growth.</p>
+<p>For ternary, the kernel is $T_3(B) = I + B + B^2$. It costs 1
+product to evaluate (you need $B^2$), plus 1 for computing $B =
+A^n$ and 1 for the outer product. Total per step: 1 + 1 + 1 = 3
+products for a factor-of-3 growth.</p>
+<p>With this decomposition, we can write down a single efficiency
+metric that applies to any radix: the cost-per-step divided by the
+information-per-step, both measured in the same base:</p>
+\[\text{efficiency} = \frac{\text{products per step}}{\log_2(\text{growth per step})}\]
+<p>For binary, that’s $2/\log_2 2 = 2.00$. For ternary, $3/\log_2 3
+\approx 1.89$. Ternary wins because tripling is worth more than
+doubling, and it only costs one extra product.</p>
+<p>What about radix 4? You’d need $T_4(B) = I + B + B^2 + B^3$, which
+takes 2 products to evaluate naively (compute $B^2$, then $B^3 =
+B^2 \cdot B$). Add the squaring and outer product and you get 4
+products per step with growth factor 4. Efficiency: $4/\log_2 4 =
+2.00$ — no better than binary. Radix 4 doesn’t help because the
+kernel is too expensive relative to how much it grows the series.</p>
+<p>So the game is clear: <strong>you want the highest radix whose kernel
+you can evaluate cheaply enough to beat the lower-radix
+alternatives.</strong> If you could find clever constructions — tricks
+that compute $T_m$ in fewer products than the naive $m - 2$ —
+you’d push the efficiency frontier. So where does that frontier
+lie? Before our work, only one such construction was known.</p>
+<h2 id="the-quinary-kernel-prior-state-of-the-art">The quinary kernel: prior state of the art</h2>
+<p>Before this paper, the highest radix anyone had an explicit kernel
+for was 5. The naive way to compute $T_5(B) = I + B + B^2 + B^3 +
+B^4$ would require 3 products ($B^2$, $B^3$, $B^4$), giving
+efficiency $5/\log_2 5 \approx 2.15$ — worse than binary. So
+quinary only helps if you can beat the naive product count.
+Gustafsson et al. (2017) showed you can, with just 2 products:</p>
+<ol>
+<li>Compute $U = B^2$ (1 product)</li>
+<li>Compute $V = U(B + U) = B^3 + B^4$ (1 product)</li>
+<li>Assemble: $T_5(B) = I + B + U + V$ (free — just additions)</li>
+</ol>
+<p>That’s elegant. With 2 kernel products, 1 for squaring, and 1 for
+the outer product, each step costs 4 products and grows the series
+by a factor of 5. Efficiency: $4/\log_2 5 \approx 1.72$ — a
+significant jump from ternary’s 1.89.</p>
+<p>But here the trail went cold. Nobody had constructed an explicit
+kernel for radix 7, 9, 11, or anything higher. Theoretical
+analysis suggested better constants were achievable — the optimal
+radix among integers is actually $m = 3$ for <em>naive</em> kernel
+computation, where $T_m$ itself costs $m - 2$ products. But the
+quinary kernel broke that pattern by evaluating $T_5$ in fewer
+products than the naive count. Could the same trick work at higher
+radices?</p>
+<h2 id="the-radix-9-kernel-our-first-contribution">The radix-9 kernel: our first contribution</h2>
+<p>This brings us to our paper’s first result: a radix-9 exact kernel — the first such construction beyond radix 5.</p>
+<p>The quinary kernel works because a single cleverly chosen product
+($U(B + U)$) generates two terms at once. Can the same strategy
+scale? Radix 9 would need $T_9(B) = I + B + \cdots + B^8$ — that’s
+9 coefficients to nail. The degree-doubling bound (a standard
+result relating polynomial degree to multiplication count) says 3
+kernel products should suffice, but actually constructing them
+means solving a much harder algebraic puzzle: you need a single
+matrix product that simultaneously generates four high-degree
+terms ($B^5$ through $B^8$) with the right coefficients.</p>
+<p>We show it can be done. The construction uses only 3
+matrix products and is the first explicit exact kernel beyond
+radix 5.</p>
+<p>The idea: choose two matrix factors $P$ and $Q$, each a linear
+combination of already-computed building blocks ($B$, $B^2$, $B^3</p>
+<ul>
+<li>2B^4$), such that their product $P \cdot Q$ generates all the
+high-degree terms ($B^5$ through $B^8$) in one shot. The
+low-degree terms ($B^2$ through $B^4$) get patched up afterward
+using the building blocks directly.</li>
+</ul>
+<p>The cleverness is in how $P$ and $Q$ are chosen. The product of
+two degree-4 polynomials in $B$ spans degrees 2–8. By carefully
+allocating coefficients — treating degrees 5–8 as the primary
+targets and allowing degrees 2–4 to be corrected post-hoc — the
+construction simultaneously hits all required coefficients. The
+result uses only rational arithmetic: every coefficient is a
+fraction whose denominator divides 800.</p>
+<p>With 3 kernel products, 1 for the power update, and 1 for
+concatenation, each step costs 5 products and grows the series by
+a factor of 9. Efficiency: $5/\log_2 9 \approx 1.58$ — a 21%
+improvement over binary and 8% over quinary.</p>
+<table>
+<thead>
+<tr>
+<th>Radix</th>
+<th>Kernel Products</th>
+<th>Total per Step</th>
+<th>Efficiency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>2.00</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>3</td>
+<td>1.89</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2</td>
+<td>4</td>
+<td>1.72</td>
+</tr>
+<tr>
+<td>9</td>
+<td>3</td>
+<td>5</td>
+<td>1.58</td>
+</tr>
+<tr>
+<td>15*</td>
+<td>4</td>
+<td>6</td>
+<td>1.54</td>
+</tr>
+<tr>
+<td>24*</td>
+<td>5</td>
+<td>7</td>
+<td>1.53</td>
+</tr>
+</tbody>
+</table>
+<p><em>(* approximate kernels)</em></p>
+<h2 id="going-further-approximate-kernels-and-the-spillover-problem">Going further: approximate kernels and the spillover problem</h2>
+<p>Can you keep climbing to even higher radices? For radix 15, the
+lower bound says you need at least 4 products for the kernel. If
+achievable, that would give efficiency $6/\log_2 15 \approx 1.54$.</p>
+<p>We find such a kernel through numerical optimization. But
+there’s a catch: unlike the radix-5 and radix-9 kernels, which
+produce <em>exactly</em> $I + B + \cdots + B^{m-1}$ and nothing else, the
+radix-15 kernel produces the right terms through degree 14 but
+also generates small unwanted higher-degree terms — what we
+call <em>spillover</em>. With 28 free parameters across 4 chained
+products, you can nail the 15 target coefficients, but zeroing out
+all spillover simultaneously appears to be impossible.</p>
+<p>This isn’t just a numerical nuisance. Spillover breaks the
+standard technique for extending the series. Normally, you use the
+geometric identity $T_m(B)(I - B) = I - B^m$ to cleanly extract
+the next power of $A$ and set up the next iteration. When the
+kernel produces extra terms, this identity no longer holds
+exactly, and the errors could compound across iterations.</p>
+<p>So we’re stuck with a tantalizing situation: higher-radix kernels
+exist and would give better efficiency — but they come with
+spillover that seems to invalidate the very framework they’d plug
+into. Can approximate kernels be salvaged, or is radix 9 the end
+of the road?</p>
+<h2 id="the-general-framework-making-spillover-safe">The general framework: making spillover safe</h2>
+<p>This is the paper’s most transferable contribution. The
+trick is to stop tracking the series directly and instead track
+the <em>residual</em> — the gap between your running approximate inverse
+and the true inverse.</p>
+<p>The key mathematical observation: if you apply an imperfect kernel
+to the residual, the spillover doesn’t corrupt your answer — it
+just gets pushed to higher and higher powers with each iteration.
+Because we track the residual, contaminated high-degree terms never
+contribute to the prefix of the approximation we actually care about.
+After $n$ iterations with a radix-$m$ kernel, the residual’s
+leading term sits at degree $m^n$, regardless of spillover. The
+prefix of your approximation stays exact.</p>
+<p>This framework recovers all the earlier methods as special cases.
+Binary splitting, ternary splitting, exact telescoping — they all
+fall out when you plug in the appropriate (spillover-free) kernel.
+But now you can also plug in <em>approximate</em> kernels and still get
+rigorous convergence guarantees, provided the spectral radius is
+within a modestly tightened safe zone.</p>
+<p>Within this framework, radix-15 achieves efficiency $\approx
+1.54$, and radix-24 (a 5-product approximate kernel) achieves
+$\approx 1.53$ — the best known rate. The tightening is real but
+manageable: radix-15 requires $\rho(A) &lt; 0.971$ and radix-24
+requires $\rho(A) &lt; 0.984$, versus the full $\rho(A) &lt; 1$ for exact
+kernels.</p>
+<h2 id="does-it-actually-work">Does it actually work?</h2>
+<p>Theory is one thing. These kernels involve rational coefficients
+with denominators in the hundreds and approximate constructions
+with nonzero spillover. Do the product-count savings actually
+survive floating-point arithmetic?</p>
+<p>We tested everything in Python/NumPy with IEEE 754 doubles —
+a realistic setting, not a symbolic algebra sandbox. Product-count
+savings are real and match predictions: for $k = 729$, radix-9
+uses 15 matrix multiplications where binary uses 20. For $k =
+13{,}824$, radix-24 uses 21 where binary uses 28 — about 25%
+fewer products in both cases. On 4096×4096 dense matrices, this
+translates to roughly 20% wall-clock speedup.</p>
+<p>Accuracy-wise, all exact methods (binary, quinary, radix-9) reach
+machine-precision residuals for a given series length, confirming
+the algebraic identities hold numerically. The approximate kernels
+(radix-15, radix-24) also reach machine precision, with prefix
+errors below $2 \times 10^{-15}$, thanks to the framework’s
+error-containment properties.</p>
+<p>The stability picture is nuanced. Exact kernels work for any
+$\rho(A) &lt; 1$. Approximate kernels tighten the safe zone:
+radix-15 requires $\rho(A) &lt; 0.971$, and radix-24 requires
+$\rho(A) &lt; 0.984$. The paper provides three increasingly strict
+tests (basin test, disk test, coefficient test) for verifying
+stability of a given kernel.</p>
+<p>The bottom line: ~25% fewer matrix multiplications at the same
+accuracy, and the savings translate to wall-clock time on real
+hardware. The theory works in practice.</p>
+<h2 id="the-bigger-picture">The bigger picture</h2>
+<p>What makes this work satisfying beyond the specific results is
+the structural insight. There’s a clean hierarchy: radix 2
+(trivial kernel), radix 5 (2-product exact kernel), radix 9
+(3-product exact kernel) — and then a wall. At radix 15 and
+beyond, the evidence strongly suggests exact rational kernels
+don’t exist. You’re forced into approximate constructions, and the
+spillover isn’t a flaw in the search method — it appears to be a
+fundamental boundary in algebraic kernel construction.</p>
+<p>The general framework bridges this boundary gracefully. And the
+open questions it leaves are compelling: Is the exact/approximate
+boundary provably at radix 9? Can the efficiency constant continue
+improving past 1.53? And most practically — how do these kernel
+techniques extend to structured matrices (sparse, Toeplitz), or to
+polynomial trace estimation for log-determinants?</p>
+<p>For anyone doing matrix series evaluation in production —
+preconditioners, resolvent approximations, MIMO detection — the
+takeaway is concrete: you can get ~25% fewer matrix
+multiplications at the same accuracy by swapping in a better
+kernel. The radix-9 kernel is exact and drop-in. The higher-radix
+approximate kernels are nearly as accurate and even cheaper.</p>
+<hr>
+<p><em>The paper: <a href="https://arxiv.org/abs/2602.11843" rel="external nofollow noopener" target="_blank">Fast Evaluation of Truncated Neumann Series by
+Low-Product Radix Kernels</a>.
+Preprint, February 2026.</em></p>
+</div>
+</article>
+<br>
+<hr>
+<br>
+<ul class="list-disc pl-8"></ul>
+
+<h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+<p class="mb-2">Here are some more articles you might like to read next:</p>
+<li class="my-2">
+<a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2025/quantum-computers-simulation-hypothesis/">Quantum Computers: The Key to Unlocking (or Breaking) the Simulation?</a>
+</li>
+<li class="my-2">
+<a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2024/Test_blog_post_using_CMS/">Test blog post using CMS</a>
+</li>
+<li class="my-2">
+<a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2024/Multiplicative-collaboration/">The Multiplicative Effect of Good Collaboration in Mental Tasks</a>
+</li>
+</div>
+</div>
+
+<footer class="fixed-bottom" role="contentinfo">
+<div class="container mt-0">
+© Copyright 2026
+Piyush
+K.
+Sao. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+</div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+<script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+<script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script>
+
+<script src="/assets/js/no_defer.js?2930004b8d7fcd0a8e00fdcfc8fc9f24"></script>
+<script defer src="/assets/js/common.js?da39b660470d1ba6e6b8bf5f37070b6e"></script>
+<script defer src="/assets/js/copy_code.js?12775fdf7f95e901d7119054556e495f" type="text/javascript"></script>
+
+<script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script>
+
+<script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+<script async src="https://badge.dimensions.ai/badge.js"></script>
+
+<script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+<script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script>
+<script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+
+<script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script>
+</body>
+</html>

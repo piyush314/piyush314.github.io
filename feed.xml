@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://piyush314.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://piyush314.github.io/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-03-24T02:59:52+00:00</updated><id>https://piyush314.github.io/feed.xml</id><title type="html">blank</title><subtitle>Personal webpage for Dr. Piyush Sao, Staff scientist, Computer science and mathematics division, ORNL.
+</subtitle><entry><title type="html">How Many Matrix Multiplications Do You Actually Need?</title><link href="https://piyush314.github.io/blog/2026/neumann-series-radix-kernels/" rel="alternate" type="text/html" title="How Many Matrix Multiplications Do You Actually Need?"/><published>2026-03-21T12:00:00+00:00</published><updated>2026-03-21T12:00:00+00:00</updated><id>https://piyush314.github.io/blog/2026/neumann-series-radix-kernels</id><content type="html" xml:base="https://piyush314.github.io/blog/2026/neumann-series-radix-kernels/"><![CDATA[<h2 id="how-many-matrix-multiplications-do-you-actually-need">How Many Matrix Multiplications Do You Actually Need?</h2>
+<h3 id="faster-neumann-series-evaluation-through-smarter-radix-kernels">Faster Neumann series evaluation through smarter radix kernels</h3>
+<hr/>
+<p>When you need an approximate matrix inverse — for preconditioning,
+log-determinant estimation, or MIMO signal detection — you often
+use the truncated Neumann series:</p>
+\[S_k(A) = I + A + A^2 + \cdots + A^{k-1}\]
+<p>When the spectral radius of $A$ is less than 1, this converges to
+$(I - A)^{-1}$. Simple enough in theory. Practically, the cost is
+dominated by matrix-matrix products (GEMMs), and this raises the
+question: <em>how many multiplications do you actually need to get
+$k$ terms?</em></p>
+<p>The naive answer is $k - 1$ products — just keep multiplying. In
+our recent preprint, we show the real answer is significantly fewer,
+and this reveals a clean structure underneath.</p>
+<h2 id="starting-from-scratch-the-naive-approach">Starting from scratch: the naive approach</h2>
+<p>Let’s build intuition from the ground up. Suppose you want $S_8(A) = I + A + A^2 + \cdots + A^7$. The brute-force way computes each
+power in sequence: multiply $A$ by itself to get $A^2$, multiply
+$A^2$ by $A$ to get $A^3$, and so on. That’s 7 matrix
+multiplications for 8 terms. In general, $k - 1$ products for $k$
+terms.</p>
+<p>When $k$ is in the thousands — common in preconditioning or MIMO —
+this is expensive. A polynomial preconditioner with $k = 10{,}000$
+terms would require 9,999 dense matrix multiplications. Each one
+is an $O(n^3)$ operation. Even on a GPU, this cost makes you
+reconsider whether you wanted an approximate inverse.</p>
+<p>So the question sharpens: can we get those $k$ terms with far
+fewer than $k - 1$ products? The answer is yes, and the first
+insight is one you’ve probably seen before in a different context.</p>
+<h2 id="the-binary-trick-doubling-your-money">The binary trick: doubling your money</h2>
+<p>Here’s the core observation. Suppose you’ve already computed
+$S_4(A) = I + A + A^2 + A^3$. Can you get $S_8(A)$ cheaply?</p>
+<p>Factor it:</p>
+\[S_8(A) = (I + A + A^2 + A^3) + A^4(I + A + A^2 + A^3) = S_4(A) \cdot (I + A^4)\]
+<p>This second step costs just two multiplications: one to compute
+$A^4$ (by squaring $A^2$, which you already have), and one for the
+final product $S_4 \cdot (I + A^4)$. You’ve doubled the length of
+your series with 2 products.</p>
+<p>Now apply this recursively. Start with $S_1 = I$ (free). Double to
+$S_2$ (2 products). Double to $S_4$ (2 more). Double to $S_8$ (2
+more). To reach $S_k$, you need $\lceil\log_2 k\rceil$ doubling
+steps, each costing 2 products. Total: $2\log_2 k$ products, a
+massive improvement over $k - 1$.</p>
+<p>For $k = 1024$, that’s about 20 products instead of 1023. The
+savings are enormous — but can we squeeze out more?</p>
+<h2 id="the-ternary-trick-tripling-instead-of-doubling">The ternary trick: tripling instead of doubling</h2>
+<p>The binary approach doubles the series each step. What if we
+<em>tripled</em> it?</p>
+<p>Suppose you have $S_3(A) = I + A + A^2$. You want to triple the
+series length to get $S_9(A)$. The same factoring idea works:</p>
+\[S_9(A) = S_3(A) \cdot (I + A^3 + A^6)\]
+<p>The second factor — call it $T_3(A^3) = I + A^3 + A^6$ — is itself
+a 3-term Neumann series in the variable $A^3$. To compute it, you
+need $A^3$ (1 product: $A^2 \cdot A$), then $A^6 = (A^3)^2$ (1
+product), then the sum $I + A^3 + A^6$ (free, just addition), and
+finally the outer product $S_3 \cdot T_3$ (1 product). That’s 3
+products to triple the series.</p>
+<p>Each ternary step grows the series by a factor of 3 using 3
+products. After $t$ steps, you’ve reached $k = 3^t$ terms. The
+total cost is $3\log_3 k$, which works out to about $1.89\log_2 k$
+products. That’s a roughly 5% improvement over binary’s $2\log_2
+k$.</p>
+<p>A 5% improvement isn’t earth-shattering on its own. But it reveals
+the real question hiding underneath: <strong>the cost per step and the
+growth factor per step are in tension.</strong> Doubling is cheap (2
+products) but only doubles. Tripling costs more (3 products) but
+triples. Which tradeoff wins? And what happens if you quadruple,
+or quintuple, or go even higher? The answer depends entirely on
+how cheaply you can build the kernel for each radix — and that’s
+where this story gets interesting.</p>
+<h2 id="seeing-the-pattern-radix-kernels">Seeing the pattern: radix kernels</h2>
+<p>We now have two data points — binary costs 2 products per step
+with factor-2 growth, ternary costs 3 products per step with
+factor-3 growth — and one burning question: what’s the optimal
+tradeoff? To compare radices fairly, we need a single metric that
+captures both the cost and the payoff of each step.</p>
+<p>Notice what binary and ternary splitting have in common. In both
+cases, we’re computing a <em>kernel</em> — a small Neumann series that,
+when composed with what we already have, extends the full series
+by a multiplicative factor.</p>
+<p>For binary, the kernel is $T_2(B) = I + B$. It costs 0 products to
+evaluate (it’s just a sum), and it doubles the series. But you
+also need to compute $B = A^n$ (1 product for squaring) and the
+outer product $S_n \cdot T_2$ (1 product). Total per step: 0 + 1 +
+1 = 2 products for a factor-of-2 growth.</p>
+<p>For ternary, the kernel is $T_3(B) = I + B + B^2$. It costs 1
+product to evaluate (you need $B^2$), plus 1 for computing $B =
+A^n$ and 1 for the outer product. Total per step: 1 + 1 + 1 = 3
+products for a factor-of-3 growth.</p>
+<p>With this decomposition, we can write down a single efficiency
+metric that applies to any radix: the cost-per-step divided by the
+information-per-step, both measured in the same base:</p>
+\[\text{efficiency} = \frac{\text{products per step}}{\log_2(\text{growth per step})}\]
+<p>For binary, that’s $2/\log_2 2 = 2.00$. For ternary, $3/\log_2 3
+\approx 1.89$. Ternary wins because tripling is worth more than
+doubling, and it only costs one extra product.</p>
+<p>What about radix 4? You’d need $T_4(B) = I + B + B^2 + B^3$, which
+takes 2 products to evaluate naively (compute $B^2$, then $B^3 =
+B^2 \cdot B$). Add the squaring and outer product and you get 4
+products per step with growth factor 4. Efficiency: $4/\log_2 4 =
+2.00$ — no better than binary. Radix 4 doesn’t help because the
+kernel is too expensive relative to how much it grows the series.</p>
+<p>So the game is clear: <strong>you want the highest radix whose kernel
+you can evaluate cheaply enough to beat the lower-radix
+alternatives.</strong> If you could find clever constructions — tricks
+that compute $T_m$ in fewer products than the naive $m - 2$ —
+you’d push the efficiency frontier. So where does that frontier
+lie? Before our work, only one such construction was known.</p>
+<h2 id="the-quinary-kernel-prior-state-of-the-art">The quinary kernel: prior state of the art</h2>
+<p>Before this paper, the highest radix anyone had an explicit kernel
+for was 5. The naive way to compute $T_5(B) = I + B + B^2 + B^3 +
+B^4$ would require 3 products ($B^2$, $B^3$, $B^4$), giving
+efficiency $5/\log_2 5 \approx 2.15$ — worse than binary. So
+quinary only helps if you can beat the naive product count.
+Gustafsson et al. (2017) showed you can, with just 2 products:</p>
+<ol>
+<li>Compute $U = B^2$ (1 product)</li>
+<li>Compute $V = U(B + U) = B^3 + B^4$ (1 product)</li>
+<li>Assemble: $T_5(B) = I + B + U + V$ (free — just additions)</li>
+</ol>
+<p>That’s elegant. With 2 kernel products, 1 for squaring, and 1 for
+the outer product, each step costs 4 products and grows the series
+by a factor of 5. Efficiency: $4/\log_2 5 \approx 1.72$ — a
+significant jump from ternary’s 1.89.</p>
+<p>But here the trail went cold. Nobody had constructed an explicit
+kernel for radix 7, 9, 11, or anything higher. Theoretical
+analysis suggested better constants were achievable — the optimal
+radix among integers is actually $m = 3$ for <em>naive</em> kernel
+computation, where $T_m$ itself costs $m - 2$ products. But the
+quinary kernel broke that pattern by evaluating $T_5$ in fewer
+products than the naive count. Could the same trick work at higher
+radices?</p>
+<h2 id="the-radix-9-kernel-our-first-contribution">The radix-9 kernel: our first contribution</h2>
+<p>This brings us to our paper’s first result: a radix-9 exact kernel — the first such construction beyond radix 5.</p>
+<p>The quinary kernel works because a single cleverly chosen product
+($U(B + U)$) generates two terms at once. Can the same strategy
+scale? Radix 9 would need $T_9(B) = I + B + \cdots + B^8$ — that’s
+9 coefficients to nail. The degree-doubling bound (a standard
+result relating polynomial degree to multiplication count) says 3
+kernel products should suffice, but actually constructing them
+means solving a much harder algebraic puzzle: you need a single
+matrix product that simultaneously generates four high-degree
+terms ($B^5$ through $B^8$) with the right coefficients.</p>
+<p>We show it can be done. The construction uses only 3
+matrix products and is the first explicit exact kernel beyond
+radix 5.</p>
+<p>The idea: choose two matrix factors $P$ and $Q$, each a linear
+combination of already-computed building blocks ($B$, $B^2$, $B^3</p>
+<ul>
+<li>2B^4$), such that their product $P \cdot Q$ generates all the
+high-degree terms ($B^5$ through $B^8$) in one shot. The
+low-degree terms ($B^2$ through $B^4$) get patched up afterward
+using the building blocks directly.</li>
+</ul>
+<p>The cleverness is in how $P$ and $Q$ are chosen. The product of
+two degree-4 polynomials in $B$ spans degrees 2–8. By carefully
+allocating coefficients — treating degrees 5–8 as the primary
+targets and allowing degrees 2–4 to be corrected post-hoc — the
+construction simultaneously hits all required coefficients. The
+result uses only rational arithmetic: every coefficient is a
+fraction whose denominator divides 800.</p>
+<p>With 3 kernel products, 1 for the power update, and 1 for
+concatenation, each step costs 5 products and grows the series by
+a factor of 9. Efficiency: $5/\log_2 9 \approx 1.58$ — a 21%
+improvement over binary and 8% over quinary.</p>
+<table>
+<thead>
+<tr>
+<th>Radix</th>
+<th>Kernel Products</th>
+<th>Total per Step</th>
+<th>Efficiency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>2.00</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>3</td>
+<td>1.89</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2</td>
+<td>4</td>
+<td>1.72</td>
+</tr>
+<tr>
+<td>9</td>
+<td>3</td>
+<td>5</td>
+<td>1.58</td>
+</tr>
+<tr>
+<td>15*</td>
+<td>4</td>
+<td>6</td>
+<td>1.54</td>
+</tr>
+<tr>
+<td>24*</td>
+<td>5</td>
+<td>7</td>
+<td>1.53</td>
+</tr>
+</tbody>
+</table>
+<p><em>(* approximate kernels)</em></p>
+<h2 id="going-further-approximate-kernels-and-the-spillover-problem">Going further: approximate kernels and the spillover problem</h2>
+<p>Can you keep climbing to even higher radices? For radix 15, the
+lower bound says you need at least 4 products for the kernel. If
+achievable, that would give efficiency $6/\log_2 15 \approx 1.54$.</p>
+<p>We find such a kernel through numerical optimization. But
+there’s a catch: unlike the radix-5 and radix-9 kernels, which
+produce <em>exactly</em> $I + B + \cdots + B^{m-1}$ and nothing else, the
+radix-15 kernel produces the right terms through degree 14 but
+also generates small unwanted higher-degree terms — what we
+call <em>spillover</em>. With 28 free parameters across 4 chained
+products, you can nail the 15 target coefficients, but zeroing out
+all spillover simultaneously appears to be impossible.</p>
+<p>This isn’t just a numerical nuisance. Spillover breaks the
+standard technique for extending the series. Normally, you use the
+geometric identity $T_m(B)(I - B) = I - B^m$ to cleanly extract
+the next power of $A$ and set up the next iteration. When the
+kernel produces extra terms, this identity no longer holds
+exactly, and the errors could compound across iterations.</p>
+<p>So we’re stuck with a tantalizing situation: higher-radix kernels
+exist and would give better efficiency — but they come with
+spillover that seems to invalidate the very framework they’d plug
+into. Can approximate kernels be salvaged, or is radix 9 the end
+of the road?</p>
+<h2 id="the-general-framework-making-spillover-safe">The general framework: making spillover safe</h2>
+<p>This is the paper’s most transferable contribution. The
+trick is to stop tracking the series directly and instead track
+the <em>residual</em> — the gap between your running approximate inverse
+and the true inverse.</p>
+<p>The key mathematical observation: if you apply an imperfect kernel
+to the residual, the spillover doesn’t corrupt your answer — it
+just gets pushed to higher and higher powers with each iteration.
+Because we track the residual, contaminated high-degree terms never
+contribute to the prefix of the approximation we actually care about.
+After $n$ iterations with a radix-$m$ kernel, the residual’s
+leading term sits at degree $m^n$, regardless of spillover. The
+prefix of your approximation stays exact.</p>
+<p>This framework recovers all the earlier methods as special cases.
+Binary splitting, ternary splitting, exact telescoping — they all
+fall out when you plug in the appropriate (spillover-free) kernel.
+But now you can also plug in <em>approximate</em> kernels and still get
+rigorous convergence guarantees, provided the spectral radius is
+within a modestly tightened safe zone.</p>
+<p>Within this framework, radix-15 achieves efficiency $\approx
+1.54$, and radix-24 (a 5-product approximate kernel) achieves
+$\approx 1.53$ — the best known rate. The tightening is real but
+manageable: radix-15 requires $\rho(A) &lt; 0.971$ and radix-24
+requires $\rho(A) &lt; 0.984$, versus the full $\rho(A) &lt; 1$ for exact
+kernels.</p>
+<h2 id="does-it-actually-work">Does it actually work?</h2>
+<p>Theory is one thing. These kernels involve rational coefficients
+with denominators in the hundreds and approximate constructions
+with nonzero spillover. Do the product-count savings actually
+survive floating-point arithmetic?</p>
+<p>We tested everything in Python/NumPy with IEEE 754 doubles —
+a realistic setting, not a symbolic algebra sandbox. Product-count
+savings are real and match predictions: for $k = 729$, radix-9
+uses 15 matrix multiplications where binary uses 20. For $k =
+13{,}824$, radix-24 uses 21 where binary uses 28 — about 25%
+fewer products in both cases. On 4096×4096 dense matrices, this
+translates to roughly 20% wall-clock speedup.</p>
+<p>Accuracy-wise, all exact methods (binary, quinary, radix-9) reach
+machine-precision residuals for a given series length, confirming
+the algebraic identities hold numerically. The approximate kernels
+(radix-15, radix-24) also reach machine precision, with prefix
+errors below $2 \times 10^{-15}$, thanks to the framework’s
+error-containment properties.</p>
+<p>The stability picture is nuanced. Exact kernels work for any
+$\rho(A) &lt; 1$. Approximate kernels tighten the safe zone:
+radix-15 requires $\rho(A) &lt; 0.971$, and radix-24 requires
+$\rho(A) &lt; 0.984$. The paper provides three increasingly strict
+tests (basin test, disk test, coefficient test) for verifying
+stability of a given kernel.</p>
+<p>The bottom line: ~25% fewer matrix multiplications at the same
+accuracy, and the savings translate to wall-clock time on real
+hardware. The theory works in practice.</p>
+<h2 id="the-bigger-picture">The bigger picture</h2>
+<p>What makes this work satisfying beyond the specific results is
+the structural insight. There’s a clean hierarchy: radix 2
+(trivial kernel), radix 5 (2-product exact kernel), radix 9
+(3-product exact kernel) — and then a wall. At radix 15 and
+beyond, the evidence strongly suggests exact rational kernels
+don’t exist. You’re forced into approximate constructions, and the
+spillover isn’t a flaw in the search method — it appears to be a
+fundamental boundary in algebraic kernel construction.</p>
+<p>The general framework bridges this boundary gracefully. And the
+open questions it leaves are compelling: Is the exact/approximate
+boundary provably at radix 9? Can the efficiency constant continue
+improving past 1.53? And most practically — how do these kernel
+techniques extend to structured matrices (sparse, Toeplitz), or to
+polynomial trace estimation for log-determinants?</p>
+<p>For anyone doing matrix series evaluation in production —
+preconditioners, resolvent approximations, MIMO detection — the
+takeaway is concrete: you can get ~25% fewer matrix
+multiplications at the same accuracy by swapping in a better
+kernel. The radix-9 kernel is exact and drop-in. The higher-radix
+approximate kernels are nearly as accurate and even cheaper.</p>
+<hr/>
+<p><em>The paper: <a href="https://arxiv.org/abs/2602.11843">Fast Evaluation of Truncated Neumann Series by
+Low-Product Radix Kernels</a>.
+Preprint, February 2026.</em></p>]]></content><author><name></name></author><category term="research"/><category term="numerical-methods"/><category term="linear-algebra"/><category term="high-performance-computing"/><category term="matrix-computation"/><category term="preconditioning"/><summary type="html"><![CDATA[Faster Neumann series evaluation through smarter radix kernels - achieving ~25% fewer matrix products at the same accuracy.]]></summary></entry><entry><title type="html">Quantum Computers: The Key to Unlocking (or Breaking) the Simulation?</title><link href="https://piyush314.github.io/blog/2025/quantum-computers-simulation-hypothesis/" rel="alternate" type="text/html" title="Quantum Computers: The Key to Unlocking (or Breaking) the Simulation?"/><published>2025-03-31T11:35:00+00:00</published><updated>2025-03-31T11:35:00+00:00</updated><id>https://piyush314.github.io/blog/2025/quantum-computers-simulation-hypothesis</id><content type="html" xml:base="https://piyush314.github.io/blog/2025/quantum-computers-simulation-hypothesis/"><![CDATA[<h2 id="quantum-computers-the-key-to-unlocking-or-breaking-the-simulation">Quantum Computers: The Key to Unlocking (or Breaking) the Simulation?</h2>
+<figure>
+<picture>
+
+
+<source class="responsive-img-srcset" srcset="/assets/img/blogQuantum-480.webp 480w,/assets/img/blogQuantum-800.webp 800w,/assets/img/blogQuantum-1400.webp 1400w," type="image/webp" sizes="95vw"/>
+<img src="/assets/img/blogQuantum.png" width="100%" height="auto" style="
+max-width: 50%;
+" alt="Quantum Computer Chip" title="Quantum Computing Concept" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/>
+</picture>
+</figure>
+<p>What if reality is an illusion? The Simulation Hypothesis—the idea we live in a computer simulation—has fascinated scientists and philosophers for decades. But a key challenge remains: how to test it. Quantum computing could change that. This revolutionary technology blurs the boundaries between science and speculation. Breakthroughs like Google’s “Willow” quantum chip raise an intriguing possibility: these machines might interface with the “hypercomputer” behind our simulated reality—exposing its glitches.</p>
+<h3 id="a-quantum-leap-beyond-imagination">A Quantum Leap Beyond Imagination</h3>
+<p>In December 2024, Google announced that its “Willow” quantum chip completed a complex computation in under five minutes—a task estimated to take a classical supercomputer like Frontier 10 septillion years. This isn’t just a speed boost; it’s an unimaginable leap beyond classical computing, as detailed in Nature’s coverage<a href="https://www.nature.com/articles/d41586-024-04028-3"><em>Nature</em>’s coverage</a>.</p>
+<p>How does Willow achieve this? Quantum computers use superposition and entanglement to solve problems that would overwhelm even the most powerful classical machines. Where does this power come from? Physicist David Deutsch suggests it might involve the multiverse—computations spanning parallel realities. But what if there’s another explanation, one tied to the Simulation Hypothesis? Could quantum computers be reaching <em>outside</em> our universe, borrowing power from the system simulating us?</p>
+<h3 id="the-universe-as-a-cosmic-computer">The Universe as a Cosmic Computer</h3>
+<p>Picture the universe as a giant computational engine, sparked by the Big Bang and chugging along within the limits of its own physics—limits tied to energy, matter, and concepts like the Thermodynamic Limit or Landauer Limit. Classical computers fit neatly within this framework. But quantum computers? They’re a different beast. Their ability to tackle problems like Willow’s benchmark, reported by <a href="https://www.theverge.com/2024/12/9/24317382/google-willow-quantum-computing-chip-breakthrough"><em>The Verge</em></a>, suggests they might be playing by rules our universe shouldn’t allow.</p>
+<figure>
+<picture>
+
+
+<source class="responsive-img-srcset" srcset="/assets/img/entaglementThesecret-480.webp 480w,/assets/img/entaglementThesecret-800.webp 800w,/assets/img/entaglementThesecret-1400.webp 1400w," type="image/webp" sizes="95vw"/>
+<img src="/assets/img/entaglementThesecret.png" width="100%" height="auto" style="
+max-width: 50%;
+" alt="Quantum Entanglement Concept" title="Quantum Entanglement" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/>
+</picture>
+</figure>
+<p>So, here’s the wild idea: What if quantum computers aren’t just working <em>inside</em> our reality? What if they’re “offloading” their toughest calculations to a “hypercomputer”—the hypothetical machine running our universe as a simulation? In this view, quantum entanglement—where particles seem to instantly influence each other across vast distances—could be a shortcut in the simulation’s code, and Willow’s insane speed might be a glimpse of the hypercomputer’s true power, as explored in <a href="https://medium.com/@nicjames0515/the-quantum-connection-to-the-simulation-hypothesis-191645f58514"><em>The Quantum Connection</em></a>.</p>
+<h3 id="from-what-if-to-how-do-we-know">From “What If” to “How Do We Know?”</h3>
+<p>The Simulation Hypothesis takes an intriguing turn when applied to quantum computing. If reality runs on a hypercomputer with finite but vast resources, pushing quantum systems to their limits could trigger “simulation lag”—reality glitches like an overloaded video game. This testable angle aligns with <a href="https://phys.org/news/2022-11-simulation.html"><em>Phys.org</em>’s analysis of simulation stress-testing</a>.</p>
+<p>This isn’t just speculative thinking: if quantum computers interface with an external computational layer, evidence could emerge under extreme computational loads. Specifically:</p>
+<ol>
+<li><strong>Define the Limit:</strong> Calculate the maximum computational power our universe’s physics should allow—its thermodynamic ceiling.</li>
+<li><strong>Push Past It:</strong> Build quantum systems that demand more than that ceiling permits.</li>
+<li><strong>Watch for Cracks:</strong> Look for anomalies signaling the simulation’s strain, like:
+<ul>
+<li><em>Shifts in Constants:</em> Subtle wobbles in the speed of light or other “fixed” numbers.</li>
+<li><em>Quantum Weirdness:</em> Unexpected quirks in quantum behavior beyond current theories.</li>
+<li><em>Time Hiccups:</em> Tiny delays or inconsistencies in physical processes, like lag in a game.</li>
+</ul>
+</li>
+</ol>
+<p>If we see these glitches, it could suggest our reality’s a simulation. If we don’t, it might mean quantum power stays within our universe’s rules—or the hypercomputer’s just too good to falter.</p>
+<figure>
+<picture>
+
+
+<source class="responsive-img-srcset" srcset="/assets/img/breakingreality-480.webp 480w,/assets/img/breakingreality-800.webp 800w,/assets/img/breakingreality-1400.webp 1400w," type="image/webp" sizes="95vw"/>
+<img src="/assets/img/breakingreality.jpeg" width="100%" height="auto" style="
+max-width: 50%;
+" alt="Concept of reality breaking or glitching" title="Breaking Reality?" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/>
+</picture>
+</figure>
+<h3 id="other-theories-in-the-quantum-realm">Other Theories in the Quantum Realm</h3>
+<p>Alternatively, the multiverse theory (Deutsch, Many-Worlds Interpretation) suggests quantum computers (e.g., Willow) compute across parallel universes without an external simulator. Pilot-wave theory and digital physics avoid multiverses, instead relying on hidden variables or intrinsic computational properties.</p>
+<p>Unlike these theories, I am suggesting that quantum computers might breach reality by accessing and overloading an external hypercomputer, potentially causing observable effects. This hypothesis favors testability, predicting glitches rather than parallel worlds.</p>
+<h3 id="the-reality-check">The Reality Check</h3>
+<p>Let’s pause. This idea relies on unproven assumptions: that we’re in a simulation, that a hypercomputer exists, and that quantum computers access it. Currently, there’s <em>no evidence</em> of simulation lag, shifting constants, or external resources, as critics note <a href="https://spectrum.ieee.org/the-case-against-quantum-computing"><em>IEEE Spectrum</em></a>. Willow’s achievement is remarkable, but standard quantum mechanics explains it without invoking a cosmic simulator—or a multiverse, as argued in <a href="https://www.quantamagazine.org/the-argument-against-quantum-computers-20180207/"><em>Quanta Magazine</em></a>.</p>
+<p>Occam’s Razor applies: why propose a hypercomputer when quantum mechanics already explains these phenomena? Testing this is difficult. Even with advanced quantum technology, detecting subtle anomalies or defining universal limits remains a massive challenge.</p>
+<h3 id="why-this-matters">Why This Matters</h3>
+<p>Google’s Willow chip doesn’t prove we’re simulated, but it raises big questions. Quantum computers are redefining computational limits—could they reveal the multiverse, expose a simulation, or simply demonstrate the strange power of physics?</p>
+<p>This quantum twist on the Simulation Hypothesis makes a philosophical puzzle testable. As quantum tech advances, could we build a machine that disrupts reality? For now, it’s a thrilling possibility.</p>
+<p><strong>What’s your take? Does Willow’s speed hint at a simulation, a multiverse, or just quantum mechanics doing its thing?</strong></p>
+<hr/>
+<h3 id="key-citations">Key Citations</h3>
+<ul>
+<li><a href="https://www.nature.com/articles/d41586-024-04028-3">Google’s new quantum chip achieves accuracy milestone</a></li>
+<li><a href="https://www.theverge.com/2024/12/9/24317382/google-willow-quantum-computing-chip-breakthrough">Google reveals quantum computing chip with ‘breakthrough’ achievements</a></li>
+<li><a href="https://medium.com/@nicjames0515/the-quantum-connection-to-the-simulation-hypothesis-191645f58514">The Quantum Connection to the Simulation Hypothesis</a></li>
+<li><a href="https://phys.org/news/2022-11-simulation.html">How to test whether we’re living in a computer simulation</a></li>
+<li><a href="https://spectrum.ieee.org/the-case-against-quantum-computing">The Case Against Quantum Computing</a></li>
+<li><a href="https://www.quantamagazine.org/the-argument-against-quantum-computers-20180207/">The Argument Against Quantum Computers</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Willow_processor">Willow processor - Wikipedia</a></li>
+<li><a href="https://www.forbes.com/sites/timbajarin/2024/12/13/why-googles-quantum-computer-chip-willow-is-a-game-changer/">Why Google’s Quantum Computer Chip Willow Is A Game Changer</a></li>
+<li><a href="https://www.forbes.com/sites/moorinsights/2025/01/28/googles-105-qubit-willow-chip-achieves-major-quantum-milestones/">Google’s 105-Qubit Willow Chip Achieves Major Quantum Milestones</a></li>
+</ul>]]></content><author><name></name></author><category term="science"/><category term="technology"/><category term="speculation"/><category term="quantum-computing"/><category term="simulation-hypothesis"/><category term="google-willow"/><category term="philosophy"/><category term="technology"/><category term="physics"/><summary type="html"><![CDATA[Exploring the Simulation Hypothesis and whether quantum computers like Google's Willow could reveal or even break our simulated reality.]]></summary></entry><entry><title type="html">Test blog post using CMS</title><link href="https://piyush314.github.io/blog/2024/Test_blog_post_using_CMS/" rel="alternate" type="text/html" title="Test blog post using CMS"/><published>2024-05-27T00:00:00+00:00</published><updated>2024-05-27T00:00:00+00:00</updated><id>https://piyush314.github.io/blog/2024/Test_blog_post_using_CMS</id><content type="html" xml:base="https://piyush314.github.io/blog/2024/Test_blog_post_using_CMS/"><![CDATA[<p>I’ve created a content management system for this website using Flask and Python. I’m currently working on updating a blog post using this system. Hopefully, I’ll be able to share this content management system on GitHub soon so that everyone can see and use it. However, at the moment, it’s still in a somewhat basic form. I plan to wait for a couple of days before sharing it.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[I’ve created a content management system for this website using Flask and Python. I’m currently working on updating a blog post using this system. Hopefully, I’ll be able to share this content management system on GitHub soon so that everyone can see and use it. However, at the moment, it’s still in a somewhat basic form. I plan to wait for a couple of days before sharing it.]]></summary></entry><entry><title type="html">The Multiplicative Effect of Good Collaboration in Mental Tasks</title><link href="https://piyush314.github.io/blog/2024/Multiplicative-collaboration/" rel="alternate" type="text/html" title="The Multiplicative Effect of Good Collaboration in Mental Tasks"/><published>2024-03-13T00:20:00+00:00</published><updated>2024-03-13T00:20:00+00:00</updated><id>https://piyush314.github.io/blog/2024/Multiplicative-collaboration</id><content type="html" xml:base="https://piyush314.github.io/blog/2024/Multiplicative-collaboration/"><![CDATA[<h2 id="the-multiplicative-effect-of-good-collaboration-in-mental-tasks">The Multiplicative Effect of Good Collaboration in Mental Tasks</h2>
+<h3 id="introduction">Introduction:</h3>
+<p>This post explores how effective collaboration can have a multiplicative effect on productivity in mental tasks.
+Unlike physical tasks, where output is often the sum of individual efforts, effective collaboration in mental tasks can lead to a ‘1 plus 1 equals 3’ effect.
+We use a mathematical model to explain this phenomenon and explore the underlying assumptions determining when it should and shouldn’t work.
+By the end, you’ll understand what constitutes constructive collaboration and what forms can be destructive.</p>
+<h3 id="the-observation">The Observation:</h3>
+<p>In mental tasks, individuals often face challenges unrelated to time constraints or task size.
+People frequently get stuck on specific aspects requiring clarity, insight, or the right question.
+In such situations, the number of tasks completed depends on the frequency of encountering these “terminal” stuck points, which can lead to procrastination or moving on to the next task without resolving the current one.</p>
+<h3 id="the-power-of-collaboration">The Power of Collaboration:</h3>
+<p>Collaboration on mental tasks reduces the likelihood of all participants getting stuck at the same point. If an individual has a 50% chance of getting stuck, then when two people collaborate, the probability of both getting stuck at the same point decreases to just 25% (0.5 \times 0.5 = 0.25). Consequently, collaborative efforts increase the chances that at least one person will have the necessary insight to overcome obstacles and maintain progress.</p>
+<h3 id="real-world-example">Real-world Example:</h3>
+<p>Consider a scenario with four tasks: A, B, C, and D. If one person works on A and B while another works on C and D, and each gets stuck on one task, only two tasks will be completed.</p>
+<p>However, if they collaborate on A and B together, they are less likely to get stuck on the same task. They may only encounter one stuck point, allowing them to complete three out of four tasks.</p>
+<p>This simple example shows how collaboration enables “1 plus 1 equals 3.” Working together, people can achieve more than the sum of their individual efforts. Collaboration’s multiplicative effect helps overcome obstacles and complete more work.</p>
+<p><strong>The Mathematical Model:</strong></p>
+<p>Let’s consider a scenario where a single task takes two units of time to complete. In a collaborative setting, the time required for two people to finish the task can be calculated as follows:</p>
+<ul>
+<li>Probability of both people getting stuck: 0.25</li>
+<li>Probability of at least one person having an idea to overcome the stuck point: 0.75</li>
+</ul>
+<p>Therefore, the expected time to complete the task with two people collaborating is:
+(2 units of time) x (0.75) = 1.5 units of time</p>
+<p>In other words, the time taken to finish one task with two people collaborating
+is reduced to 1.5 units of time, compared to the 2 units of time it would take
+for a single person.</p>
+<p><strong>The Assumptions and Limitations:</strong></p>
+<p>It’s important to note that the multiplicative effect of collaboration relies on certain assumptions and has its limitations:</p>
+<ul>
+<li><strong>Independence</strong> : The model assumes that the probability of getting stuck is independent for each individual. In reality, there may be correlations based on shared knowledge, skills, or problem-solving approaches.</li>
+<li><strong>Communication and coordination</strong>: Effective collaboration requires clear communication and coordination among team members. If communication breaks down or there is a lack of coordination, the multiplicative effect may be diminished.</li>
+<li><strong>Task complexity</strong>: The multiplicative effect is more pronounced in tasks that involve creative problem-solving and unique insights. For routine or well-defined tasks, the effect may be less significant.</li>
+<li><strong>Group dynamics</strong>: The model assumes a positive and productive group dynamic. If there are conflicts, power imbalances, or a lack of psychological safety, collaboration may be hindered, and the multiplicative effect may not materialize.</li>
+</ul>]]></content><author><name></name></author><category term="sample-posts"/><category term="collaboration"/><category term="math-modelling"/><category term="productivity"/><summary type="html"><![CDATA[how good collaboration can have a multiplicative effect on productivity in certain mental tasks]]></summary></entry></feed>
