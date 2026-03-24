@@ -524,7 +524,7 @@ third_party_libraries:
     integrity:
       js: "sha256-TtLOdUA8mstPoO6sGvHIGx2ceXrrX4KgIItO06XOn8A="
     url:
-      js: "https://cdn.jsdelivr.net/npm/mermaid@{{version}}/dist/mermaid.esm.min.mjs"
+      js: "https://cdn.jsdelivr.net/npm/mermaid@{{version}}/dist/mermaid.min.js"
     version: "10.7.0"
   polyfill:
     url:
