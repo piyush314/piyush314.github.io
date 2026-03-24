@@ -263,10 +263,14 @@ sass:
 # -----------------------------------------------------------------------------
 
 jekyll-minifier:
-  exclude: ["robots.txt"]
+  exclude:
+    - "robots.txt"
+    - "projects/**/*"
   uglifier_args:
     harmony: true
   compress_html: false
+  preserve_line_breaks: true
+  remove_intertag_spaces: false
 
 # -----------------------------------------------------------------------------
 # Jekyll Archives
