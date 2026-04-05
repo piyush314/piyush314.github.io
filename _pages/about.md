@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Staff Scientist <a href='ornl.gov'>ORNL</a>. 1 Bethel Valley Rd, Oak Ridge, TN 37830
+subtitle: Staff Scientist <a href='https://ornl.gov'>ORNL</a>. 1 Bethel Valley Rd, Oak Ridge, TN 37830
 
 profile:
   align: right
@@ -29,4 +29,4 @@ I develop efficient numerical algorithms, including linear solvers and graph alg
 By tackling these challenges, I strive to develop communication-avoiding algorithms, improve fault tolerance, and optimize scientific applications for parallel and distributed computing environments.
 
 <!-- % Moved education to the end and condensed -->
-I completed my undergraduate studies at [IIT Madras](https://www.iitm.ac.in/) in India and earned my PhD from [Georgia Tech](https://cse.gatech.edu/). At Georgia Tech, I was part of [HPC Garage](hpcgarage.org), a research group led by [Prof. Richard Vuduc](https://vuduc.org/). 
+I completed my undergraduate studies at [IIT Madras](https://www.iitm.ac.in/) in India and earned my PhD from [Georgia Tech](https://cse.gatech.edu/). At Georgia Tech, I was part of [HPC Garage](https://hpcgarage.org), a research group led by [Prof. Richard Vuduc](https://vuduc.org/). 

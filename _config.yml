@@ -226,6 +226,7 @@ exclude:
   - venv/
   - al-folio-cms/
   - _posts/disabled/
+  - _projects/deleted/
 keep_files:
   - CNAME
   - .nojekyll
