@@ -67,18 +67,19 @@ Extended to Frontier's AMD GPUs, achieving **1.004 exaflop/s**—the first graph
 ## Biomedical Applications
 
 Applied to COVID-19 Open Research Dataset (CORD-19) and the SPOKE biomedical knowledge network for:
+
 - Drug repurposing candidates
 - Treatment pathway discovery
 - Cross-discipline hypothesis generation
 
 ## Technology Transfer
 
-**US Patent 12,417,246**: *Knowledge graph analytics kernels in high performance computing* (2025)
+**US Patent 12,417,246**: _Knowledge graph analytics kernels in high performance computing_ (2025)
 
 The algorithms developed here have been patented and transitioned to production use, enabling real-world biomedical discovery.
 
 ## Key Publications
 
-- P. Sao, R. Kannan, P. Gera, R. Vuduc. *A Supernodal All-Pairs Shortest Path Algorithm.* PPoPP 2020. **SIAM PP22 Best Paper Prize** {% cite sao2020supernodal %}.
-- R. Kannan, P. Sao, H. Lu, et al. *Scalable Knowledge Graph Analytics at 136 Petaflop/s.* SC 2020. **Gordon Bell Finalist** {% cite kannan2020scalable %}.
-- R. Kannan, P. Sao, H. Lu, et al. *Exaflops Biomedical Knowledge Graph Analytics.* SC 2022. **Gordon Bell Finalist** {% cite kannan2022exaflops %}.
+- P. Sao, R. Kannan, P. Gera, R. Vuduc. _A Supernodal All-Pairs Shortest Path Algorithm._ PPoPP 2020. **SIAM PP22 Best Paper Prize** {% cite sao2020supernodal %}.
+- R. Kannan, P. Sao, H. Lu, et al. _Scalable Knowledge Graph Analytics at 136 Petaflop/s._ SC 2020. **Gordon Bell Finalist** {% cite kannan2020scalable %}.
+- R. Kannan, P. Sao, H. Lu, et al. _Exaflops Biomedical Knowledge Graph Analytics._ SC 2022. **Gordon Bell Finalist** {% cite kannan2022exaflops %}.

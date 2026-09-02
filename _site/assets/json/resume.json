@@ -75,10 +75,7 @@
       "endDate": "2018-01-01",
       "score": "",
       "courses": [],
-      "details": [
-        "Thesis: Scalable and Resilient Sparse Linear Solvers",
-        "Advisor: Dr. Richard Vuduc"
-      ]
+      "details": ["Thesis: Scalable and Resilient Sparse Linear Solvers", "Advisor: Dr. Richard Vuduc"]
     },
     {
       "institution": "Georgia Institute of Technology",
@@ -487,101 +484,72 @@
     {
       "name": "MPI",
       "level": "",
-      "keywords": [
-        "Parallel Programming"
-      ]
+      "keywords": ["Parallel Programming"]
     },
     {
       "name": "OpenMP",
       "level": "",
-      "keywords": [
-        "Parallel Programming"
-      ]
+      "keywords": ["Parallel Programming"]
     },
     {
       "name": "CUDA",
       "level": "",
-      "keywords": [
-        "Parallel Programming"
-      ]
+      "keywords": ["Parallel Programming"]
     },
     {
       "name": "Matlab",
       "level": "",
-      "keywords": [
-        "Scientific Packages",
-        "Visualization"
-      ]
+      "keywords": ["Scientific Packages", "Visualization"]
     },
     {
       "name": "NumPy",
       "level": "",
-      "keywords": [
-        "Scientific Packages"
-      ]
+      "keywords": ["Scientific Packages"]
     },
     {
       "name": "Pandas",
       "level": "",
-      "keywords": [
-        "Scientific Packages"
-      ]
+      "keywords": ["Scientific Packages"]
     },
     {
       "name": "LAPACK",
       "level": "",
-      "keywords": [
-        "Scientific Packages"
-      ]
+      "keywords": ["Scientific Packages"]
     },
     {
       "name": "Matplotlib",
       "level": "",
-      "keywords": [
-        "Visualization"
-      ]
+      "keywords": ["Visualization"]
     },
     {
       "name": "d3.js",
       "level": "",
-      "keywords": [
-        "Visualization"
-      ]
+      "keywords": ["Visualization"]
     },
     {
       "name": "GraphViz",
       "level": "",
-      "keywords": [
-        "Visualization"
-      ]
+      "keywords": ["Visualization"]
     },
     {
       "name": "Inkscape",
       "level": "",
-      "keywords": [
-        "Visualization"
-      ]
+      "keywords": ["Visualization"]
     },
     {
       "name": "SQL",
       "level": "",
-      "keywords": [
-        "General Purpose"
-      ]
+      "keywords": ["General Purpose"]
     },
     {
       "name": "Latex",
       "level": "",
-      "keywords": [
-        "General Purpose"
-      ]
+      "keywords": ["General Purpose"]
     },
     {
       "name": "Git",
       "level": "",
-      "keywords": [
-        "General Purpose"
-      ]
+      "keywords": ["General Purpose"]
     }
   ],
   "languages": [],

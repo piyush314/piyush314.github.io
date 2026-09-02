@@ -9,8 +9,8 @@ permissions:
 # Run workflow when a `.bib` file is added or updated in the `data/` folder
 on:
   push:
-    branches: ['main']
-    paths: ['publications.bib']
+    branches: ["main"]
+    paths: ["publications.bib"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -40,7 +40,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v5
         with:
-          commit-message: 'content: import publications from Bibtex'
+          commit-message: "content: import publications from Bibtex"
           title: Hugo Blox Builder - Import latest publications
           body: |
             Import the latest publications from `publications.bib` to `content/publication/`.

@@ -59,7 +59,9 @@
           {% if content.details and content.details.size > 0 %}
             <ul class="items">
               {% for item in content.details %}
-                <li><span class="item">{{ item }}</span></li>
+                <li>
+                  <span class="item">{{ item }}</span>
+                </li>
               {% endfor %}
             </ul>
           {% endif %}

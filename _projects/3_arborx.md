@@ -11,7 +11,7 @@ mermaid:
 
 ## The Spatial Search Problem
 
-Many scientific applications—from cosmology simulations to wind farm modeling—need to answer geometric queries at massive scale: *Which particles are within distance r? What are the k nearest neighbors?* Traditional spatial data structures don't map well to GPUs, where irregular memory access patterns kill performance.
+Many scientific applications—from cosmology simulations to wind farm modeling—need to answer geometric queries at massive scale: _Which particles are within distance r? What are the k nearest neighbors?_ Traditional spatial data structures don't map well to GPUs, where irregular memory access patterns kill performance.
 
 [ArborX](https://github.com/arborx/ArborX) is an open-source C++ library providing performance-portable algorithms for geometric search on modern supercomputing architectures. Developed as part of the Exascale Computing Project (ECP), it uses Kokkos for device-independent parallelism, enabling efficient execution across CPUs and GPUs from multiple vendors using a single codebase.
 
@@ -73,6 +73,7 @@ The DBSCAN clustering algorithm we developed in ArborX performs **15× better on
 ## Impact
 
 ArborX is published in ACM TOMS (2020) and is an integral component of xSDK and the broader ECP software ecosystem. Applications include:
+
 - Computational cosmology (halo finding)
 - Multiphysics data transfer
 - Computational mechanics

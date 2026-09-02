@@ -22,8 +22,8 @@ $$S_k(A) = I + A + A^2 + \cdots + A^{k-1}$$
 When the spectral radius of $A$ is less than 1, this converges to
 $(I - A)^{-1}$. Simple enough in theory. Practically, the cost is
 dominated by matrix-matrix products (GEMMs), and this raises the
-question: *how many multiplications do you actually need to get
-$k$ terms?*
+question: _how many multiplications do you actually need to get
+$k$ terms?_
 
 The naive answer is $k - 1$ products — just keep multiplying. In
 our recent preprint, we show the real answer is significantly fewer,
@@ -73,7 +73,7 @@ savings are enormous — but can we squeeze out more?
 ## The ternary trick: tripling instead of doubling
 
 The binary approach doubles the series each step. What if we
-*tripled* it?
+_tripled_ it?
 
 Suppose you have $S_3(A) = I + A + A^2$. You want to triple the
 series length to get $S_9(A)$. The same factoring idea works:
@@ -111,7 +111,7 @@ tradeoff? To compare radices fairly, we need a single metric that
 captures both the cost and the payoff of each step.
 
 Notice what binary and ternary splitting have in common. In both
-cases, we're computing a *kernel* — a small Neumann series that,
+cases, we're computing a _kernel_ — a small Neumann series that,
 when composed with what we already have, extends the full series
 by a multiplicative factor.
 
@@ -171,7 +171,7 @@ significant jump from ternary's 1.89.
 But here the trail went cold. Nobody had constructed an explicit
 kernel for radix 7, 9, 11, or anything higher. Theoretical
 analysis suggested better constants were achievable — the optimal
-radix among integers is actually $m = 3$ for *naive* kernel
+radix among integers is actually $m = 3$ for _naive_ kernel
 computation, where $T_m$ itself costs $m - 2$ products. But the
 quinary kernel broke that pattern by evaluating $T_5$ in fewer
 products than the naive count. Could the same trick work at higher
@@ -197,10 +197,11 @@ radix 5.
 
 The idea: choose two matrix factors $P$ and $Q$, each a linear
 combination of already-computed building blocks ($B$, $B^2$, $B^3
-+ 2B^4$), such that their product $P \cdot Q$ generates all the
-high-degree terms ($B^5$ through $B^8$) in one shot. The
-low-degree terms ($B^2$ through $B^4$) get patched up afterward
-using the building blocks directly.
+
+- 2B^4$), such that their product $P \cdot Q$ generates all the
+  high-degree terms ($B^5$ through $B^8$) in one shot. The
+  low-degree terms ($B^2$ through $B^4$) get patched up afterward
+  using the building blocks directly.
 
 The cleverness is in how $P$ and $Q$ are chosen. The product of
 two degree-4 polynomials in $B$ spans degrees 2–8. By carefully
@@ -216,15 +217,15 @@ a factor of 9. Efficiency: $5/\log_2 9 \approx 1.58$ — a 21%
 improvement over binary and 8% over quinary.
 
 | Radix | Kernel Products | Total per Step | Efficiency |
-|-------|-----------------|----------------|------------|
+| ----- | --------------- | -------------- | ---------- |
 | 2     | 0               | 2              | 2.00       |
 | 3     | 1               | 3              | 1.89       |
 | 5     | 2               | 4              | 1.72       |
 | 9     | 3               | 5              | 1.58       |
-| 15*   | 4               | 6              | 1.54       |
-| 24*   | 5               | 7              | 1.53       |
+| 15\*  | 4               | 6              | 1.54       |
+| 24\*  | 5               | 7              | 1.53       |
 
-*(\* approximate kernels)*
+_(\* approximate kernels)_
 
 ## Going further: approximate kernels and the spillover problem
 
@@ -234,10 +235,10 @@ achievable, that would give efficiency $6/\log_2 15 \approx 1.54$.
 
 We find such a kernel through numerical optimization. But
 there's a catch: unlike the radix-5 and radix-9 kernels, which
-produce *exactly* $I + B + \cdots + B^{m-1}$ and nothing else, the
+produce _exactly_ $I + B + \cdots + B^{m-1}$ and nothing else, the
 radix-15 kernel produces the right terms through degree 14 but
 also generates small unwanted higher-degree terms — what we
-call *spillover*. With 28 free parameters across 4 chained
+call _spillover_. With 28 free parameters across 4 chained
 products, you can nail the 15 target coefficients, but zeroing out
 all spillover simultaneously appears to be impossible.
 
@@ -258,7 +259,7 @@ of the road?
 
 This is the paper's most transferable contribution. The
 trick is to stop tracking the series directly and instead track
-the *residual* — the gap between your running approximate inverse
+the _residual_ — the gap between your running approximate inverse
 and the true inverse.
 
 The key mathematical observation: if you apply an imperfect kernel
@@ -273,7 +274,7 @@ prefix of your approximation stays exact.
 This framework recovers all the earlier methods as special cases.
 Binary splitting, ternary splitting, exact telescoping — they all
 fall out when you plug in the appropriate (spillover-free) kernel.
-But now you can also plug in *approximate* kernels and still get
+But now you can also plug in _approximate_ kernels and still get
 rigorous convergence guarantees, provided the spectral radius is
 within a modestly tightened safe zone.
 
@@ -344,6 +345,6 @@ approximate kernels are nearly as accurate and even cheaper.
 
 ---
 
-*The paper: [Fast Evaluation of Truncated Neumann Series by
+_The paper: [Fast Evaluation of Truncated Neumann Series by
 Low-Product Radix Kernels](https://arxiv.org/abs/2602.11843).
-Preprint, February 2026.*
+Preprint, February 2026._

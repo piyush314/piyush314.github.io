@@ -53,12 +53,13 @@ The algorithm uses a three-dimensional MPI process grid, exploits elimination tr
 
 ## Performance Results
 
-| Configuration | Planar Graphs | Non-Planar Graphs |
-|--------------|---------------|-------------------|
-| 24,000 cores (Cray XC30) | **27× speedup** | **3.3× speedup** |
-| 4,096 nodes + GPUs (Cray XK7) | **24× speedup** | **3.5× speedup** |
+| Configuration                 | Planar Graphs   | Non-Planar Graphs |
+| ----------------------------- | --------------- | ----------------- |
+| 24,000 cores (Cray XC30)      | **27× speedup** | **3.3× speedup**  |
+| 4,096 nodes + GPUs (Cray XK7) | **24× speedup** | **3.5× speedup**  |
 
-For a planar graph with *n* vertices, the 3D algorithm achieves:
+For a planar graph with _n_ vertices, the 3D algorithm achieves:
+
 - Communication volume reduction by O(√log n)
 - Latency reduction by O(log n)
 
@@ -71,8 +72,8 @@ For a planar graph with *n* vertices, the 3D algorithm achieves:
 
 ## Key Publications
 
-- P. Sao, X.S. Li, R. Vuduc. *A communication-avoiding 3D algorithm for sparse LU factorization on heterogeneous systems.* JPDC, 2019 {% cite sao2019jpdc %}.
-- P. Sao, X.S. Li, R. Vuduc. *A communication-avoiding 3D LU factorization algorithm for sparse matrices.* IPDPS 2018 {% cite sao2018ipdps %}.
-- X.S. Li, P. Lin, Y. Liu, P. Sao. *Newly released capabilities in the distributed-memory SuperLU sparse direct solver.* ACM TOMS, 2023 {% cite li2022newly %}.
+- P. Sao, X.S. Li, R. Vuduc. _A communication-avoiding 3D algorithm for sparse LU factorization on heterogeneous systems._ JPDC, 2019 {% cite sao2019jpdc %}.
+- P. Sao, X.S. Li, R. Vuduc. _A communication-avoiding 3D LU factorization algorithm for sparse matrices._ IPDPS 2018 {% cite sao2018ipdps %}.
+- X.S. Li, P. Lin, Y. Liu, P. Sao. _Newly released capabilities in the distributed-memory SuperLU sparse direct solver._ ACM TOMS, 2023 {% cite li2022newly %}.
 
 **Code:** [github.com/xiaoyeli/superlu_dist](https://github.com/xiaoyeli/superlu_dist)

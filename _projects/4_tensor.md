@@ -18,6 +18,7 @@ This research thread develops scalable algorithms for constrained tensor factori
 ### Multifrontal NMF (PPAM 2019)
 
 Standard NMF algorithms treat the problem as dense optimization. But sparse data induces structure in the computation—structure that mirrors the multifrontal method from sparse direct solvers. By recognizing this connection, we developed an NMF algorithm that:
+
 - Exploits sparsity patterns for efficient memory access
 - Uses elimination tree parallelism for concurrent updates
 - Achieves significant speedups on sparse datasets
@@ -29,6 +30,7 @@ Energy materials characterization produces hyperspectral data where each pixel i
 ### Accelerated Constrained Sparse Tensor Factorization (ICPP 2024)
 
 Extending beyond matrices to tensors, this work develops GPU-accelerated algorithms for sparse CP decomposition with non-negativity and other constraints. Key innovations:
+
 - Massively parallel MTTKRP (matricized tensor times Khatri-Rao product)
 - Constraint-aware update schemes
 - Scaling to billion-element tensors
@@ -39,16 +41,16 @@ Non-negative least squares (NNLS) is the computational kernel underlying NMF. Ou
 
 ## Applications
 
-| Domain | Problem | Our Contribution |
-|--------|---------|------------------|
-| Energy Materials | Hyperspectral unmixing | FUNNL algorithm |
-| Recommender Systems | Matrix completion | Scalable NMF |
-| Community Detection | Network clustering | Sparse tensor methods |
-| Scientific Imaging | Feature extraction | Constrained decomposition |
+| Domain              | Problem                | Our Contribution          |
+| ------------------- | ---------------------- | ------------------------- |
+| Energy Materials    | Hyperspectral unmixing | FUNNL algorithm           |
+| Recommender Systems | Matrix completion      | Scalable NMF              |
+| Community Detection | Network clustering     | Sparse tensor methods     |
+| Scientific Imaging  | Feature extraction     | Constrained decomposition |
 
 ## Key Publications
 
-- P. Sao, R. Kannan. *Multifrontal Non-negative Matrix Factorization.* PPAM 2019 {% cite sao2019multifrontal %}.
-- J.A. Graves, T.F. Blum, P. Sao, M. Chi, R. Kannan. *FUNNL: Fast Nonlinear Nonnegative Unmixing for Alternate Energy Systems.* Knowledge-Guided Machine Learning, 2023 {% cite graves2023funnl %}.
-- Y. Soh, R. Kannan, P. Sao, J. Choi. *Accelerated Constrained Sparse Tensor Factorization on Massively Parallel Architectures.* ICPP 2024 {% cite soh2024accelerated %}.
-- B. Cobb, R. Kannan, K. Pieper, P. Sao, et al. *Fast Active-Set Thresholding Method for Nonnegative Least Squares.* IEEE BigData 2025 {% cite cobb2025fast %}.
+- P. Sao, R. Kannan. _Multifrontal Non-negative Matrix Factorization._ PPAM 2019 {% cite sao2019multifrontal %}.
+- J.A. Graves, T.F. Blum, P. Sao, M. Chi, R. Kannan. _FUNNL: Fast Nonlinear Nonnegative Unmixing for Alternate Energy Systems._ Knowledge-Guided Machine Learning, 2023 {% cite graves2023funnl %}.
+- Y. Soh, R. Kannan, P. Sao, J. Choi. _Accelerated Constrained Sparse Tensor Factorization on Massively Parallel Architectures._ ICPP 2024 {% cite soh2024accelerated %}.
+- B. Cobb, R. Kannan, K. Pieper, P. Sao, et al. _Fast Active-Set Thresholding Method for Nonnegative Least Squares._ IEEE BigData 2025 {% cite cobb2025fast %}.

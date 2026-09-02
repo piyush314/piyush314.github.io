@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://piyush314.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://piyush314.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-09-02T19:27:00-04:00</updated><id>https://piyush314.github.io/feed.xml</id><title type="html">blank</title><subtitle>Personal webpage for Dr. Piyush Sao, Staff scientist, Computer science and mathematics division, ORNL.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://piyush314.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://piyush314.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-09-02T19:29:44-04:00</updated><id>https://piyush314.github.io/feed.xml</id><title type="html">blank</title><subtitle>Personal webpage for Dr. Piyush Sao, Staff scientist, Computer science and mathematics division, ORNL.
 </subtitle><entry><title type="html">How Many Matrix Multiplications Do You Actually Need?</title><link href="https://piyush314.github.io/blog/2026/neumann-series-radix-kernels/" rel="alternate" type="text/html" title="How Many Matrix Multiplications Do You Actually Need?" /><published>2026-03-21T08:00:00-04:00</published><updated>2026-03-21T08:00:00-04:00</updated><id>https://piyush314.github.io/blog/2026/neumann-series-radix-kernels</id><content type="html" xml:base="https://piyush314.github.io/blog/2026/neumann-series-radix-kernels/"><![CDATA[<h2 id="how-many-matrix-multiplications-do-you-actually-need">How Many Matrix Multiplications Do You Actually Need?</h2>
 
 <h3 id="faster-neumann-series-evaluation-through-smarter-radix-kernels">Faster Neumann series evaluation through smarter radix kernels</h3>
@@ -191,6 +191,7 @@ radix 5.</p>
 
 <p>The idea: choose two matrix factors $P$ and $Q$, each a linear
 combination of already-computed building blocks ($B$, $B^2$, $B^3</p>
+
 <ul>
   <li>2B^4$), such that their product $P \cdot Q$ generates all the
 high-degree terms ($B^5$ through $B^8$) in one shot. The
@@ -510,6 +511,7 @@ Preprint, February 2026.</em></p>]]></content><author><name></name></author><cat
 <hr />
 
 <h3 id="key-citations">Key Citations</h3>
+
 <ul>
   <li><a href="https://www.nature.com/articles/d41586-024-04028-3">Google’s new quantum chip achieves accuracy milestone</a></li>
   <li><a href="https://www.theverge.com/2024/12/9/24317382/google-willow-quantum-computing-chip-breakthrough">Google reveals quantum computing chip with ‘breakthrough’ achievements</a></li>
@@ -523,21 +525,24 @@ Preprint, February 2026.</em></p>]]></content><author><name></name></author><cat
 </ul>]]></content><author><name></name></author><category term="science" /><category term="technology" /><category term="speculation" /><category term="quantum-computing" /><category term="simulation-hypothesis" /><category term="google-willow" /><category term="philosophy" /><category term="technology" /><category term="physics" /><summary type="html"><![CDATA[Exploring the Simulation Hypothesis and whether quantum computers like Google's Willow could reveal or even break our simulated reality.]]></summary></entry><entry><title type="html">The Multiplicative Effect of Good Collaboration in Mental Tasks</title><link href="https://piyush314.github.io/blog/2024/Multiplicative-collaboration/" rel="alternate" type="text/html" title="The Multiplicative Effect of Good Collaboration in Mental Tasks" /><published>2024-03-12T20:20:00-04:00</published><updated>2024-03-12T20:20:00-04:00</updated><id>https://piyush314.github.io/blog/2024/Multiplicative-collaboration</id><content type="html" xml:base="https://piyush314.github.io/blog/2024/Multiplicative-collaboration/"><![CDATA[<h2 id="the-multiplicative-effect-of-good-collaboration-in-mental-tasks">The Multiplicative Effect of Good Collaboration in Mental Tasks</h2>
 
 <h3 id="introduction">Introduction:</h3>
-<p>This post explores how effective collaboration can have a multiplicative effect on productivity in mental tasks. 
-Unlike physical tasks, where output is often the sum of individual efforts, effective collaboration in mental tasks can lead to a ‘1 plus 1 equals 3’ effect. 
-We use a mathematical model to explain this phenomenon and explore the underlying assumptions determining when it should and shouldn’t work. 
+
+<p>This post explores how effective collaboration can have a multiplicative effect on productivity in mental tasks.
+Unlike physical tasks, where output is often the sum of individual efforts, effective collaboration in mental tasks can lead to a ‘1 plus 1 equals 3’ effect.
+We use a mathematical model to explain this phenomenon and explore the underlying assumptions determining when it should and shouldn’t work.
 By the end, you’ll understand what constitutes constructive collaboration and what forms can be destructive.</p>
 
 <h3 id="the-observation">The Observation:</h3>
 
-<p>In mental tasks, individuals often face challenges unrelated to time constraints or task size. 
-People frequently get stuck on specific aspects requiring clarity, insight, or the right question. 
+<p>In mental tasks, individuals often face challenges unrelated to time constraints or task size.
+People frequently get stuck on specific aspects requiring clarity, insight, or the right question.
 In such situations, the number of tasks completed depends on the frequency of encountering these “terminal” stuck points, which can lead to procrastination or moving on to the next task without resolving the current one.</p>
 
 <h3 id="the-power-of-collaboration">The Power of Collaboration:</h3>
+
 <p>Collaboration on mental tasks reduces the likelihood of all participants getting stuck at the same point. If an individual has a 50% chance of getting stuck, then when two people collaborate, the probability of both getting stuck at the same point decreases to just 25% (0.5 \times 0.5 = 0.25). Consequently, collaborative efforts increase the chances that at least one person will have the necessary insight to overcome obstacles and maintain progress.</p>
 
 <h3 id="real-world-example">Real-world Example:</h3>
+
 <p>Consider a scenario with four tasks: A, B, C, and D. If one person works on A and B while another works on C and D, and each gets stuck on one task, only two tasks will be completed.</p>
 
 <p>However, if they collaborate on A and B together, they are less likely to get stuck on the same task. They may only encounter one stuck point, allowing them to complete three out of four tasks.</p>

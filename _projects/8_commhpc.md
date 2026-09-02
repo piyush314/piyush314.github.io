@@ -61,6 +61,7 @@ Efficient CPU–GPU co-processing by using data replication strategies that redu
 ### Multi-Vendor GPU Support
 
 Developed unified code paths supporting:
+
 - NVIDIA GPUs (CUDA)
 - AMD GPUs (HIP/ROCm)
 - Intel GPUs (SYCL/oneAPI)
@@ -75,15 +76,16 @@ Co-authored the **Interface for Sparse Linear Algebra Operations** (2024), a com
 
 ## Key Publications
 
-- P. Sao, R. Kannan, X.S. Li, R. Vuduc. *A communication-avoiding 3D sparse triangular solver.* ICS 2019 {% cite sao2019ics %}.
-- Y. Liu, N. Ding, P. Sao, S. Williams, X.S. Li. *Unified Communication Optimization Strategies for Sparse Triangular Solver on CPU and GPU Clusters.* SC 2023 {% cite liu2023unified %}.
-- H. Lu, P. Sao, M. Matheson, R. Kannan, F. Wang, T. Potok. *Optimizing Communication in 2D Grid-Based MPI Applications at Exascale.* EuroMPI 2023 {% cite lu2023optimizing %}.
-- V. Thakkar, R. Kannan, P. Sao, et al. *Dense semiring linear algebra on modern CUDA hardware.* SIAM CSE 2021 {% cite thakkar2021dense %}.
-- A. Abdelfattah, ..., P. Sao, et al. *Interface for sparse linear algebra operations.* arXiv:2411.13259, 2024 {% cite abdelfattah2024interface %}.
+- P. Sao, R. Kannan, X.S. Li, R. Vuduc. _A communication-avoiding 3D sparse triangular solver._ ICS 2019 {% cite sao2019ics %}.
+- Y. Liu, N. Ding, P. Sao, S. Williams, X.S. Li. _Unified Communication Optimization Strategies for Sparse Triangular Solver on CPU and GPU Clusters._ SC 2023 {% cite liu2023unified %}.
+- H. Lu, P. Sao, M. Matheson, R. Kannan, F. Wang, T. Potok. _Optimizing Communication in 2D Grid-Based MPI Applications at Exascale._ EuroMPI 2023 {% cite lu2023optimizing %}.
+- V. Thakkar, R. Kannan, P. Sao, et al. _Dense semiring linear algebra on modern CUDA hardware._ SIAM CSE 2021 {% cite thakkar2021dense %}.
+- A. Abdelfattah, ..., P. Sao, et al. _Interface for sparse linear algebra operations._ arXiv:2411.13259, 2024 {% cite abdelfattah2024interface %}.
 
 ## Connection to Other Projects
 
 These optimization techniques are applied across:
+
 - **SuperLU_DIST**: 3D factorization and triangular solve
 - **Knowledge Graphs**: DSNAPSHOT and COAST communication patterns
 - **ArborX**: Distributed spatial queries
