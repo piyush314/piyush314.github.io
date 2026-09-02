@@ -58,7 +58,7 @@ Advances understanding of problems that do not reduce to matrices and tensors ov
 
 ## My Role
 
-As Co-PI, I contribute to communication-avoiding algorithms for sparse solvers, sparse tensor factorization methods, and graph algorithm optimization—connecting multiple pillars through cross-cutting algorithmic themes.
+As Co-PI, I contribute to communication-avoiding algorithms for sparse solvers, sparse tensor factorization methods, and graph algorithm optimization—connecting multiple pillars through cross-cutting algorithmic themes {% cite sao2024pandora soh2024accelerated abdelfattah2024interface %}.
 
 ## Impact
 

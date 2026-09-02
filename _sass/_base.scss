@@ -1,8 +1,8 @@
 /*******************************************************************************
  * Styles for the base elements of the theme.
  ******************************************************************************/
- @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
- // Typography
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+// Typography
 
 p,
 em,
@@ -11,8 +11,7 @@ li,
 span,
 strong {
   color: var(--global-text-color);
-  font-family: 'Gill Sans', futura, 'Open Sans', sans-serif;
-  
+  font-family: "Gill Sans", futura, "Open Sans", sans-serif;
 }
 
 h1,
@@ -21,11 +20,9 @@ h3,
 h4,
 h5,
 h6 {
-  color: #88D18A;
-  font-family:  futura, 'Open Sans', sans-serif;
-  
+  color: #88d18a;
+  font-family: futura, "Open Sans", sans-serif;
 }
-
 
 hr {
   border-top: 1px solid var(--global-divider-color);
@@ -35,10 +32,19 @@ table {
   td,
   th {
     font-size: 1rem;
+    padding: 0.35rem 0.75rem;
   }
 
   th {
     font-weight: bold;
+  }
+}
+
+table.table-cv,
+table.table-cv-map {
+  td,
+  th {
+    padding: 0;
   }
 }
 
@@ -223,6 +229,17 @@ ul.task-list input[type="checkbox"] {
   margin-right: 1rem;
 }
 
+@media (max-width: 575.98px) {
+  .profile.float-left,
+  .profile.float-right {
+    float: none !important;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 1rem;
+    margin-left: 0;
+  }
+}
+
 @media (min-width: 576px) {
   .profile {
     width: 30%;
@@ -378,6 +395,8 @@ ul.task-list input[type="checkbox"] {
   border: 0;
   background-color: inherit;
   color: var(--global-text-color);
+  font-size: 1.1rem;
+  line-height: 1;
 
   &:hover {
     color: var(--global-hover-color);

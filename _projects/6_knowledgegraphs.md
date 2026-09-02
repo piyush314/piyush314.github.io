@@ -79,6 +79,6 @@ The algorithms developed here have been patented and transitioned to production 
 
 ## Key Publications
 
-- P. Sao, R. Kannan, P. Gera, R. Vuduc. *A Supernodal All-Pairs Shortest Path Algorithm.* PPoPP 2020. **SIAM PP22 Best Paper Prize**
-- R. Kannan, P. Sao, H. Lu, et al. *Scalable Knowledge Graph Analytics at 136 Petaflop/s.* SC 2020. **Gordon Bell Finalist**
-- R. Kannan, P. Sao, H. Lu, et al. *Exaflops Biomedical Knowledge Graph Analytics.* SC 2022. **Gordon Bell Finalist**
+- P. Sao, R. Kannan, P. Gera, R. Vuduc. *A Supernodal All-Pairs Shortest Path Algorithm.* PPoPP 2020. **SIAM PP22 Best Paper Prize** {% cite sao2020supernodal %}.
+- R. Kannan, P. Sao, H. Lu, et al. *Scalable Knowledge Graph Analytics at 136 Petaflop/s.* SC 2020. **Gordon Bell Finalist** {% cite kannan2020scalable %}.
+- R. Kannan, P. Sao, H. Lu, et al. *Exaflops Biomedical Knowledge Graph Analytics.* SC 2022. **Gordon Bell Finalist** {% cite kannan2022exaflops %}.

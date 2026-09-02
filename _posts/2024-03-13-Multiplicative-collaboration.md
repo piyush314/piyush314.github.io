@@ -4,7 +4,7 @@ title: The Multiplicative Effect of Good Collaboration in Mental Tasks
 date: 2024-03-13 00:20:00
 description: how good collaboration can have a multiplicative effect on productivity in certain mental tasks
 tags: collaboration math-modelling productivity
-categories: sample-posts
+categories: research
 ---
 
 ## The Multiplicative Effect of Good Collaboration in Mental Tasks

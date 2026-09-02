@@ -75,11 +75,11 @@ Co-authored the **Interface for Sparse Linear Algebra Operations** (2024), a com
 
 ## Key Publications
 
-- P. Sao, R. Kannan, X.S. Li, R. Vuduc. *A communication-avoiding 3D sparse triangular solver.* ICS 2019.
-- Y. Liu, N. Ding, P. Sao, S. Williams, X.S. Li. *Unified Communication Optimization Strategies for Sparse Triangular Solver on CPU and GPU Clusters.* SC 2023.
-- H. Lu, P. Sao, M. Matheson, R. Kannan, F. Wang, T. Potok. *Optimizing Communication in 2D Grid-Based MPI Applications at Exascale.* EuroMPI 2023.
-- V. Thakkar, R. Kannan, P. Sao, et al. *Dense semiring linear algebra on modern CUDA hardware.* SIAM CSE 2021.
-- A. Abdelfattah, ..., P. Sao, et al. *Interface for sparse linear algebra operations.* arXiv:2411.13259, 2024.
+- P. Sao, R. Kannan, X.S. Li, R. Vuduc. *A communication-avoiding 3D sparse triangular solver.* ICS 2019 {% cite sao2019ics %}.
+- Y. Liu, N. Ding, P. Sao, S. Williams, X.S. Li. *Unified Communication Optimization Strategies for Sparse Triangular Solver on CPU and GPU Clusters.* SC 2023 {% cite liu2023unified %}.
+- H. Lu, P. Sao, M. Matheson, R. Kannan, F. Wang, T. Potok. *Optimizing Communication in 2D Grid-Based MPI Applications at Exascale.* EuroMPI 2023 {% cite lu2023optimizing %}.
+- V. Thakkar, R. Kannan, P. Sao, et al. *Dense semiring linear algebra on modern CUDA hardware.* SIAM CSE 2021 {% cite thakkar2021dense %}.
+- A. Abdelfattah, ..., P. Sao, et al. *Interface for sparse linear algebra operations.* arXiv:2411.13259, 2024 {% cite abdelfattah2024interface %}.
 
 ## Connection to Other Projects
 

@@ -60,11 +60,11 @@ graph TB
 
 ### Single-Tree Borůvka EMST (ICPP 2022)
 
-Computing the Euclidean Minimum Spanning Tree on GPUs is challenging due to complex branching, data dependencies, and load imbalances. Our single-tree Borůvka algorithm addresses these challenges through careful work distribution and ArborX's spatial primitives.
+Computing the Euclidean Minimum Spanning Tree on GPUs is challenging due to complex branching, data dependencies, and load imbalances. Our single-tree Borůvka algorithm addresses these challenges through careful work distribution and ArborX's spatial primitives {% cite prokopenko2022single %}.
 
 ### PANDORA: Parallel Dendrogram Construction (ICPP 2024)
 
-Single-linkage clustering requires building a dendrogram—a hierarchical tree of cluster merges. PANDORA constructs this structure in parallel on GPUs, leveraging ArborX's nearest-neighbor queries to achieve scalable hierarchical clustering.
+Single-linkage clustering requires building a dendrogram—a hierarchical tree of cluster merges. PANDORA constructs this structure in parallel on GPUs, leveraging ArborX's nearest-neighbor queries to achieve scalable hierarchical clustering {% cite sao2024pandora %}.
 
 ### DBSCAN for Cosmology (ExaSky)
 

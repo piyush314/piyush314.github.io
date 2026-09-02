@@ -67,7 +67,7 @@ Self-stabilization provides a middle ground: low overhead with automatic recover
 
 ## Key Publications
 
-- P. Sao, C. Engelmann, S. Eswar, O. Green, R. Vuduc. *Self-stabilizing Connected Components.* FTXS 2019.
-- P. Sao, R. Vuduc. *Self-stabilizing Iterative Solvers.* ScalA Workshop, SC 2013.
-- P. Sao, O. Green, C. Jain, R. Vuduc. *A Self-Correcting Connected Components Algorithm.* FTXS 2016.
-- C. Engelmann, R. Ashraf, S. Hukerikar, M. Kumar, P. Sao. *Resilience Design Patterns: A Structured Approach to Resilience at Extreme Scale.* ORNL Tech Report, 2022.
+- P. Sao, C. Engelmann, S. Eswar, O. Green, R. Vuduc. *Self-stabilizing Connected Components.* FTXS 2019 {% cite sao2019self %}.
+- P. Sao, R. Vuduc. *Self-stabilizing Iterative Solvers.* ScalA Workshop, SC 2013 {% cite sao2013sscg %}.
+- P. Sao, O. Green, C. Jain, R. Vuduc. *A Self-Correcting Connected Components Algorithm.* FTXS 2016 {% cite sao2016sccc %}.
+- C. Engelmann, R. Ashraf, S. Hukerikar, M. Kumar, P. Sao. *Resilience Design Patterns: A Structured Approach to Resilience at Extreme Scale.* ORNL Tech Report, 2022 {% cite engelmann2022resilience %}.

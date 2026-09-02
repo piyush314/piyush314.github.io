@@ -8,17 +8,17 @@ middle_name: K.
 last_name: Sao
 email: saopk@ornl.gov
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-   Personal webpage for Dr. Piyush Sao, Staff scientist, Computer science and mathematics division, ORNL.
+  Personal webpage for Dr. Piyush Sao, Staff scientist, Computer science and mathematics division, ORNL.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-  
-keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
+
+keywords: high-performance computing, scientific computing, sparse linear algebra, graph algorithms, machine learning, ORNL, Piyush Sao
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://piyush314.github.io # the base hostname & protocol for your site
-baseurl:  # the subpath of your site, e.g. /blog/. Leave blank for root
+baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
 last_updated: false # set to true if you want to display last updated in the footer
 impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
 
@@ -47,7 +47,7 @@ rss_icon: true
 # -----------------------------------------------------------------------------
 
 navbar_fixed: true
-footer_fixed: true
+footer_fixed: false
 
 # Dimensions
 max_width: 800px
@@ -59,9 +59,9 @@ max_width: 800px
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
 # see https://schema.org/docs/faq.html for more information
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
-serve_schema_org: false # Include Schema.org in the HTML head
-og_image: # The site-wide (default for all links) Open Graph preview image
+serve_og_meta: true # Include Open Graph meta tags in the HTML head
+serve_schema_org: true # Include Schema.org in the HTML head
+og_image: https://piyush314.github.io/assets/img/avatar.jpeg
 
 # -----------------------------------------------------------------------------
 # Social integration
@@ -104,7 +104,7 @@ zotero_username: # your zotero username
 wechat_qr: # filename of your wechat qr-code saved as an image (e.g., wechat-qr.png if saved to assets/img/wechat-qr.png)
 
 contact_note: >
-  The best way to reach me is via email. 
+  The best way to reach me is via email.
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
@@ -206,7 +206,7 @@ kramdown:
 include: ["_pages"]
 exclude:
   - bin/
-  - CONTRIBUTING.md 
+  - CONTRIBUTING.md
   - CUSTOMIZE.md
   - Dockerfile
   - docker-compose.yml
@@ -226,6 +226,8 @@ exclude:
   - venv/
   - al-folio-cms/
   - _posts/disabled/
+  - _pages/disabled/
+  - _projects/disabled/
 keep_files:
   - CNAME
   - .nojekyll
@@ -287,8 +289,8 @@ jekyll-archives:
     tag: "/blog/tag/:name/"
     category: "/blog/category/:name/"
 
-display_tags: ["hpc", "sparse-algorithms", "ai", "research", "parallel-computing"] # these tags will be displayed on the front page of your blog
-display_categories: ["technical", "research", "tutorials"] # these categories will be displayed on the front page of your blog
+display_tags: ["numerical-methods", "linear-algebra", "high-performance-computing", "quantum-computing", "collaboration"]
+display_categories: ["research", "science", "technology"]
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar
@@ -316,6 +318,8 @@ scholar:
   details_link: Details
 
   query: "@*"
+  sort_by: [year, sortdate]
+  order: descending
   group_by: year
   group_order: descending
 
@@ -327,7 +331,7 @@ enable_publication_badges:
 
 # Filter out certain bibtex entry keywords used internally from the bib output
 filtered_bibtex_keywords:
-  [abbr, abstract, altmetric, arxiv, bibtex_show, blog, code, html, pdf, poster, preview, selected, slides, supp, video, website]
+  [abbr, abstract, altmetric, arxiv, bibtex_show, blog, code, html, pdf, poster, preview, selected, slides, sortdate, supp, video, website]
 
 # Maximum number of authors to be shown for each publication (more authors are visible on click)
 max_author_limit: 3 # leave blank to always show all authors
@@ -414,7 +418,6 @@ jsonresume:
   - skills
   - languages
   - interests
-  - references
 
 # Third-party libraries
 third_party_libraries:

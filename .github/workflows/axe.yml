@@ -1,15 +1,8 @@
 name: Axe accessibility testing
 
 on:
-  # if you want to run this on every push uncomment the following lines
-  # push:
-  #   branches:
-  #     - master
-  #     - main
-  # pull_request:
-  #   branches:
-  #     - master
-  #     - main
+  pull_request:
+    branches: [main]
   workflow_dispatch:
     inputs:
       url:

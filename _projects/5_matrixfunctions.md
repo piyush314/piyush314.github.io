@@ -56,9 +56,9 @@ Low-precision arithmetic (FP16, BF16) accelerates tensor computations but introd
 
 ## Key Publications
 
-- P. Sao. *Fast Evaluation of Truncated Neumann Series by Low-Product Radix Kernels.* arXiv:2602.11843, 2026.
-- P. Sao. *What Trace Powers Reveal About Log-Determinants: Closed-Form Estimators, Certificates, and Failure Modes.* arXiv:2601.12612, 2026.
-- J. Bellavita, P. Sao, R. Kannan. *Forward Error Bounds and Efficient Algorithms for Computing a Tensor Times Matrix Chain in Low Precision on GPUs.* SC25 Poster, 2025.
+- P. Sao. *Fast Evaluation of Truncated Neumann Series by Low-Product Radix Kernels.* arXiv:2602.11843, 2026 {% cite sao2026neumann %}.
+- P. Sao. *What Trace Powers Reveal About Log-Determinants: Closed-Form Estimators, Certificates, and Failure Modes.* arXiv:2601.12612, 2026 {% cite sao2026tracepowers %}.
+- J. Bellavita, P. Sao, R. Kannan. *Forward Error Bounds and Efficient Algorithms for Computing a Tensor Times Matrix Chain in Low Precision on GPUs.* SC25 Poster, 2025 {% cite bellavita2025forward %}.
 
 ## Connection to Other Projects
 

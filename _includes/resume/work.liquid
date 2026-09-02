@@ -3,7 +3,7 @@
   {% for content in work %}
     <li class="list-group-item">
       <div class="row">
-        <div class="col-xs-2 cl-sm-2 col-md-2 text-center" style="width: 75px">
+        <div class="col-3 col-md-3 text-center">
           {% if content.startDate %}
             {% assign startDate = content.startDate | split: '-' | slice: 0, 2 | join: '.' %}
             {% assign endDate = content.endDate | split: '-' | slice: 0, 2 | join: '.' | default: 'Present' %}
@@ -32,12 +32,20 @@
             </tbody>
           </table>
         </div>
-        <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
+        <div class="col-9 col-md-9 mt-2 mt-md-0">
           <h6 class="title font-weight-bold ml-1 ml-md-4">
-            <a href="{{ content.url }}">{{ content.position }}</a>
+            {% if content.url and content.url != '' %}
+              <a href="{{ content.url }}">{{ content.position }}</a>
+            {% else %}
+              {{ content.position }}
+            {% endif %}
           </h6>
-          <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ content.name }}</h6>
-          <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem; font-style: italic">{{ content.summary }}</h6>
+          {% if content.name and content.name != '' %}
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ content.name }}</h6>
+          {% endif %}
+          {% if content.summary and content.summary != '' %}
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem; font-style: italic">{{ content.summary }}</h6>
+          {% endif %}
           <ul class="items">
             {% for item in content.highlights %}
               <li>

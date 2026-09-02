@@ -216,26 +216,25 @@
     {% capture link %}https://www.zotero.org/{{ site.zotero_username }}{% endcapture %}
     {% assign sameaslinks = sameaslinks | push: link %}
   {% endif %}
-  {% if sameaslinks != blank %}
-    {% assign sameaslinks = sameaslinks | split: '' %}
-  {% endif %}
+  {% capture schema_url %}{{ page.url | prepend: site.baseurl | prepend: site.url }}{% endcapture %}
+  {% capture schema_description %}{% if page.description %}{{ page.description }}{% elsif site.description %}{{ site.description }}{% endif %}{% endcapture %}
+  {% capture schema_headline %}{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}{% endcapture %}
 
   <script type="application/ld+json">
     {
-        "author":
-        {
-            "@type": "Person",
-            "name": "{{ author_name }}"
-        },
-        "url": "{{ page.url | prepend: site.baseurl | prepend: site.url }}",
+        "@context": "https://schema.org",
         "@type": "{% if is_blog_post %}BlogPosting{% else %}WebSite{% endif %}",
-        "description": "{% if page.description %}{{ page.description }}{% else if site.description %}{{ site.description }}{% endif %}",
-        "headline": "{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}",
+        "author": {
+            "@type": "Person",
+            "name": {{ author_name | strip | jsonify }}
+        },
+        "url": {{ schema_url | strip | jsonify }},
+        "description": {{ schema_description | strip | jsonify }},
+        "headline": {{ schema_headline | strip | jsonify }},
         {% if sameaslinks != blank %}
-        "sameAs": {{ sameaslinks }},
+        "sameAs": {{ sameaslinks | jsonify }},
         {% endif %}
-        "name": "{{ author_name }}",
-        "@context": "https://schema.org"
+        "name": {{ author_name | strip | jsonify }}
     }
   </script>
 {% endif %}

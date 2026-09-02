@@ -71,8 +71,8 @@ For a planar graph with *n* vertices, the 3D algorithm achieves:
 
 ## Key Publications
 
-- P. Sao, X.S. Li, R. Vuduc. *A communication-avoiding 3D algorithm for sparse LU factorization on heterogeneous systems.* JPDC, 2019.
-- P. Sao, X.S. Li, R. Vuduc. *A communication-avoiding 3D LU factorization algorithm for sparse matrices.* IPDPS 2018.
-- X.S. Li, P. Lin, Y. Liu, P. Sao. *Newly released capabilities in the distributed-memory SuperLU sparse direct solver.* ACM TOMS, 2023.
+- P. Sao, X.S. Li, R. Vuduc. *A communication-avoiding 3D algorithm for sparse LU factorization on heterogeneous systems.* JPDC, 2019 {% cite sao2019jpdc %}.
+- P. Sao, X.S. Li, R. Vuduc. *A communication-avoiding 3D LU factorization algorithm for sparse matrices.* IPDPS 2018 {% cite sao2018ipdps %}.
+- X.S. Li, P. Lin, Y. Liu, P. Sao. *Newly released capabilities in the distributed-memory SuperLU sparse direct solver.* ACM TOMS, 2023 {% cite li2022newly %}.
 
 **Code:** [github.com/xiaoyeli/superlu_dist](https://github.com/xiaoyeli/superlu_dist)

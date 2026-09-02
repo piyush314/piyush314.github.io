@@ -2,6 +2,7 @@
 layout: default
 permalink: /blog/
 title: blog
+description: Notes on numerical methods, high-performance computing, research, and collaboration.
 nav: true
 nav_order: 1
 pagination:
