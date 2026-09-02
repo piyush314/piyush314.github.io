@@ -24,14 +24,96 @@
 <meta name="author" content="Piyush K. Sao">
 <meta name="description" content="Cross-Cutting Optimization for Distributed Computing">
 
-  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+  <meta name="keywords" content="high-performance computing, scientific computing, sparse linear algebra, graph algorithms, machine learning, ORNL, Piyush Sao">
 
 
 
 
 
 
+  <!-- OpenGraph -->
+  <meta property="og:site_name" content="Piyush K. Sao">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Piyush K. Sao | Communication-Efficient HPC">
+  <meta property="og:url" content="https://piyush314.github.io/projects/8_commhpc/">
+  <meta property="og:description" content="Cross-Cutting Optimization for Distributed Computing">
+  
+    <meta property="og:image" content="https://piyush314.github.io/assets/img/avatar.jpeg">
+  
+  <meta property="og:locale" content="en">
 
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Communication-Efficient HPC">
+  <meta name="twitter:description" content="Cross-Cutting Optimization for Distributed Computing">
+  
+    <meta name="twitter:image" content="https://piyush314.github.io/assets/img/avatar.jpeg">
+  
+  
+    <meta name="twitter:site" content="@piyusch">
+    <meta name="twitter:creator" content="@piyusch">
+  
+
+
+
+  <!-- Schema.org -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "author": {
+            "@type": "Person",
+            "name": "Piyush K. Sao"
+        },
+        "url": "https://piyush314.github.io/projects/8_commhpc/",
+        "description": "Cross-Cutting Optimization for Distributed Computing",
+        "headline": "Communication-Efficient HPC",
+        
+        "sameAs": ["https://orcid.org/0000-0002-9432-5855","https://scholar.google.com/citations?user=M3J5vrUAAAAJ","https://github.com/piyush314","https://www.linkedin.com/in/piyush-sao-594a9a9b","https://twitter.com/piyusch"],
+        
+        "name": "Piyush K. Sao"
+    }
+  </script>
 
 
 
@@ -58,17 +140,14 @@
 
   <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
 
-<link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e">
+<link rel="stylesheet" href="/assets/css/main.css?efa54f41b6bdcbd48ed6527954739801">
 <link rel="canonical" href="https://piyush314.github.io/projects/8_commhpc/">
 
 <!-- Dark Mode -->
-<script src="/assets/js/theme.js?0afe9f0ae161375728f7bcc5eb5b4ab4"></script>
 
   <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark">
-  <script>
-    initTheme();
-  </script>
 
+<script src="/assets/js/theme.js?14648a0c3986d9d6d0f4c538af269903"></script>
 
 
 
@@ -81,7 +160,7 @@
   </head>
 
   <!-- Body -->
-  <body class="fixed-top-nav ">
+  <body class="fixed-top-nav sticky-bottom-footer">
     <!-- Header -->
     <header>
   <!-- Nav Bar -->
@@ -119,8 +198,6 @@
 
           <!-- Other pages -->
           
-          
-            
           
             
           
@@ -217,66 +294,9 @@
               
                 
                 <li class="nav-item ">
-                  <a class="nav-link" href="/repositories/">repositories
-                    
-                  </a>
-                </li>
-              
-            
-          
-            
-              
-                
-                <li class="nav-item ">
                   <a class="nav-link" href="/cv/">cv
                     
                   </a>
-                </li>
-              
-            
-          
-            
-              
-                
-                <li class="nav-item ">
-                  <a class="nav-link" href="/teaching/">teaching
-                    
-                  </a>
-                </li>
-              
-            
-          
-            
-              
-                
-                
-                <li class="nav-item dropdown ">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">submenus
-                    
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    
-                      
-                        <a class="dropdown-item " href="/publications/">publications</a>
-                      
-                    
-                      
-                        <div class="dropdown-divider"></div>
-                      
-                    
-                      
-                        <a class="dropdown-item " href="/projects/">projects</a>
-                      
-                    
-                      
-                        <div class="dropdown-divider"></div>
-                      
-                    
-                      
-                        <a class="dropdown-item " href="/blog/">blog</a>
-                      
-                    
-                  </div>
                 </li>
               
             
@@ -285,10 +305,8 @@
           
             <!-- Toogle theme mode -->
             <li class="toggle-container">
-              <button id="light-toggle" title="Change theme">
-                <i class="ti ti-sun-moon" id="light-toggle-system"></i>
-                <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
-                <i class="ti ti-sun-filled" id="light-toggle-light"></i>
+              <button id="light-toggle" type="button" title="Change theme" aria-label="Change theme">
+                <span class="theme-toggle-icon" aria-hidden="true">◐</span>
               </button>
             </li>
           
@@ -392,11 +410,11 @@
 <h2 id="key-publications">Key Publications</h2>
 
 <ul>
-  <li>P. Sao, R. Kannan, X.S. Li, R. Vuduc. <em>A communication-avoiding 3D sparse triangular solver.</em> ICS 2019.</li>
-  <li>Y. Liu, N. Ding, P. Sao, S. Williams, X.S. Li. <em>Unified Communication Optimization Strategies for Sparse Triangular Solver on CPU and GPU Clusters.</em> SC 2023.</li>
-  <li>H. Lu, P. Sao, M. Matheson, R. Kannan, F. Wang, T. Potok. <em>Optimizing Communication in 2D Grid-Based MPI Applications at Exascale.</em> EuroMPI 2023.</li>
-  <li>V. Thakkar, R. Kannan, P. Sao, et al. <em>Dense semiring linear algebra on modern CUDA hardware.</em> SIAM CSE 2021.</li>
-  <li>A. Abdelfattah, …, P. Sao, et al. <em>Interface for sparse linear algebra operations.</em> arXiv:2411.13259, 2024.</li>
+  <li>P. Sao, R. Kannan, X.S. Li, R. Vuduc. <em>A communication-avoiding 3D sparse triangular solver.</em> ICS 2019 <a class="citation" href="#sao2019ics">(Sao et al., 2019)</a>.</li>
+  <li>Y. Liu, N. Ding, P. Sao, S. Williams, X.S. Li. <em>Unified Communication Optimization Strategies for Sparse Triangular Solver on CPU and GPU Clusters.</em> SC 2023 <a class="citation" href="#liu2023unified">(Liu et al., 2023)</a>.</li>
+  <li>H. Lu, P. Sao, M. Matheson, R. Kannan, F. Wang, T. Potok. <em>Optimizing Communication in 2D Grid-Based MPI Applications at Exascale.</em> EuroMPI 2023 <a class="citation" href="#lu2023optimizing">(Lu et al., 2023)</a>.</li>
+  <li>V. Thakkar, R. Kannan, P. Sao, et al. <em>Dense semiring linear algebra on modern CUDA hardware.</em> SIAM CSE 2021 <a class="citation" href="#thakkar2021dense">(Thakkar et al., 2021)</a>.</li>
+  <li>A. Abdelfattah, …, P. Sao, et al. <em>Interface for sparse linear algebra operations.</em> arXiv:2411.13259, 2024 <a class="citation" href="#abdelfattah2024interface">(Abdelfattah et al., 2024)</a>.</li>
 </ul>
 
 <h2 id="connection-to-other-projects">Connection to Other Projects</h2>
@@ -418,7 +436,529 @@
   
     <h2>References</h2>
     <div class="publications">
+      <h2 class="bibliography">2024</h2>
+<ol class="bibliography"><li>
+<div class="row">
+  
+    <div class="col col-sm-2 abbr">
       
+    </div>
+  
+
+  <!-- Entry bib key -->
+  <div id="abdelfattah2024interface" class="col-sm-8">
+    <!-- Title -->
+    <div class="title">Interface for sparse linear algebra operations</div>
+    <!-- Author -->
+    <div class="author">
+      
+
+      
+      Ahmad
+            Abdelfattah, Willow
+            Ahrens, Hartwig
+            Anzt, and
+        <span class="more-authors" title="click to view 32 more authors" onclick="
+              var element = $(this);
+              element.attr('title', '');
+              var more_authors_text = element.text() == '32 more authors' ? 'Chris Armstrong, Ben Brock, Aydin Buluc, Federico Busato, Terry Cojean, Tim Davis, Jim Demmel, Grace Dinh, David Gardener, Jan Fiala, Mark Gates, Azzam Haider, Toshiyuki Imamura, Pedro Valero Lara, Jose Moreira, Sherry Li, Piotr Luszczek, Max Melichenko, Jose Moeira, Yvan Mokwinski, Riley Murray, Spencer Patty, Slaven Peles, Tobias Ribizel, Jason Riedy, Siva Rajamanickam, Piyush Sao, Manu Shantharam, Keita Teranishi, Stan Tomov, Yu-Hsiang Tsai, Heiko Weichelt' : '32 more authors';
+              var cursorPosition = 0;
+              var textAdder = setInterval(function(){
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
+                if (++cursorPosition == more_authors_text.length){
+                  clearInterval(textAdder);
+                }
+            }, '10');
+          ">32 more authors</span>
+      
+      
+    </div>
+
+    <!-- Journal/Book title and date -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="periodical">
+      <em>arXiv preprint arXiv:2411.13259</em>,  2024
+    </div>
+    <div class="periodical">
+      
+    </div>
+
+    <!-- Links/Buttons -->
+    <div class="links">
+      
+      
+      
+      
+        <a href="http://arxiv.org/abs/2411.13259" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a>
+      
+      
+      
+      
+        
+          <a href="https://arxiv.org/pdf/2411.13259" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+</div>
+</li></ol>
+<h2 class="bibliography">2023</h2>
+<ol class="bibliography">
+<li>
+<div class="row">
+  
+    <div class="col col-sm-2 abbr">
+      
+    </div>
+  
+
+  <!-- Entry bib key -->
+  <div id="liu2023unified" class="col-sm-8">
+    <!-- Title -->
+    <div class="title">Unified Communication Optimization Strategies for Sparse Triangular Solver on CPU and GPU Clusters</div>
+    <!-- Author -->
+    <div class="author">
+      
+
+      
+      Yang
+            Liu, Nan
+            Ding, <em>Piyush
+            Sao</em>, and
+        <span class="more-authors" title="click to view 2 more authors" onclick="
+              var element = $(this);
+              element.attr('title', '');
+              var more_authors_text = element.text() == '2 more authors' ? 'Samuel Williams, Xiaoye Sherry Li' : '2 more authors';
+              var cursorPosition = 0;
+              var textAdder = setInterval(function(){
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
+                if (++cursorPosition == more_authors_text.length){
+                  clearInterval(textAdder);
+                }
+            }, '10');
+          ">2 more authors</span>
+      
+      
+    </div>
+
+    <!-- Journal/Book title and date -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="periodical">
+      <em>In Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis</em>,  2023
+    </div>
+    <div class="periodical">
+      
+    </div>
+
+    <!-- Links/Buttons -->
+    <div class="links">
+      
+      
+      
+      
+      
+      
+      
+        
+          <a href="/assets/pdf/publications/liu2023sc-trisolve.pdf" class="btn btn-sm z-depth-0" role="button">PDF</a>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+</div>
+</li>
+<li>
+<div class="row">
+  
+    <div class="col col-sm-2 abbr">
+      
+    </div>
+  
+
+  <!-- Entry bib key -->
+  <div id="lu2023optimizing" class="col-sm-8">
+    <!-- Title -->
+    <div class="title">Optimizing Communication in 2D Grid-Based MPI Applications at Exascale</div>
+    <!-- Author -->
+    <div class="author">
+      
+
+      
+      Hao
+            Lu, <em>Piyush
+            Sao</em>, Michael
+            Matheson, and
+        <span class="more-authors" title="click to view 3 more authors" onclick="
+              var element = $(this);
+              element.attr('title', '');
+              var more_authors_text = element.text() == '3 more authors' ? 'Ramakrishnan Kannan, Feiyi Wang, Thomas Potok' : '3 more authors';
+              var cursorPosition = 0;
+              var textAdder = setInterval(function(){
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
+                if (++cursorPosition == more_authors_text.length){
+                  clearInterval(textAdder);
+                }
+            }, '10');
+          ">3 more authors</span>
+      
+      
+    </div>
+
+    <!-- Journal/Book title and date -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="periodical">
+      <em>In Proceedings of the 30th European MPI Users’ Group Meeting</em>,  2023
+    </div>
+    <div class="periodical">
+      
+    </div>
+
+    <!-- Links/Buttons -->
+    <div class="links">
+      
+      
+      
+      
+      
+      
+      
+        
+          <a href="/assets/pdf/publications/lu2023eurompi-comm.pdf" class="btn btn-sm z-depth-0" role="button">PDF</a>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+</div>
+</li>
+</ol>
+<h2 class="bibliography">2021</h2>
+<ol class="bibliography"><li>
+<div class="row">
+  
+    <div class="col col-sm-2 abbr">
+      
+    </div>
+  
+
+  <!-- Entry bib key -->
+  <div id="thakkar2021dense" class="col-sm-8">
+    <!-- Title -->
+    <div class="title">Dense semiring linear algebra on modern cuda hardware</div>
+    <!-- Author -->
+    <div class="author">
+      
+
+      
+      Vijay
+            Thakkar, Ramakrishnan
+            Kannan, <em>Piyush
+            Sao</em>, and
+        <span class="more-authors" title="click to view 5 more authors" onclick="
+              var element = $(this);
+              element.attr('title', '');
+              var more_authors_text = element.text() == '5 more authors' ? 'Hao Lu, Drahomira Herrmannova, Robert Patton, Richard Vuduc, Thomas Potok' : '5 more authors';
+              var cursorPosition = 0;
+              var textAdder = setInterval(function(){
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
+                if (++cursorPosition == more_authors_text.length){
+                  clearInterval(textAdder);
+                }
+            }, '10');
+          ">5 more authors</span>
+      
+      
+    </div>
+
+    <!-- Journal/Book title and date -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="periodical">
+      2021
+    </div>
+    <div class="periodical">
+      SIAM Computational Sciences and Engineering. SIAM
+    </div>
+
+    <!-- Links/Buttons -->
+    <div class="links">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+          <a href="https://graphblas.org/GraphBLAS-Pointers/Slides/cuASR.pdf" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Slides</a>
+        
+      
+      
+    </div>
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+</div>
+</li></ol>
+<h2 class="bibliography">2019</h2>
+<ol class="bibliography"><li>
+<div class="row">
+  
+    <div class="col col-sm-2 abbr">
+      
+    </div>
+  
+
+  <!-- Entry bib key -->
+  <div id="sao2019ics" class="col-sm-8">
+    <!-- Title -->
+    <div class="title"> A Communication-avoiding 3D Sparse Triangular Solve Algorithm</div>
+    <!-- Author -->
+    <div class="author">
+      
+
+      
+      <em>Piyush
+            Sao</em>, Ramakrishnan
+            Kannan, Xiaoye
+            Li, and
+        <span class="more-authors" title="click to view 1 more author" onclick="
+              var element = $(this);
+              element.attr('title', '');
+              var more_authors_text = element.text() == '1 more author' ? 'Richard Vuduc' : '1 more author';
+              var cursorPosition = 0;
+              var textAdder = setInterval(function(){
+                element.html(more_authors_text.substring(0, cursorPosition + 1));
+                if (++cursorPosition == more_authors_text.length){
+                  clearInterval(textAdder);
+                }
+            }, '10');
+          ">1 more author</span>
+      
+      
+    </div>
+
+    <!-- Journal/Book title and date -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="periodical">
+      <em>In International Conference on Supercomputing</em>,  Jun 2019
+    </div>
+    <div class="periodical">
+      
+    </div>
+
+    <!-- Links/Buttons -->
+    <div class="links">
+      
+      
+      
+      
+      
+      
+      
+        
+          <a href="/assets/pdf/publications/sao2019ics-trisolve.pdf" class="btn btn-sm z-depth-0" role="button">PDF</a>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    
+      
+      
+
+      
+      
+
+      
+      
+
+      
+      
+      
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+</div>
+</li></ol>
     </div>
   
 
@@ -430,8 +970,10 @@
 
     <!-- Footer -->
     
-  <footer class="fixed-bottom" role="contentinfo">
-    <div class="container mt-0">
+  <footer class="sticky-bottom mt-5" role="contentinfo">
+    
+
+    <div class="container">
       © Copyright 2026
       Piyush
       K.
