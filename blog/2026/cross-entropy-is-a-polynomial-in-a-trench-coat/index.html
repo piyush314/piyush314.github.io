@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+Cross-Entropy Is a Polynomial in a Trench Coat | Piyush K. Sao
+</title>
+<meta name="author" content="Piyush K. Sao">
+<meta name="description" content="How polynomial capacity connects softmax training, trace-power log-determinant estimation, and the complex zeros that limit Taylor series.">
+<meta name="keywords" content="high-performance computing, scientific computing, sparse linear algebra, graph algorithms, machine learning, ORNL, Piyush Sao">
+
+<meta property="og:site_name" content="Piyush K. Sao">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Piyush K. Sao | Cross-Entropy Is a Polynomial in a Trench Coat">
+<meta property="og:url" content="https://piyush314.github.io/blog/2026/cross-entropy-is-a-polynomial-in-a-trench-coat/">
+<meta property="og:description" content="How polynomial capacity connects softmax training, trace-power log-determinant estimation, and the complex zeros that limit Taylor series.">
+<meta property="og:image" content="https://piyush314.github.io/assets/img/avatar.jpeg">
+<meta property="og:locale" content="en">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cross-Entropy Is a Polynomial in a Trench Coat">
+<meta name="twitter:description" content="How polynomial capacity connects softmax training, trace-power log-determinant estimation, and the complex zeros that limit Taylor series.">
+<meta name="twitter:image" content="https://piyush314.github.io/assets/img/avatar.jpeg">
+<meta name="twitter:site" content="@piyusch">
+<meta name="twitter:creator" content="@piyusch">
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Piyush K. Sao"
+        },
+        "url": "https://piyush314.github.io/blog/2026/cross-entropy-is-a-polynomial-in-a-trench-coat/",
+        "description": "How polynomial capacity connects softmax training, trace-power log-determinant estimation, and the complex zeros that limit Taylor series.",
+        "headline": "Cross-Entropy Is a Polynomial in a Trench Coat",
+        
+        "sameAs": ["https://orcid.org/0000-0002-9432-5855","https://scholar.google.com/citations?user=M3J5vrUAAAAJ","https://github.com/piyush314","https://www.linkedin.com/in/piyush-sao-594a9a9b","https://twitter.com/piyusch"],
+        
+        "name": "Piyush K. Sao"
+    }
+  </script>
+
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+<link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5">
+<link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light">
+
+<link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+<link rel="stylesheet" href="/assets/css/main.css?efa54f41b6bdcbd48ed6527954739801">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&amp;family=IBM+Plex+Sans:ital,wght@0,300;0,600;1,300&amp;family=IBM+Plex+Serif:ital,wght@0,300;0,600;1,300;1,600&amp;display=swap">
+<link rel="stylesheet" href="/assets/css/plex-post.css?008168e51d884a31aacb56dd1fd85f00">
+<link rel="stylesheet" href="/assets/css/research-post.css?ab4177ba7f4cf2ecc8370e5da267c82e">
+<link rel="canonical" href="https://piyush314.github.io/blog/2026/cross-entropy-is-a-polynomial-in-a-trench-coat/">
+
+<link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark">
+<script src="/assets/js/theme.js?14648a0c3986d9d6d0f4c538af269903"></script>
+</head>
+
+<body class="fixed-top-nav sticky-bottom-footer research-page">
+
+<header>
+
+<nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+<div class="container">
+<a class="navbar-brand title font-weight-lighter" href="/">
+<span class="font-weight-bold">Piyush</span>
+K.
+Sao
+</a>
+
+<button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar top-bar"></span>
+<span class="icon-bar middle-bar"></span>
+<span class="icon-bar bottom-bar"></span>
+</button>
+<div class="collapse navbar-collapse text-right" id="navbarNav">
+<ul class="navbar-nav ml-auto flex-nowrap">
+
+<li class="nav-item ">
+<a class="nav-link" href="/">about
+</a>
+</li>
+
+<li class="nav-item active">
+<a class="nav-link" href="/blog/">blog
+</a>
+</li>
+<li class="nav-item ">
+<a class="nav-link" href="/publications/">publications
+</a>
+</li>
+<li class="nav-item ">
+<a class="nav-link" href="/projects/">projects
+</a>
+</li>
+<li class="nav-item ">
+<a class="nav-link" href="/cv/">cv
+</a>
+</li>
+
+<li class="toggle-container">
+<button id="light-toggle" type="button" title="Change theme" aria-label="Change theme">
+<span class="theme-toggle-icon" aria-hidden="true">◐</span>
+</button>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+<progress id="progress" value="0">
+<div class="progress-container">
+<span class="progress-bar"></span>
+</div>
+</progress>
+</header>
+
+<div class="research-shell" role="main">
+<style>.medium-zoom-overlay{z-index:1050}.medium-zoom-image--opened{z-index:1051}</style>
+<a class="research-skip-link" href="#article-start">Skip to article</a>
+<div class="research-layout">
+<aside class="research-sidebar" aria-label="Reading guide">
+<details class="reading-guide" open>
+<summary>On this page</summary>
+<nav aria-label="Article sections">
+<ol id="research-sections">
+<li><a href="#article-start" aria-current="location">Introduction</a></li>
+</ol>
+</nav>
+</details>
+</aside>
+<div class="post research-post">
+<header class="post-header research-hero">
+<div class="research-eyebrow">
+<a href="/blog/category/research/">research</a>
+<span>Machine learning × Optimization × Linear algebra</span>
+</div>
+<h1 class="post-title">Cross-Entropy Is a Polynomial in a Trench Coat</h1>
+<p class="research-subtitle">Softmax training, log-determinants, and the complex zeros hiding in a positive polynomial.</p>
+<div class="research-metadata">
+<p class="post-meta">
+<svg viewbox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+<rect x="3" y="5" width="18" height="16" rx="2"></rect>
+<path d="M7 2v6M17 2v6M3 11h18M7 15h2M11 15h2M15 15h2M7 18h2M11 18h2"></path>
+</svg>
+<time datetime="2026-09-16T12:00:00+00:00">September 16, 2026</time>
+</p>
+<ul class="research-topics" aria-label="Article topics">
+<li>
+<a href="/blog/tag/machine-learning/">machine learning</a>
+</li>
+<li>
+<a href="/blog/tag/optimization/">optimization</a>
+</li>
+<li>
+<a href="/blog/tag/probability/">probability</a>
+</li>
+<li>
+<a href="/blog/tag/linear-algebra/">linear algebra</a>
+</li>
+</ul>
+</div>
+</header>
+<article class="post-content" id="article-start" aria-label="Article">
+<div id="markdown-content">
+<p><em>It also moonlights as a partition function, a cumulant generator, and a tool for understanding log-determinants. Its complex zeros are where the cover starts to slip.</em></p>
+<p>A classifier produces a score, or <strong>logit</strong>, for each possible answer: cat, dog, or toaster. <a href="https://en.wikipedia.org/wiki/Softmax_function" rel="external nofollow noopener" target="_blank">Softmax</a> turns those scores into probabilities:</p>
+\[p_j=\frac{e^{z_j}}{\sum_k e^{z_k}}.\]
+<p>The <a href="https://en.wikipedia.org/wiki/Cross-entropy" rel="external nofollow noopener" target="_blank">cross-entropy</a> loss asks how much probability went to the correct answer $y$, then takes the negative logarithm:</p>
+\[\mathrm{CE}
+=
+-\log p_y
+=
+\log\left(\sum_j e^{z_j}\right)-z_y.\]
+<p>A log of a pile of exponentials, minus the score you wanted to win.</p>
+<p>The same sum appears in two recent preprints: <a href="https://arxiv.org/html/2603.13552v1" title="Ghosts of Softmax, version 1" rel="external nofollow noopener" target="_blank"><strong>Ghosts of Softmax</strong></a>, which locates complex zeros that limit a local Taylor expansion of cross-entropy, and <a href="https://arxiv.org/abs/2601.12612" title="What Trace Powers Reveal About Log-Determinants" rel="external nofollow noopener" target="_blank"><strong>What Trace Powers Reveal About Log-Determinants</strong></a>, which estimates a log-determinant from traces of matrix powers. The connection runs through a familiar object: a polynomial with positive coefficients.</p>
+<p>What does that connection buy us? It explains which label averages a softmax model can match, why some optima require parameters to diverge, and how the same complex-zero calculation appears in both papers.</p>
+<p>The disguise is a change of coordinates. <strong>When the logits are linear functions of the trainable parameters plus constants, cross-entropy becomes the logarithm of a ratio built from a generalized positive polynomial.</strong> We will build that identity from one small example, following classical connections through probability and entropy to the two preprints.</p>
+<h2 id="1-a-polynomial-leaves-school">1. A polynomial leaves school</h2>
+<p>Consider</p>
+\[P(x)=3+5x+2x^2.\]
+<p>At school, you might factor it, differentiate it, or find its roots. For our purposes, read it as a weighted list: <strong>the coefficients are weights, and the exponents describe the things being weighted</strong>.</p>
+<p>Here, exponent $0$ gets weight $3$, exponent $1$ gets weight $5$, and exponent $2$ gets weight $2$.</p>
+<p>In several variables, the same idea becomes</p>
+\[P(x)=\sum_j c_jx^{a_j},
+\qquad
+x^{a_j}:=\prod_{\ell=1}^d x_\ell^{a_{j\ell}}.\]
+<p>For an ordinary polynomial, the exponent vectors $a_j$ have nonnegative integer coordinates. We will keep the coefficients positive, omitting any zero terms.</p>
+<p>The weighted-list interpretation survives beyond whole-number exponents. If we allow arbitrary real $a_{j\ell}$, while keeping $c_j&gt;0$ and $x_\ell&gt;0$, the expression is called a <a href="https://en.wikipedia.org/wiki/Posynomial" rel="external nofollow noopener" target="_blank"><strong>posynomial</strong></a>.</p>
+<p>For example,</p>
+\[3+5x^{-1/2}+2x^{1.7}\]
+<p>is not an ordinary polynomial, but it is a posynomial.</p>
+<p>Real exponents let these functions describe square roots, inverse powers, and empirically fitted relationships. Posynomials appear in <a href="https://en.wikipedia.org/wiki/Geometric_programming" rel="external nofollow noopener" target="_blank">geometric programming</a>, including circuit models that balance delay, area, and power. <a href="https://web.stanford.edu/~boyd/papers/gp_tutorial.html" title="Boyd et al.: A Tutorial on Geometric Programming" rel="external nofollow noopener" target="_blank">Boyd and colleagues’ tutorial</a> develops this connection.</p>
+<p>The name sounds like a polynomial with a positive attitude. The useful requirement is positivity: the terms cannot cancel when all variables are positive. That makes the next operation possible everywhere in that domain: taking a logarithm.</p>
+<h2 id="2-the-change-of-variables-that-changes-the-neighborhood">2. The change of variables that changes the neighborhood</h2>
+<p>To expose the logarithmic structure, write</p>
+\[x_\ell=e^{\theta_\ell}.\]
+<p>Then every monomial becomes an exponential:</p>
+\[c_jx^{a_j}
+=
+c_je^{\langle a_j,\theta\rangle}
+=
+e^{\langle a_j,\theta\rangle+\log c_j}.\]
+<p>Our polynomial—or posynomial—has become</p>
+\[Z(\theta)
+=
+P(e^\theta)
+=
+\sum_j c_je^{\langle a_j,\theta\rangle}.\]
+<p>For the running example,</p>
+\[Z(\theta)=3+5e^\theta+2e^{2\theta}.\]
+<p>This is an exact change of coordinates.</p>
+<p>Now take a logarithm:</p>
+\[A(\theta)=\log Z(\theta).\]
+<p>This is a <a href="https://en.wikipedia.org/wiki/LogSumExp" rel="external nofollow noopener" target="_blank">log-sum-exp</a> of affine functions. In geometric programming, the corresponding logarithmic transformation converts the standard posynomial objective and inequality constraints into convex functions. <a href="https://web.stanford.edu/~boyd/papers/gp_tutorial.html" title="Boyd et al.: A Tutorial on Geometric Programming" rel="external nofollow noopener" target="_blank">The geometric-programming tutorial</a> explains the required form of the problem.</p>
+<p>In statistics, $Z$ is a <a href="https://en.wikipedia.org/wiki/Partition_function_(mathematics)" rel="external nofollow noopener" target="_blank"><strong>partition function</strong></a>, and $A$ is a <strong>log-partition function</strong>. The partition function is the sum that normalizes the weights into probabilities. <a href="https://people.eecs.berkeley.edu/~jordan/papers/wainwright-jordan-fnt.pdf" title="Wainwright and Jordan: Graphical Models, Exponential Families, and Variational Inference" rel="external nofollow noopener" target="_blank">Wainwright and Jordan</a> develop this exponential-family viewpoint.</p>
+<p>The vocabulary changes with the application. The machinery does not:</p>
+\[\boxed{
+\text{positive-coefficient polynomial}
+\;\longrightarrow\;
+\text{posynomial}
+\;\xrightarrow{x=e^\theta}\;
+\text{positive sum of exponentials}.
+}\]
+<p>The first arrow relaxes the exponents. The second changes coordinates.</p>
+<p>To see what that normalization gives us, return to the running polynomial.</p>
+<h2 id="3-a-generating-function-gets-a-probability-distribution">3. A generating function gets a probability distribution</h2>
+<p>Our running polynomial has total coefficient weight</p>
+\[P(1)=3+5+2=10.\]
+<p>Divide by ten:</p>
+\[G(x)=\frac{P(x)}{10}
+=
+0.3+0.5x+0.2x^2.\]
+<p>Now imagine a random variable $T$ that equals $0,1,2$ with probabilities $0.3,0.5,0.2$. Then, directly from the definition of expectation,</p>
+\[G(x)=\mathbb E[x^T].\]
+<p>This is its <a href="https://en.wikipedia.org/wiki/Probability-generating_function" rel="external nofollow noopener" target="_blank"><strong>probability-generating function</strong></a>. The coefficient of $x^k$ is the probability that $T=k$.</p>
+<p>Substitute $x=e^s$:</p>
+\[M(s)=G(e^s)
+=
+\mathbb E[e^{sT}].\]
+<p>That is the <a href="https://en.wikipedia.org/wiki/Moment-generating_function" rel="external nofollow noopener" target="_blank"><strong>moment-generating function</strong></a>. Its name is unusually honest. Differentiate $r$ times and evaluate at zero:</p>
+\[M^{(r)}(0)=\mathbb E[T^r].\]
+<p>Differentiating after the substitution brings down powers of the exponents, producing moments.</p>
+<p>Finally, take the logarithm:</p>
+\[K(s)=\log M(s).\]
+<p>This is the <a href="https://en.wikipedia.org/wiki/Cumulant" rel="external nofollow noopener" target="_blank"><strong>cumulant-generating function</strong></a>. Its first derivative gives the mean, its second gives the variance, and its higher derivatives give higher cumulants. For our toy distribution,</p>
+\[K'(0)=0.9,
+\qquad
+K''(0)=0.49.\]
+<p>Why introduce cumulants when moments already exist? One reason is that cumulants <strong>add for independent sums</strong>. Moment-generating functions multiply; taking the logarithm turns that multiplication into addition. Our polynomial contains a small demonstration of that additivity.</p>
+\[G(x)
+=
+\frac{1+x}{2}\,
+\frac{3+2x}{5}.\]
+<p>The first factor describes a Bernoulli random variable with success probability $1/2$; the second describes one with success probability $2/5$. Multiplying them describes their independent sum.</p>
+<p>An algebraist sees factorization. A probabilist sees two independent coin flips. Both readings will survive the move to softmax.</p>
+<h3 id="softmax-is-exponential-tilting">Softmax is exponential tilting</h3>
+<p>To recover softmax, allow the exponents to be real vectors again.</p>
+<p>Let $C=\sum_jc_j$, and let a random vector $T$ take value $a_j$ with probability $c_j/C$. Then</p>
+\[\frac{Z(\theta)}{Z(0)}
+=
+\mathbb E[e^{\langle\theta,T\rangle}].\]
+<p>Now change the distribution by reweighting each outcome:</p>
+\[\pi_j(\theta)
+=
+\frac{c_je^{\langle a_j,\theta\rangle}}
+{\sum_kc_ke^{\langle a_k,\theta\rangle}}.\]
+<p>This is called <a href="https://en.wikipedia.org/wiki/Exponential_tilting" rel="external nofollow noopener" target="_blank"><strong>exponential tilting</strong></a>. Increasing $\theta$ in a direction raises the odds of outcomes with larger projections relative to those with smaller projections.</p>
+<p>It is also softmax, with logits</p>
+\[z_j(\theta)=\langle a_j,\theta\rangle+\log c_j.\]
+<p>Differentiate the log-partition function:</p>
+\[\nabla A(\theta)=\mathbb E_{\pi_\theta}[T],
+\qquad
+\nabla^2 A(\theta)=\operatorname{Cov}_{\pi_\theta}(T).\]
+<p>The <a href="https://en.wikipedia.org/wiki/Hessian_matrix" rel="external nofollow noopener" target="_blank">Hessian</a> is a covariance matrix, so it is positive semidefinite: this is why the log-partition function is convex. See <a href="https://people.eecs.berkeley.edu/~jordan/papers/wainwright-jordan-fnt.pdf" title="Wainwright and Jordan: Graphical Models, Exponential Families, and Variational Inference" rel="external nofollow noopener" target="_blank">Wainwright and Jordan</a> for the general identities.</p>
+<p><strong>The gradient is an average exponent. The curvature is how much the exponents fluctuate.</strong></p>
+<p>We can now ask a training question: how should we choose the tilt so that this average exponent matches a target?</p>
+<h2 id="4-capacity-how-small-can-the-whole-pile-get">4. Capacity: how small can the whole pile get?</h2>
+<p>For a target exponent $\alpha$, consider the ratio between the polynomial and the target monomial:</p>
+\[\operatorname{cap}_{\alpha}(P)
+=
+\inf_{x&gt;0}\frac{P(x)}{x^\alpha}.\]
+<p>The infimum is called <strong>polynomial capacity</strong>, an optimization quantity used in <a href="https://arxiv.org/abs/math/0510452" title="Gurvits: Hyperbolic Polynomials Approach to Van der Waerden/Schrijver-Valiant like Conjectures" rel="external nofollow noopener" target="_blank">Gurvits’ work on permanent inequalities</a>. Here, “capacity” names this ratio optimization; it does not measure a model’s expressive power. The same definition applies to our posynomials.</p>
+<p>Think of the denominator as a benchmark monomial. Capacity asks how small the entire polynomial can become relative to that benchmark.</p>
+<p>For $P(x)=3+5x+2x^2$, three targets give three different outcomes:</p>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Ratio being minimized</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\alpha=1$</td>
+<td>$3/x+5+2x$</td>
+<td>A minimum occurs at $x=\sqrt{3/2}$, with value $5+2\sqrt6$.</td>
+</tr>
+<tr>
+<td>$\alpha=2$</td>
+<td>$3/x^2+5/x+2$</td>
+<td>The ratio approaches $2$ as $x\to\infty$, but never reaches it.</td>
+</tr>
+<tr>
+<td>$\alpha=3$</td>
+<td>$3/x^3+5/x^2+2/x$</td>
+<td>The ratio approaches zero.</td>
+</tr>
+</tbody>
+</table>
+<p>Now apply our change of variables:</p>
+\[\log\operatorname{cap}_\alpha(P)
+=
+\inf_\theta
+\left[
+A(\theta)-\langle\alpha,\theta\rangle
+\right].\]
+<p>The objective on the right is already most of a cross-entropy loss.</p>
+<p>For a probability vector of target labels $q=(q_j)$, define</p>
+\[\alpha=\sum_jq_ja_j.\]
+<p>Then</p>
+\[\begin{aligned}
+\mathrm{CE}(q,\pi_\theta)
+&amp;=-\sum_jq_j\log\pi_j(\theta)\\
+&amp;=A(\theta)-\langle\alpha,\theta\rangle
+-\sum_jq_j\log c_j.
+\end{aligned}\]
+<p>Therefore,</p>
+\[\boxed{
+\log\operatorname{cap}_\alpha(P)
+=
+\inf_\theta\mathrm{CE}(q,\pi_\theta)
++
+\sum_jq_j\log c_j.
+}\]
+<p>For a hard label, $q$ puts all its mass on one class. For a soft label, $\alpha$ is an average of exponent vectors.</p>
+<p>This is the trench coat: <strong>minimizing the capacity objective is equivalent to minimizing cross-entropy for the corresponding fixed log-linear family, up to a known constant</strong>. A trainable final layer over frozen features has this affine-logit form; training all layers of a nonlinear network generally does not.</p>
+<p>When the optimum occurs at finite parameters, it has a direct interpretation. Differentiating the capacity objective gives</p>
+\[\nabla A(\theta)-\alpha
+=
+\mathbb E_{\pi_\theta}[T]-\alpha.\]
+<p>At the optimum, the tilted distribution has the target mean.</p>
+<p>Training this softmax family is a moment-matching problem. Whether a finite tilt can match the target is a question about the geometry of the exponents.</p>
+<h2 id="5-the-geometry-of-training-that-never-finishes">5. The geometry of training that never finishes</h2>
+<p>Which target means can we match?</p>
+<p>All the possible averages of the exponent vectors form their <a href="https://en.wikipedia.org/wiki/Convex_hull" rel="external nofollow noopener" target="_blank">convex hull</a>:</p>
+\[\mathcal N(P)=\operatorname{conv}\{a_j\}.\]
+<p>For an ordinary polynomial, this is its <a href="https://en.wikipedia.org/wiki/Newton_polytope" rel="external nofollow noopener" target="_blank"><strong>Newton polytope</strong></a>.</p>
+<p>Capacity is positive exactly when $\alpha$ lies in this convex hull. A finite minimizer exists exactly when $\alpha$ lies in its <a href="https://en.wikipedia.org/wiki/Relative_interior" rel="external nofollow noopener" target="_blank"><strong>relative interior</strong></a>: the interior measured within the affine space occupied by the polytope. This is the mean-parameter geometry of finite exponential families, discussed by <a href="https://people.eecs.berkeley.edu/~jordan/papers/wainwright-jordan-fnt.pdf" title="Wainwright and Jordan: Graphical Models, Exponential Families, and Variational Inference" rel="external nofollow noopener" target="_blank">Wainwright and Jordan</a>.</p>
+<p>The reason is visible in the probabilities. At every finite $\theta$, every term has positive probability. To put the mean on a proper boundary face, all probability outside that face must disappear. Exponential tilting can make it arbitrarily small, but cannot make it exactly zero at finite parameters.</p>
+<p>A boundary target explains why the best loss can be approached indefinitely without a finite minimizer.</p>
+<p>For our polynomial, the convex hull is $[0,2]$. Mean $1$ is attainable at a finite tilt. Mean $2$ requires all probability to concentrate on the largest exponent. Mean $3$ is impossible.</p>
+<figure>
+<picture>
+
+
+<source class="responsive-img-srcset" srcset="/assets/img/cross-entropy/capacity-geometry-480.webp 480w,/assets/img/cross-entropy/capacity-geometry-800.webp 800w,/assets/img/cross-entropy/capacity-geometry-1400.webp 1400w," type="image/webp" sizes="95vw"></source>
+<img src="/assets/img/cross-entropy/capacity-geometry.png" class="img-fluid rounded" width="1448" height="1086" alt="Capacity geometry for P(x)=3+5x+2x squared: target mean 1 lies inside the exponent interval and has a finite optimum; mean 2 lies on its boundary and requires an infinite limiting tilt; mean 3 is outside the interval and has zero capacity." data-zoomable="" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+</picture>
+<figcaption class="caption">The three targets from the capacity example, viewed as points relative to the exponent interval. A finite tilt matches an interior mean; boundary means require a limit. Click the image to enlarge.</figcaption>
+</figure>
+<p>Notice a subtlety: even a <strong>hard label</strong> can correspond to an interior exponent. In our three-class toy family, the exponent $1$ lies inside the convex hull $[0,2]$. This hard label has a finite optimum, with a maximum class probability of</p>
+\[\sup_\theta \pi_1(\theta)
+=
+\frac{5}{5+2\sqrt6}\approx0.505.\]
+<p>The classifier’s shared one-dimensional parameter couples all three logits. Raising the middle logit also changes its rivals. That coupling becomes especially relevant when a dataset shares one parameter vector.</p>
+<h3 id="a-whole-dataset-is-still-one-capacity-problem">A whole dataset is still one capacity problem</h3>
+<p>Suppose example $i$ has affine logits</p>
+\[z_{ij}(\theta)=b_{ij}+\langle a_{ij},\theta\rangle,\]
+<p>with the same parameter vector $\theta$ shared across examples. For target probabilities $q_{ij}$, let $\alpha_i=\sum_jq_{ij}a_{ij}$. Associate the posynomial</p>
+\[P_i(x)=\sum_j e^{b_{ij}}x^{a_{ij}}.\]
+<p>Summing cross-entropies adds log-partition functions. Adding logarithms multiplies their arguments:</p>
+\[\sum_i
+\left[
+\log P_i(e^\theta)-\langle\alpha_i,\theta\rangle
+\right]
+=
+\log
+\frac{\left(\prod_iP_i\right)(e^\theta)}
+{e^{\langle\sum_i\alpha_i,\theta\rangle}}.\]
+<p>Thus the infimum of the summed cross-entropy is</p>
+\[\log\operatorname{cap}_{\sum_i\alpha_i}\!\left(\prod_iP_i\right)
+-\sum_{i,j}q_{ij}b_{ij}.\]
+<p>The dataset contributes a product of posynomials and a sum of target exponents.</p>
+<p>The exponent polytope of the product is the <a href="https://en.wikipedia.org/wiki/Minkowski_sum" rel="external nofollow noopener" target="_blank">Minkowski sum</a> of the individual polytopes: take one point from each and add them.</p>
+<p>For hard labels, a target on the relative boundary means there is a direction that never worsens any correct-label margin and strictly improves at least one. This includes <strong>quasi-separation</strong>, where some margins remain unchanged; strict separation improves every comparison.</p>
+<p>The max-margin behavior of gradient descent on separable logistic regression requires an additional result about the optimizer, such as <a href="https://jmlr.org/papers/v19/18-188.html" title="Soudry et al.: The Implicit Bias of Gradient Descent on Separable Data" rel="external nofollow noopener" target="_blank">Soudry and colleagues’ theorem</a>. Capacity gives the geometry of the objective. To interpret its optimal value, we turn to entropy.</p>
+<h2 id="6-capacity-has-an-information-theoretic-secret">6. Capacity has an information-theoretic secret</h2>
+<p>The capacity value also has a description in terms of distributions. For $\alpha$ in the convex hull of the exponents, convex duality gives</p>
+\[\log\operatorname{cap}_\alpha(P)
+=
+\max_{\substack{\nu_j\ge0,\;\sum_j\nu_j=1\\
+\sum_j\nu_ja_j=\alpha}}
+\left[
+H(\nu)+\sum_j\nu_j\log c_j
+\right],\]
+<p>where $H(\nu)=-\sum_j\nu_j\log\nu_j$.</p>
+<p>The constraint fixes the mean at $\alpha$; the objective rewards entropy and coefficient weight. This is the maximum-entropy viewpoint developed in <a href="https://proceedings.mlr.press/v99/straszak19a.html" title="Straszak and Vishnoi: Maximum Entropy Distributions: Bit Complexity and Stability" rel="external nofollow noopener" target="_blank">Straszak and Vishnoi’s work</a>.</p>
+<p>When all coefficients equal one, it really is maximum entropy. For unequal coefficients, it is more naturally a problem of minimizing <a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence" rel="external nofollow noopener" target="_blank">relative entropy</a>.</p>
+<p>Let $r_j=c_j/C$, where $C=\sum_jc_j$, and write $D_{\mathrm{KL}}(\nu\Vert r)=\sum_j\nu_j\log(\nu_j/r_j)$ for relative entropy. Rearranging gives</p>
+\[\boxed{
+\log\operatorname{cap}_\alpha(P)
+=
+\log C
+-
+\min_{\mathbb E_\nu[T]=\alpha}
+D_{\mathrm{KL}}(\nu\Vert r).
+}\]
+<p>Capacity is the total coefficient mass, discounted by the least information-theoretic cost of forcing the mean to $\alpha$.</p>
+<p>That interpretation also leads to a direct probability bound.</p>
+<p>For an ordinary polynomial, take the normalized probability-generating function $G=P/C$, and let $T_1,\ldots,T_N$ be independent draws from its distribution. Because generating functions multiply, the probability of a particular sum is a coefficient of $G(x)^N$. Nonnegative coefficients imply</p>
+\[\Pr(T_1+\cdots+T_N=N\alpha)
+\le
+\inf_{x&gt;0}\frac{G(x)^N}{x^{N\alpha}}
+=
+\operatorname{cap}_\alpha(G)^N,\]
+<p>whenever that lattice target is meaningful.</p>
+<p>For a target mean different from the original mean, this gives an upper bound that decays exponentially with $N$. Capacity is pricing a rare event, using the fact that one coefficient cannot exceed the whole positive sum.</p>
+<h3 id="why-gurvits-cared-about-coefficients">Why Gurvits cared about coefficients</h3>
+<p>For any nonnegative-coefficient polynomial,</p>
+\[[x^\alpha]P\le\operatorname{cap}_\alpha(P),\]
+<p>because the single term $[x^\alpha]P\,x^\alpha$ cannot exceed the whole sum.</p>
+<p>For polynomials with additional structure, <a href="https://arxiv.org/abs/math/0510452" title="Gurvits: Hyperbolic Polynomials Approach to Van der Waerden/Schrijver-Valiant like Conjectures" rel="external nofollow noopener" target="_blank">Gurvits’ theory</a> also bounds coefficients from below in terms of capacity.</p>
+<p>Take a nonnegative $n\times n$ matrix $B$, and form</p>
+\[P_B(x)=\prod_{i=1}^n\left(\sum_{j=1}^nB_{ij}x_j\right).\]
+<p>Expanding the product chooses one column from each row. The <a href="https://en.wikipedia.org/wiki/Permanent_(mathematics)" rel="external nofollow noopener" target="_blank">permanent</a> sums the weights of choices that use every column exactly once; it is the coefficient of $x_1\cdots x_n$:</p>
+\[[x_1\cdots x_n]P_B=\operatorname{per}(B).\]
+<p>If $B$ is <a href="https://en.wikipedia.org/wiki/Doubly_stochastic_matrix" rel="external nofollow noopener" target="_blank">doubly stochastic</a>, weighted AM–GM shows that $P_B(x)\ge x_1\cdots x_n$, with equality at $x=\mathbf1$. Its capacity at $\mathbf1$ is therefore one.</p>
+<p>Gurvits’ coefficient inequality then yields</p>
+\[\operatorname{per}(B)\ge\frac{n!}{n^n},\]
+<p>the van der Waerden bound. The structure supporting this inequality is <strong>real stability</strong>, which restricts where a polynomial can have complex zeros.</p>
+<p>Applying such a coefficient theorem to a classifier would require checking its polynomial assumptions separately. For the two preprints, we will ask a different question about complex zeros: how close can they come to the point where we expand a logarithm? First, we need the exponential sum associated with a matrix.</p>
+<h2 id="7-a-matrix-spectrum-joins-the-party">7. A matrix spectrum joins the party</h2>
+<p>The matrix version starts with a symmetric <a href="https://en.wikipedia.org/wiki/Positive-definite_matrix" rel="external nofollow noopener" target="_blank">positive definite matrix</a> $B$, with eigenvalues $\lambda_1,\ldots,\lambda_n&gt;0$.</p>
+<p>Its log-determinant is</p>
+\[\log\det B=\sum_i\log\lambda_i.\]
+<p>Its trace powers are</p>
+\[p_k=\operatorname{tr}(B^k)=\sum_i\lambda_i^k.\]
+<p><a href="https://arxiv.org/abs/2601.12612" title="What Trace Powers Reveal About Log-Determinants" rel="external nofollow noopener" target="_blank"><strong>What Trace Powers Reveal About Log-Determinants</strong></a> asks how much a few trace powers tell us about the log-determinant. The difficulty is that these quantities attend to different parts of the spectrum.</p>
+<p>For example, for</p>
+\[B_\varepsilon=\operatorname{diag}(\varepsilon,1,\ldots,1),\]
+<p>we have</p>
+\[\operatorname{tr}(B_\varepsilon^k)=n-1+\varepsilon^k,
+\qquad
+\log\det B_\varepsilon=\log\varepsilon.\]
+<p>As $\varepsilon\to0$, its contribution to every positive trace power disappears, while its contribution to the log-determinant becomes arbitrarily negative.</p>
+<p>Large positive powers listen to the biggest eigenvalues. The log-determinant also needs to hear the quietest one.</p>
+<p>To connect the two quantities, let $\mu=\operatorname{tr}(B)/n$, and choose a normalized eigenvalue $X=\lambda_i/\mu$ uniformly at random. Define</p>
+\[M(t)=\mathbb E[X^t]
+=
+\frac1n\sum_i
+e^{t\log(\lambda_i/\mu)}.\]
+<p>There it is again: a positive sum of exponentials.</p>
+<p><strong>This is the moment-generating function of $Y=\log X$.</strong> Its positive integer values are moments of $X$; its derivatives at zero are moments of $\log X$. That distinction lets one function connect trace powers to the log-determinant.</p>
+<p>With $K(t)=\log M(t)$,</p>
+\[K'(0)=\frac1n\sum_i\log(\lambda_i/\mu),\]
+<p>so</p>
+\[\boxed{
+\log\det B=n\bigl(\log\mu+K'(0)\bigr).
+}\]
+<p>Trace powers give us values of this curve; the log-determinant asks for its slope at zero. The normalization supplies two anchors, $K(0)=K(1)=0$, and each positive trace power gives</p>
+\[K(k)=\log\frac{p_k}{n\mu^k}.\]
+<p>The preprint constructs estimators by interpolating these values and differentiating the interpolating polynomial at zero. It also develops bounds; lower certificates use additional spectral information, such as a positive lower bound on the smallest eigenvalue. <a href="https://arxiv.org/html/2601.12612v1" title="What Trace Powers Reveal About Log-Determinants, version 1" rel="external nofollow noopener" target="_blank">The full paper</a> gives the constructions and their assumptions.</p>
+<figure>
+<picture>
+
+
+<source class="responsive-img-srcset" srcset="/assets/img/cross-entropy/trace-powers-log-determinants-480.webp 480w,/assets/img/cross-entropy/trace-powers-log-determinants-800.webp 800w,/assets/img/cross-entropy/trace-powers-log-determinants-1400.webp 1400w," type="image/webp" sizes="95vw"></source>
+<img src="/assets/img/cross-entropy/trace-powers-log-determinants.png" class="img-fluid rounded" width="1448" height="1086" alt="A matrix spectrum feeds two calculations: positive trace powers emphasize the largest eigenvalues, while a tiny eigenvalue can drive the log-determinant toward negative infinity. The normalized log-moment curve K(t) is convex, equals zero at t=0 and t=1, and has a nonpositive initial slope." data-zoomable="" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+</picture>
+<figcaption class="caption">Trace powers sample a spectral curve, while the log-determinant depends on its slope at zero. The tiny-eigenvalue example explains why positive moments can miss a contribution that dominates the logarithm. Click the image to enlarge.</figcaption>
+</figure>
+<p>This brings us back to the logarithm of a positive exponential sum. Its behavior on the real line is smooth. To understand the reach of its Taylor series, we must look off that line.</p>
+<h2 id="8-the-ghosts-of-the-same-sum">8. The ghosts of the same sum</h2>
+<p>For a complex argument, exponential terms acquire phases and can cancel. The resulting <strong>complex zeros</strong> limit how far the logarithm’s Taylor series can converge.</p>
+<p>For the running polynomial,</p>
+\[P(x)=(1+x)(3+2x).\]
+<p>Its roots are $-1$ and $-3/2$. Under $x=e^\theta$, these become zeros of $P(e^\theta)$ at</p>
+\[\theta=(2m+1)i\pi\]
+<p>and</p>
+\[\theta=\log(3/2)+(2m+1)i\pi,
+\qquad m\in\mathbb Z.\]
+<p>Dividing by $P(1)$ gives the moment-generating function and leaves these zeros unchanged. The logarithm is singular there, and the nearest zeros to the origin are $\pm i\pi$. The cumulant-generating function’s Taylor series therefore has <a href="https://en.wikipedia.org/wiki/Radius_of_convergence" rel="external nofollow noopener" target="_blank">radius of convergence</a> $\pi$.</p>
+<p>The function behaves smoothly everywhere on the real line. Its local power series nevertheless has a finite reach.</p>
+<p>The same mechanism appears in <a href="https://arxiv.org/html/2603.13552v1" title="Ghosts of Softmax, version 1" rel="external nofollow noopener" target="_blank"><strong>Ghosts of Softmax</strong></a>. For affine logits along an update direction,</p>
+\[z_j(t)=z_j(0)+a_jt,\]
+<p>the partition function is another exponential sum. Its complex zeros determine the Taylor radius of the log-partition term. The preprint derives an exact binary formula and a multiclass lower bound for this affine-logit model.</p>
+<p>To see the connection between the papers explicitly, consider the two-term sum</p>
+\[F(t)=u e^{at}+v e^{bt},
+\qquad u,v&gt;0,\quad a\ne b.\]
+<p>Its zeros satisfy</p>
+\[e^{(b-a)t}=-\frac uv,\]
+<p>hence</p>
+\[t_m=
+\frac{\log(u/v)+(2m+1)i\pi}{b-a}.\]
+<p>The nearest zero has distance</p>
+\[\boxed{
+R=
+\frac{\sqrt{\log^2(u/v)+\pi^2}}{|b-a|}.
+}\]
+<p>For <strong>binary softmax</strong>, $u,v$ are exponentiated initial logits, and $\lvert b-a\rvert$ is the spread of directional logit derivatives.</p>
+<p>For a <strong>two-point spectrum</strong>, $u,v$ are the spectral masses, and</p>
+\[|b-a|=\log(\lambda_{\max}/\lambda_{\min}).\]
+<p>The <a href="https://arxiv.org/html/2603.13552v1" title="Ghosts of Softmax, version 1" rel="external nofollow noopener" target="_blank">binary-softmax formula</a> and the <a href="https://arxiv.org/html/2601.12612v1" title="What Trace Powers Reveal About Log-Determinants, version 1" rel="external nofollow noopener" target="_blank">two-point spectral formula</a> are the same zero calculation, with different meanings assigned to the weights and exponents.</p>
+<figure>
+<picture>
+
+
+<source class="responsive-img-srcset" srcset="/assets/img/cross-entropy/complex-zeros-softmax-480.webp 480w,/assets/img/cross-entropy/complex-zeros-softmax-800.webp 800w,/assets/img/cross-entropy/complex-zeros-softmax-1400.webp 1400w," type="image/webp" sizes="95vw"></source>
+<img src="/assets/img/cross-entropy/complex-zeros-softmax.png" class="img-fluid rounded" width="1448" height="1086" alt="A sum of two positive exponentials stays positive on the real line but has complex zeros on a vertical lattice. The distance from the origin to the nearest zero is the Taylor radius of log F; the same calculation applies to binary softmax and a two-point spectral sum." data-zoomable="" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+</picture>
+<figcaption class="caption">The exponential sum has no real zeros, yet its complex zeros bound the Taylor expansion of its logarithm. In the sigmoid example, zeros of the denominator are poles of the sigmoid. The circle depicts a Taylor convergence radius. Click the image to enlarge.</figcaption>
+</figure>
+<p>With more than two softmax terms and a nonzero exponent spread, the affine-logit model gives</p>
+\[R\ge\frac{\pi}{\max_j a_j-\min_j a_j}.\]
+<p>Before the phases spread across a half-circle, positive weighted vectors cannot cancel. If all slopes are equal, the sum is a single exponential times a positive constant, and the radius is infinite. <a href="https://arxiv.org/html/2603.13552v1" title="Ghosts of Softmax, version 1" rel="external nofollow noopener" target="_blank">Ghosts of Softmax</a> gives the phase argument.</p>
+<p>The radius describes convergence of the full Taylor series. Using it to guarantee a decrease in loss requires additional analysis. For example,</p>
+\[\ell(t)=\log(1+e^{-t})\]
+<p>decreases for every real $t&gt;0$, including beyond its Taylor radius $\pi$. A finite Taylor approximation also needs an error bound, even inside that radius. For the spectral problem, polynomial interpolation has its own error analysis.</p>
+<p>Complex zeros give the two problems a shared analytic structure. The spectral curve has one more connection to reveal: its minimum takes us back to capacity.</p>
+<h2 id="9-one-last-costume-change-the-spectrum-comes-back-to-capacity">9. One last costume change: the spectrum comes back to capacity</h2>
+<p>We can derive that connection directly from the identities above. The following calculation extends the discussion in this post; it is not presented here as a new theorem from either preprint.</p>
+<p>Turn the eigenvalues into a probability vector:</p>
+\[r_i=\frac{\lambda_i}{\sum_j\lambda_j},
+\qquad
+u_i=\frac1n.\]
+<p>A direct calculation gives</p>
+\[D_{\mathrm{KL}}(u\Vert r)
+=
+\log\mu-\frac1n\log\det B.\]
+<p>Equivalently,</p>
+\[\boxed{
+\log\det B
+=
+n\log\mu-nD_{\mathrm{KL}}(u\Vert r).
+}\]
+<p>At fixed trace, the log-determinant deficit from the equal-eigenvalue case is exactly a relative entropy.</p>
+<p>A tiny eigenvalue means a tiny $r_i$. The uniform distribution still insists on assigning that coordinate weight $1/n$, so the divergence notices what positive powers almost ignore.</p>
+<p>The same probability vectors also express the entire spectral generating function:</p>
+\[M(t)
+=
+\frac1n\sum_i(\lambda_i/\mu)^t
+=
+\sum_i u_i^{\,1-t}r_i^{\,t}.\]
+<p>Minimizing this expression over $0\le t\le1$, then taking its negative logarithm, gives the <strong>Chernoff information</strong> between $u$ and $r$. This measures their distinguishability in binary hypothesis testing; <a href="https://arxiv.org/html/2207.03745v3" title="Nielsen: Revisiting Chernoff Information with Likelihood Ratio Exponential Families" rel="external nofollow noopener" target="_blank">Nielsen’s review</a> develops the connection.</p>
+<p>Now define the posynomial</p>
+\[Q(x)=\frac1n\sum_i x^{\log(\lambda_i/\mu)}.\]
+<p>Since $Q(e^t)=M(t)$,</p>
+\[\operatorname{cap}_0(Q)=\inf_{t\in\mathbb R}M(t).\]
+<p>Convexity of $\log M(t)$, together with $M(0)=M(1)=1$, ensures that a global minimum can be found in $[0,1]$. Therefore,</p>
+\[\boxed{
+\operatorname{cap}_0(Q)
+=
+e^{-C(u,r)},
+}\]
+<p>where $C(u,r)$ is Chernoff information.</p>
+<p>So this one spectral curve has several interpretations.</p>
+<p>The positive integer values of $M$ encode trace powers. The slope of $K=\log M$ at zero gives the normalized log-determinant. The minimum of $M$ is a posynomial capacity and a hypothesis-testing quantity. The complex zeros of $M$ control the Taylor radius of $K$.</p>
+<p>We left polynomial capacity to talk about matrices.</p>
+<p>Capacity was already waiting inside the matrix.</p>
+<h2 id="what-the-shared-formula-gives-us">What the shared formula gives us</h2>
+<p>The common object is small:</p>
+\[Z(\theta)=\sum_j c_je^{\langle a_j,\theta\rangle}.\]
+<p>Change coordinates, and it is a polynomial or posynomial. Normalize it, and it generates a probability distribution. Differentiate its logarithm, and it gives means, covariances, and higher cumulants. Minimize its logarithm after subtracting a target linear term, and it gives log-capacity. That objective also gives the best cross-entropy in the corresponding log-linear family, up to the coefficient constant.</p>
+<p>For affine logits, these identities turn a training objective into a problem about exponent geometry and entropy. For a matrix spectrum, the same exponential sum connects available moments to a desired derivative. In both settings, complex zeros reveal a limit on local Taylor expansions.</p>
+<p><strong>Exponent geometry tells us which means are attainable. Entropy tells us what it costs to attain them. Complex-zero geometry tells us how far a local series can see.</strong></p>
+<p>The two preprints follow different parts of this map:</p>
+<ul>
+<li>
+<a href="https://arxiv.org/html/2603.13552v1" title="Ghosts of Softmax, version 1" rel="external nofollow noopener" target="_blank"><strong>Ghosts of Softmax: Complex Singularities That Limit Safe Step Sizes in Cross-Entropy</strong></a> develops the zero geometry for the affine-logit model.</li>
+<li>
+<a href="https://arxiv.org/abs/2601.12612" title="What Trace Powers Reveal About Log-Determinants" rel="external nofollow noopener" target="_blank"><strong>What Trace Powers Reveal About Log-Determinants: Closed-Form Estimators, Certificates, and Failure Modes</strong></a> develops estimators and bounds from trace information.</li>
+</ul>
+<p>The polynomial did not become something else. We kept asking it different questions.</p>
+<hr>
+</div>
+</article>
+</div>
+</div>
+<script defer src="/assets/js/research-post.js?7610ddc9a8764d988f6fedc1dd6e60f0"></script>
+</div>
+
+<footer class="sticky-bottom mt-5" role="contentinfo">
+<div class="container">
+© Copyright 2026
+Piyush
+K.
+Sao. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+</div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+<script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+<script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script>
+
+<script src="/assets/js/no_defer.js?2930004b8d7fcd0a8e00fdcfc8fc9f24"></script>
+<script defer src="/assets/js/common.js?da39b660470d1ba6e6b8bf5f37070b6e"></script>
+<script defer src="/assets/js/copy_code.js?12775fdf7f95e901d7119054556e495f" type="text/javascript"></script>
+
+<script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script>
+
+<script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+<script async src="https://badge.dimensions.ai/badge.js"></script>
+<script src="/assets/js/mathjax-stix2-setup.js?8521f01109f06e9876c922b8611f766d"></script>
+<script defer id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-chtml-nofont.js" crossorigin="anonymous"></script>
+
+<script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script>
+</body>
+</html>
