@@ -5,7 +5,7 @@ subtitle: "Softmax training, log-determinants, and the complex zeros hiding in a
 topic_line: "Machine learning × Optimization × Linear algebra"
 date: 2026-09-16 12:00:00
 description: "How polynomial capacity connects softmax training, trace-power log-determinant estimation, and the complex zeros that limit Taylor series."
-tags: machine-learning optimization probability linear-algebra
+tags: machine-learning softmax cross-entropy polynomials posynomials log-sum-exp curvature optimization probability linear-algebra polynomial-capacity log-determinants complex-zeros information-theory
 categories: research
 related_posts: false
 _styles: |
