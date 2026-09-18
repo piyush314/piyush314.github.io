@@ -1,0 +1,93 @@
+{% if page._styles %}
+  <style>
+    {{ page._styles }}
+  </style>
+{% endif %}
+
+{% assign article_subtitle = page.subtitle | default: page.description %}
+{% assign article_category = page.categories | first %}
+<a class="research-skip-link" href="#article-start">Skip to article</a>
+<div class="research-layout">
+  <aside class="research-sidebar" aria-label="Reading guide">
+    <details class="reading-guide" open>
+      <summary>On this page</summary>
+      <nav aria-label="Article sections">
+        <ol id="research-sections">
+          <li><a href="#article-start" aria-current="location">Introduction</a></li>
+        </ol>
+      </nav>
+    </details>
+  </aside>
+
+  <div class="post research-post">
+    <header class="post-header research-hero">
+      <div class="research-eyebrow">
+        {% if article_category %}
+          <a href="{{ article_category | slugify | prepend: '/blog/category/' | relative_url }}/">{{ article_category | replace: '-', ' ' }}</a>
+        {% else %}
+          <a href="{{ '/blog/' | relative_url }}">Article</a>
+        {% endif %}
+        {% if page.topic_line %}
+          <span>{{ page.topic_line }}</span>
+        {% elsif page.tags.size > 0 %}
+          <span>
+            {%- for tag in page.tags limit: 3 -%}
+              {{- tag | replace: '-', ' ' -}}
+              {%- unless forloop.last %} × {% endunless -%}
+            {%- endfor -%}
+          </span>
+        {% endif %}
+      </div>
+      <h1 class="post-title">{{ page.title }}</h1>
+      {% if article_subtitle and article_subtitle != '' %}
+        <p class="research-subtitle">{{ article_subtitle }}</p>
+      {% endif %}
+      <div class="research-metadata">
+        <p class="post-meta">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="16" rx="2" />
+            <path d="M7 2v6M17 2v6M3 11h18M7 15h2M11 15h2M15 15h2M7 18h2M11 18h2" />
+          </svg>
+          <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %d, %Y' }}</time>
+        </p>
+        {% if page.tags.size > 0 %}
+          <ul class="research-topics" aria-label="Article topics">
+            {% for tag in page.tags %}
+              <li>
+                <a href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}/">{{ tag | replace: '-', ' ' }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      {% if page.author or page.meta %}
+        <p class="research-byline">
+          {{ page.author -}}
+          {%- if page.author and page.meta %} · {% endif -%}
+          {{- page.meta }}
+        </p>
+      {% endif %}
+    </header>
+
+    <article class="post-content" id="article-start" aria-label="Article">
+      <div id="markdown-content">{{ content }}</div>
+    </article>
+
+    {% if page.related_publications %}
+      <h2>References</h2>
+      <div class="publications">{% bibliography --cited_in_order %}</div>
+    {% endif %}
+    {% if site.related_blog_posts.enabled %}
+      {% if page.related_posts == null or page.related_posts %}
+        {% include related_posts.liquid %}
+      {% endif %}
+    {% endif %}
+    {% if site.disqus_shortname and page.disqus_comments %}
+      {% include disqus.liquid %}
+    {% endif %}
+    {% if site.giscus and page.giscus_comments %}
+      {% include giscus.liquid %}
+    {% endif %}
+  </div>
+</div>
+<script defer src="{{ '/assets/js/research-post.js' | relative_url | bust_file_cache }}"></script>

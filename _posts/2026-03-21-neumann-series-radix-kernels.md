@@ -1,16 +1,11 @@
 ---
 layout: post
 title: "How Many Matrix Multiplications Do You Actually Need?"
+subtitle: "Faster Neumann series evaluation through smarter radix kernels"
 date: 2026-03-21 12:00:00
 description: "Faster Neumann series evaluation through smarter radix kernels - achieving ~25% fewer matrix products at the same accuracy."
 tags: numerical-methods linear-algebra high-performance-computing matrix-computation preconditioning
 categories: research
----
-
-## How Many Matrix Multiplications Do You Actually Need?
-
-### Faster Neumann series evaluation through smarter radix kernels
-
 ---
 
 When you need an approximate matrix inverse — for preconditioning,

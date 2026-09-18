@@ -7,26 +7,24 @@ tags: collaboration math-modelling productivity
 categories: research
 ---
 
-## The Multiplicative Effect of Good Collaboration in Mental Tasks
-
-### Introduction:
+## Introduction:
 
 This post explores how effective collaboration can have a multiplicative effect on productivity in mental tasks.
 Unlike physical tasks, where output is often the sum of individual efforts, effective collaboration in mental tasks can lead to a '1 plus 1 equals 3' effect.
 We use a mathematical model to explain this phenomenon and explore the underlying assumptions determining when it should and shouldn't work.
 By the end, you'll understand what constitutes constructive collaboration and what forms can be destructive.
 
-### The Observation:
+## The Observation:
 
 In mental tasks, individuals often face challenges unrelated to time constraints or task size.
 People frequently get stuck on specific aspects requiring clarity, insight, or the right question.
 In such situations, the number of tasks completed depends on the frequency of encountering these "terminal" stuck points, which can lead to procrastination or moving on to the next task without resolving the current one.
 
-### The Power of Collaboration:
+## The Power of Collaboration:
 
 Collaboration on mental tasks reduces the likelihood of all participants getting stuck at the same point. If an individual has a 50% chance of getting stuck, then when two people collaborate, the probability of both getting stuck at the same point decreases to just 25% (0.5 \times 0.5 = 0.25). Consequently, collaborative efforts increase the chances that at least one person will have the necessary insight to overcome obstacles and maintain progress.
 
-### Real-world Example:
+## Real-world Example:
 
 Consider a scenario with four tasks: A, B, C, and D. If one person works on A and B while another works on C and D, and each gets stuck on one task, only two tasks will be completed.
 

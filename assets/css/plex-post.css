@@ -1,0 +1,96 @@
+/* Default blog typography; other pages may opt in with typography: plex. */
+.post {
+  --post-serif: "IBM Plex Serif", Georgia, serif;
+  --post-sans: "IBM Plex Sans", Arial, sans-serif;
+  --post-mono: "IBM Plex Mono", monospace;
+  font-family: var(--post-serif);
+  font-weight: 300;
+}
+
+.post .post-content,
+.post #markdown-content {
+  font-family: var(--post-serif);
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* The base theme assigns fonts directly to these elements. */
+.post :is(p, em, div, li, span, strong, table, td, th, blockquote) {
+  font-family: inherit;
+}
+
+.post :is(h1, h2, h3, h4, h5, h6),
+.post :is(.post-tags, figcaption, .caption, th) {
+  font-family: var(--post-sans);
+}
+
+.post :is(strong, b, th) {
+  font-weight: 600;
+}
+
+.post .post-meta {
+  font-family: var(--post-mono);
+  font-size: 0.8rem;
+}
+
+.post .post-title {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.post .post-content :is(h2, h3, h4, h5, h6) {
+  font-weight: 300;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  margin-top: 1.15em;
+  margin-bottom: 0.45em;
+  scroll-margin-top: 5rem;
+}
+
+.post .post-content h2 {
+  font-size: 1.75rem;
+}
+
+.post .post-content h3 {
+  font-size: 1.375rem;
+}
+
+.post .post-content p {
+  margin-bottom: 0.8em;
+}
+
+.post :is(figcaption, .caption) {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.post :is(code, pre, kbd, samp),
+.post :is(code, pre, kbd, samp) span {
+  font-family: var(--post-mono);
+}
+
+.post :is(code, kbd, samp) {
+  font-size: 0.88em;
+}
+
+.post mjx-container[jax="CHTML"] {
+  color: inherit;
+}
+
+.post mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 0.2em;
+}
+
+@media (max-width: 575.98px) {
+  .post .post-content,
+  .post #markdown-content {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+}

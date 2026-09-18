@@ -253,6 +253,14 @@ plugins:
 # Sitemap settings
 defaults:
   - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      reading_layout: true
+      typography: plex
+      mathjax_font: stix2
+  - scope:
       path: "assets"
     values:
       sitemap: false

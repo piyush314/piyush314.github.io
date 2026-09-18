@@ -40,7 +40,7 @@
   id="highlight_theme_light"
 >
 
-{% if page.toc and page.toc.sidebar %}
+{% if page.toc and page.toc.sidebar and page.reading_layout != true %}
   <!-- Sidebar Table of Contents -->
   <link defer href="{{ '/assets/css/bootstrap-toc.min.css' | relative_url | bust_file_cache }}" rel="stylesheet">
 {% endif %}
@@ -67,6 +67,18 @@
   <link rel="shortcut icon" href="{{ site.icon | prepend: '/assets/img/' | relative_url | bust_file_cache}}">
 {% endif %}
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url | bust_css_cache }}">
+{% if page.typography == 'plex' %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&amp;family=IBM+Plex+Sans:ital,wght@0,300;0,600;1,300&amp;family=IBM+Plex+Serif:ital,wght@0,300;0,600;1,300;1,600&amp;display=swap"
+  >
+  <link rel="stylesheet" href="{{ '/assets/css/plex-post.css' | relative_url | bust_file_cache }}">
+{% endif %}
+{% if page.reading_layout %}
+  <link rel="stylesheet" href="{{ '/assets/css/research-post.css' | relative_url | bust_file_cache }}">
+{% endif %}
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
 
 <!-- Dark Mode -->
