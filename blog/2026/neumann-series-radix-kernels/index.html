@@ -59,13 +59,18 @@ How Many Matrix Multiplications Do You Actually Need? | Piyush K. Sao
 
 <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
 <link rel="stylesheet" href="/assets/css/main.css?efa54f41b6bdcbd48ed6527954739801">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&amp;family=IBM+Plex+Sans:ital,wght@0,300;0,600;1,300&amp;family=IBM+Plex+Serif:ital,wght@0,300;0,600;1,300;1,600&amp;display=swap">
+<link rel="stylesheet" href="/assets/css/plex-post.css?008168e51d884a31aacb56dd1fd85f00">
+<link rel="stylesheet" href="/assets/css/research-post.css?ab4177ba7f4cf2ecc8370e5da267c82e">
 <link rel="canonical" href="https://piyush314.github.io/blog/2026/neumann-series-radix-kernels/">
 
 <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark">
 <script src="/assets/js/theme.js?14648a0c3986d9d6d0f4c538af269903"></script>
 </head>
 
-<body class="fixed-top-nav sticky-bottom-footer">
+<body class="fixed-top-nav sticky-bottom-footer research-page">
 
 <header>
 
@@ -125,31 +130,56 @@ Sao
 </progress>
 </header>
 
-<div class="container mt-5" role="main">
-<div class="post">
-<header class="post-header">
+<div class="research-shell" role="main">
+<a class="research-skip-link" href="#article-start">Skip to article</a>
+<div class="research-layout">
+<aside class="research-sidebar" aria-label="Reading guide">
+<details class="reading-guide" open>
+<summary>On this page</summary>
+<nav aria-label="Article sections">
+<ol id="research-sections">
+<li><a href="#article-start" aria-current="location">Introduction</a></li>
+</ol>
+</nav>
+</details>
+</aside>
+<div class="post research-post">
+<header class="post-header research-hero">
+<div class="research-eyebrow">
+<a href="/blog/category/research/">research</a>
+<span>numerical methods × linear algebra × high performance computing</span>
+</div>
 <h1 class="post-title">How Many Matrix Multiplications Do You Actually Need?</h1>
+<p class="research-subtitle">Faster Neumann series evaluation through smarter radix kernels</p>
+<div class="research-metadata">
 <p class="post-meta">
-March 21, 2026
+<svg viewbox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+<rect x="3" y="5" width="18" height="16" rx="2"></rect>
+<path d="M7 2v6M17 2v6M3 11h18M7 15h2M11 15h2M15 15h2M7 18h2M11 18h2"></path>
+</svg>
+<time datetime="2026-03-21T12:00:00+00:00">March 21, 2026</time>
 </p>
-<p class="post-tags">
-<a href="/blog/2026"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>
-·
-<a href="/blog/tag/numerical-methods"> <i class="fa-solid fa-hashtag fa-sm"></i> numerical-methods</a>
-<a href="/blog/tag/linear-algebra"> <i class="fa-solid fa-hashtag fa-sm"></i> linear-algebra</a>
-<a href="/blog/tag/high-performance-computing"> <i class="fa-solid fa-hashtag fa-sm"></i> high-performance-computing</a>
-<a href="/blog/tag/matrix-computation"> <i class="fa-solid fa-hashtag fa-sm"></i> matrix-computation</a>
-<a href="/blog/tag/preconditioning"> <i class="fa-solid fa-hashtag fa-sm"></i> preconditioning</a>
-·
-<a href="/blog/category/research">
-<i class="fa-solid fa-tag fa-sm"></i> research</a>
-</p>
+<ul class="research-topics" aria-label="Article topics">
+<li>
+<a href="/blog/tag/numerical-methods/">numerical methods</a>
+</li>
+<li>
+<a href="/blog/tag/linear-algebra/">linear algebra</a>
+</li>
+<li>
+<a href="/blog/tag/high-performance-computing/">high performance computing</a>
+</li>
+<li>
+<a href="/blog/tag/matrix-computation/">matrix computation</a>
+</li>
+<li>
+<a href="/blog/tag/preconditioning/">preconditioning</a>
+</li>
+</ul>
+</div>
 </header>
-<article class="post-content">
+<article class="post-content" id="article-start" aria-label="Article">
 <div id="markdown-content">
-<h2 id="how-many-matrix-multiplications-do-you-actually-need">How Many Matrix Multiplications Do You Actually Need?</h2>
-<h3 id="faster-neumann-series-evaluation-through-smarter-radix-kernels">Faster Neumann series evaluation through smarter radix kernels</h3>
-<hr>
 <p>When you need an approximate matrix inverse — for preconditioning,
 log-determinant estimation, or MIMO signal detection — you often
 use the truncated Neumann series:</p>
@@ -463,20 +493,21 @@ Low-Product Radix Kernels</a>.
 Preprint, February 2026.</em></p>
 </div>
 </article>
-<br>
+<section class="related-posts mt-4" aria-labelledby="related-posts-heading">
 <hr>
-<br>
-<ul class="list-disc pl-8"></ul>
-
-<h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
-<p class="mb-2">Here are some more articles you might like to read next:</p>
+<h2 id="related-posts-heading">More articles</h2>
+<ul>
 <li class="my-2">
-<a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2024/Multiplicative-collaboration/">The Multiplicative Effect of Good Collaboration in Mental Tasks</a>
+<a href="/blog/2024/Multiplicative-collaboration/">The Multiplicative Effect of Good Collaboration in Mental Tasks</a>
 </li>
 <li class="my-2">
-<a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2025/quantum-computers-simulation-hypothesis/">Quantum Computers: The Key to Unlocking (or Breaking) the Simulation?</a>
+<a href="/blog/2025/quantum-computers-simulation-hypothesis/">Quantum Computers: The Key to Unlocking (or Breaking) the Simulation?</a>
 </li>
+</ul>
+</section>
 </div>
+</div>
+<script defer src="/assets/js/research-post.js?7610ddc9a8764d988f6fedc1dd6e60f0"></script>
 </div>
 
 <footer class="sticky-bottom mt-5" role="contentinfo">
@@ -509,10 +540,8 @@ Sao. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external no
 
 <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
 <script async src="https://badge.dimensions.ai/badge.js"></script>
-
-<script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
-<script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script>
-<script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+<script src="/assets/js/mathjax-stix2-setup.js?8521f01109f06e9876c922b8611f766d"></script>
+<script defer id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-chtml-nofont.js" crossorigin="anonymous"></script>
 
 <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script>
 </body>

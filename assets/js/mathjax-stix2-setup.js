@@ -1,0 +1,1 @@
+window.MathJax={tex:{tags:"ams",inlineMath:[["$","$"],["\\(","\\)"]]},output:{font:"mathjax-stix2",fontPath:"https://cdn.jsdelivr.net/npm/@mathjax/%%FONT%%-font@4.0.0"}};

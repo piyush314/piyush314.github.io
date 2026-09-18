@@ -1,8 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://piyush314.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://piyush314.github.io/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-09-02T23:31:01+00:00</updated><id>https://piyush314.github.io/feed.xml</id><title type="html">blank</title><subtitle>Personal webpage for Dr. Piyush Sao, Staff scientist, Computer science and mathematics division, ORNL.
-</subtitle><entry><title type="html">How Many Matrix Multiplications Do You Actually Need?</title><link href="https://piyush314.github.io/blog/2026/neumann-series-radix-kernels/" rel="alternate" type="text/html" title="How Many Matrix Multiplications Do You Actually Need?"/><published>2026-03-21T12:00:00+00:00</published><updated>2026-03-21T12:00:00+00:00</updated><id>https://piyush314.github.io/blog/2026/neumann-series-radix-kernels</id><content type="html" xml:base="https://piyush314.github.io/blog/2026/neumann-series-radix-kernels/"><![CDATA[<h2 id="how-many-matrix-multiplications-do-you-actually-need">How Many Matrix Multiplications Do You Actually Need?</h2>
-<h3 id="faster-neumann-series-evaluation-through-smarter-radix-kernels">Faster Neumann series evaluation through smarter radix kernels</h3>
-<hr/>
-<p>When you need an approximate matrix inverse — for preconditioning,
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://piyush314.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://piyush314.github.io/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-09-18T17:55:51+00:00</updated><id>https://piyush314.github.io/feed.xml</id><title type="html">blank</title><subtitle>Personal webpage for Dr. Piyush Sao, Staff scientist, Computer science and mathematics division, ORNL.
+</subtitle><entry><title type="html">How Many Matrix Multiplications Do You Actually Need?</title><link href="https://piyush314.github.io/blog/2026/neumann-series-radix-kernels/" rel="alternate" type="text/html" title="How Many Matrix Multiplications Do You Actually Need?"/><published>2026-03-21T12:00:00+00:00</published><updated>2026-03-21T12:00:00+00:00</updated><id>https://piyush314.github.io/blog/2026/neumann-series-radix-kernels</id><content type="html" xml:base="https://piyush314.github.io/blog/2026/neumann-series-radix-kernels/"><![CDATA[<p>When you need an approximate matrix inverse — for preconditioning,
 log-determinant estimation, or MIMO signal detection — you often
 use the truncated Neumann series:</p>
 \[S_k(A) = I + A + A^2 + \cdots + A^{k-1}\]
@@ -312,8 +309,7 @@ approximate kernels are nearly as accurate and even cheaper.</p>
 <hr/>
 <p><em>The paper: <a href="https://arxiv.org/abs/2602.11843">Fast Evaluation of Truncated Neumann Series by
 Low-Product Radix Kernels</a>.
-Preprint, February 2026.</em></p>]]></content><author><name></name></author><category term="research"/><category term="numerical-methods"/><category term="linear-algebra"/><category term="high-performance-computing"/><category term="matrix-computation"/><category term="preconditioning"/><summary type="html"><![CDATA[Faster Neumann series evaluation through smarter radix kernels - achieving ~25% fewer matrix products at the same accuracy.]]></summary></entry><entry><title type="html">Quantum Computers: The Key to Unlocking (or Breaking) the Simulation?</title><link href="https://piyush314.github.io/blog/2025/quantum-computers-simulation-hypothesis/" rel="alternate" type="text/html" title="Quantum Computers: The Key to Unlocking (or Breaking) the Simulation?"/><published>2025-03-31T11:35:00+00:00</published><updated>2025-03-31T11:35:00+00:00</updated><id>https://piyush314.github.io/blog/2025/quantum-computers-simulation-hypothesis</id><content type="html" xml:base="https://piyush314.github.io/blog/2025/quantum-computers-simulation-hypothesis/"><![CDATA[<h2 id="quantum-computers-the-key-to-unlocking-or-breaking-the-simulation">Quantum Computers: The Key to Unlocking (or Breaking) the Simulation?</h2>
-<figure>
+Preprint, February 2026.</em></p>]]></content><author><name></name></author><category term="research"/><category term="numerical-methods"/><category term="linear-algebra"/><category term="high-performance-computing"/><category term="matrix-computation"/><category term="preconditioning"/><summary type="html"><![CDATA[Faster Neumann series evaluation through smarter radix kernels - achieving ~25% fewer matrix products at the same accuracy.]]></summary></entry><entry><title type="html">Quantum Computers: The Key to Unlocking (or Breaking) the Simulation?</title><link href="https://piyush314.github.io/blog/2025/quantum-computers-simulation-hypothesis/" rel="alternate" type="text/html" title="Quantum Computers: The Key to Unlocking (or Breaking) the Simulation?"/><published>2025-03-31T11:35:00+00:00</published><updated>2025-03-31T11:35:00+00:00</updated><id>https://piyush314.github.io/blog/2025/quantum-computers-simulation-hypothesis</id><content type="html" xml:base="https://piyush314.github.io/blog/2025/quantum-computers-simulation-hypothesis/"><![CDATA[<figure>
 <picture>
 
 
@@ -324,10 +320,10 @@ max-width: 50%;
 </picture>
 </figure>
 <p>What if reality is an illusion? The Simulation Hypothesis—the idea we live in a computer simulation—has fascinated scientists and philosophers for decades. But a key challenge remains: how to test it. Quantum computing could change that. This revolutionary technology blurs the boundaries between science and speculation. Breakthroughs like Google’s “Willow” quantum chip raise an intriguing possibility: these machines might interface with the “hypercomputer” behind our simulated reality—exposing its glitches.</p>
-<h3 id="a-quantum-leap-beyond-imagination">A Quantum Leap Beyond Imagination</h3>
+<h2 id="a-quantum-leap-beyond-imagination">A Quantum Leap Beyond Imagination</h2>
 <p>In December 2024, Google announced that its “Willow” quantum chip completed a complex computation in under five minutes—a task estimated to take a classical supercomputer like Frontier 10 septillion years. This isn’t just a speed boost; it’s an unimaginable leap beyond classical computing, as detailed in Nature’s coverage<a href="https://www.nature.com/articles/d41586-024-04028-3"><em>Nature</em>’s coverage</a>.</p>
 <p>How does Willow achieve this? Quantum computers use superposition and entanglement to solve problems that would overwhelm even the most powerful classical machines. Where does this power come from? Physicist David Deutsch suggests it might involve the multiverse—computations spanning parallel realities. But what if there’s another explanation, one tied to the Simulation Hypothesis? Could quantum computers be reaching <em>outside</em> our universe, borrowing power from the system simulating us?</p>
-<h3 id="the-universe-as-a-cosmic-computer">The Universe as a Cosmic Computer</h3>
+<h2 id="the-universe-as-a-cosmic-computer">The Universe as a Cosmic Computer</h2>
 <p>Picture the universe as a giant computational engine, sparked by the Big Bang and chugging along within the limits of its own physics—limits tied to energy, matter, and concepts like the Thermodynamic Limit or Landauer Limit. Classical computers fit neatly within this framework. But quantum computers? They’re a different beast. Their ability to tackle problems like Willow’s benchmark, reported by <a href="https://www.theverge.com/2024/12/9/24317382/google-willow-quantum-computing-chip-breakthrough"><em>The Verge</em></a>, suggests they might be playing by rules our universe shouldn’t allow.</p>
 <figure>
 <picture>
@@ -340,7 +336,7 @@ max-width: 50%;
 </picture>
 </figure>
 <p>So, here’s the wild idea: What if quantum computers aren’t just working <em>inside</em> our reality? What if they’re “offloading” their toughest calculations to a “hypercomputer”—the hypothetical machine running our universe as a simulation? In this view, quantum entanglement—where particles seem to instantly influence each other across vast distances—could be a shortcut in the simulation’s code, and Willow’s insane speed might be a glimpse of the hypercomputer’s true power, as explored in <a href="https://medium.com/@nicjames0515/the-quantum-connection-to-the-simulation-hypothesis-191645f58514"><em>The Quantum Connection</em></a>.</p>
-<h3 id="from-what-if-to-how-do-we-know">From “What If” to “How Do We Know?”</h3>
+<h2 id="from-what-if-to-how-do-we-know">From “What If” to “How Do We Know?”</h2>
 <p>The Simulation Hypothesis takes an intriguing turn when applied to quantum computing. If reality runs on a hypercomputer with finite but vast resources, pushing quantum systems to their limits could trigger “simulation lag”—reality glitches like an overloaded video game. This testable angle aligns with <a href="https://phys.org/news/2022-11-simulation.html"><em>Phys.org</em>’s analysis of simulation stress-testing</a>.</p>
 <p>This isn’t just speculative thinking: if quantum computers interface with an external computational layer, evidence could emerge under extreme computational loads. Specifically:</p>
 <ol>
@@ -365,18 +361,18 @@ max-width: 50%;
 " alt="Concept of reality breaking or glitching" title="Breaking Reality?" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/>
 </picture>
 </figure>
-<h3 id="other-theories-in-the-quantum-realm">Other Theories in the Quantum Realm</h3>
+<h2 id="other-theories-in-the-quantum-realm">Other Theories in the Quantum Realm</h2>
 <p>Alternatively, the multiverse theory (Deutsch, Many-Worlds Interpretation) suggests quantum computers (e.g., Willow) compute across parallel universes without an external simulator. Pilot-wave theory and digital physics avoid multiverses, instead relying on hidden variables or intrinsic computational properties.</p>
 <p>Unlike these theories, I am suggesting that quantum computers might breach reality by accessing and overloading an external hypercomputer, potentially causing observable effects. This hypothesis favors testability, predicting glitches rather than parallel worlds.</p>
-<h3 id="the-reality-check">The Reality Check</h3>
+<h2 id="the-reality-check">The Reality Check</h2>
 <p>Let’s pause. This idea relies on unproven assumptions: that we’re in a simulation, that a hypercomputer exists, and that quantum computers access it. Currently, there’s <em>no evidence</em> of simulation lag, shifting constants, or external resources, as critics note <a href="https://spectrum.ieee.org/the-case-against-quantum-computing"><em>IEEE Spectrum</em></a>. Willow’s achievement is remarkable, but standard quantum mechanics explains it without invoking a cosmic simulator—or a multiverse, as argued in <a href="https://www.quantamagazine.org/the-argument-against-quantum-computers-20180207/"><em>Quanta Magazine</em></a>.</p>
 <p>Occam’s Razor applies: why propose a hypercomputer when quantum mechanics already explains these phenomena? Testing this is difficult. Even with advanced quantum technology, detecting subtle anomalies or defining universal limits remains a massive challenge.</p>
-<h3 id="why-this-matters">Why This Matters</h3>
+<h2 id="why-this-matters">Why This Matters</h2>
 <p>Google’s Willow chip doesn’t prove we’re simulated, but it raises big questions. Quantum computers are redefining computational limits—could they reveal the multiverse, expose a simulation, or simply demonstrate the strange power of physics?</p>
 <p>This quantum twist on the Simulation Hypothesis makes a philosophical puzzle testable. As quantum tech advances, could we build a machine that disrupts reality? For now, it’s a thrilling possibility.</p>
 <p><strong>What’s your take? Does Willow’s speed hint at a simulation, a multiverse, or just quantum mechanics doing its thing?</strong></p>
 <hr/>
-<h3 id="key-citations">Key Citations</h3>
+<h2 id="key-citations">Key Citations</h2>
 <ul>
 <li><a href="https://www.nature.com/articles/d41586-024-04028-3">Google’s new quantum chip achieves accuracy milestone</a></li>
 <li><a href="https://www.theverge.com/2024/12/9/24317382/google-willow-quantum-computing-chip-breakthrough">Google reveals quantum computing chip with ‘breakthrough’ achievements</a></li>
@@ -387,19 +383,18 @@ max-width: 50%;
 <li><a href="https://en.wikipedia.org/wiki/Willow_processor">Willow processor - Wikipedia</a></li>
 <li><a href="https://www.forbes.com/sites/timbajarin/2024/12/13/why-googles-quantum-computer-chip-willow-is-a-game-changer/">Why Google’s Quantum Computer Chip Willow Is A Game Changer</a></li>
 <li><a href="https://www.forbes.com/sites/moorinsights/2025/01/28/googles-105-qubit-willow-chip-achieves-major-quantum-milestones/">Google’s 105-Qubit Willow Chip Achieves Major Quantum Milestones</a></li>
-</ul>]]></content><author><name></name></author><category term="science"/><category term="technology"/><category term="speculation"/><category term="quantum-computing"/><category term="simulation-hypothesis"/><category term="google-willow"/><category term="philosophy"/><category term="technology"/><category term="physics"/><summary type="html"><![CDATA[Exploring the Simulation Hypothesis and whether quantum computers like Google's Willow could reveal or even break our simulated reality.]]></summary></entry><entry><title type="html">The Multiplicative Effect of Good Collaboration in Mental Tasks</title><link href="https://piyush314.github.io/blog/2024/Multiplicative-collaboration/" rel="alternate" type="text/html" title="The Multiplicative Effect of Good Collaboration in Mental Tasks"/><published>2024-03-13T00:20:00+00:00</published><updated>2024-03-13T00:20:00+00:00</updated><id>https://piyush314.github.io/blog/2024/Multiplicative-collaboration</id><content type="html" xml:base="https://piyush314.github.io/blog/2024/Multiplicative-collaboration/"><![CDATA[<h2 id="the-multiplicative-effect-of-good-collaboration-in-mental-tasks">The Multiplicative Effect of Good Collaboration in Mental Tasks</h2>
-<h3 id="introduction">Introduction:</h3>
+</ul>]]></content><author><name></name></author><category term="science"/><category term="technology"/><category term="speculation"/><category term="quantum-computing"/><category term="simulation-hypothesis"/><category term="google-willow"/><category term="philosophy"/><category term="technology"/><category term="physics"/><summary type="html"><![CDATA[Exploring the Simulation Hypothesis and whether quantum computers like Google's Willow could reveal or even break our simulated reality.]]></summary></entry><entry><title type="html">The Multiplicative Effect of Good Collaboration in Mental Tasks</title><link href="https://piyush314.github.io/blog/2024/Multiplicative-collaboration/" rel="alternate" type="text/html" title="The Multiplicative Effect of Good Collaboration in Mental Tasks"/><published>2024-03-13T00:20:00+00:00</published><updated>2024-03-13T00:20:00+00:00</updated><id>https://piyush314.github.io/blog/2024/Multiplicative-collaboration</id><content type="html" xml:base="https://piyush314.github.io/blog/2024/Multiplicative-collaboration/"><![CDATA[<h2 id="introduction">Introduction:</h2>
 <p>This post explores how effective collaboration can have a multiplicative effect on productivity in mental tasks.
 Unlike physical tasks, where output is often the sum of individual efforts, effective collaboration in mental tasks can lead to a ‘1 plus 1 equals 3’ effect.
 We use a mathematical model to explain this phenomenon and explore the underlying assumptions determining when it should and shouldn’t work.
 By the end, you’ll understand what constitutes constructive collaboration and what forms can be destructive.</p>
-<h3 id="the-observation">The Observation:</h3>
+<h2 id="the-observation">The Observation:</h2>
 <p>In mental tasks, individuals often face challenges unrelated to time constraints or task size.
 People frequently get stuck on specific aspects requiring clarity, insight, or the right question.
 In such situations, the number of tasks completed depends on the frequency of encountering these “terminal” stuck points, which can lead to procrastination or moving on to the next task without resolving the current one.</p>
-<h3 id="the-power-of-collaboration">The Power of Collaboration:</h3>
+<h2 id="the-power-of-collaboration">The Power of Collaboration:</h2>
 <p>Collaboration on mental tasks reduces the likelihood of all participants getting stuck at the same point. If an individual has a 50% chance of getting stuck, then when two people collaborate, the probability of both getting stuck at the same point decreases to just 25% (0.5 \times 0.5 = 0.25). Consequently, collaborative efforts increase the chances that at least one person will have the necessary insight to overcome obstacles and maintain progress.</p>
-<h3 id="real-world-example">Real-world Example:</h3>
+<h2 id="real-world-example">Real-world Example:</h2>
 <p>Consider a scenario with four tasks: A, B, C, and D. If one person works on A and B while another works on C and D, and each gets stuck on one task, only two tasks will be completed.</p>
 <p>However, if they collaborate on A and B together, they are less likely to get stuck on the same task. They may only encounter one stuck point, allowing them to complete three out of four tasks.</p>
 <p>This simple example shows how collaboration enables “1 plus 1 equals 3.” Working together, people can achieve more than the sum of their individual efforts. Collaboration’s multiplicative effect helps overcome obstacles and complete more work.</p>
